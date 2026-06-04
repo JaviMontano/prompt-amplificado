@@ -1,0 +1,153 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Playbook · Ingeniería de Prompts (SPEC) — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="Anatomía SPEC, 5 pilares, notación de inputs, tags de procedencia, output engineering, few-shot y cadena de pensamiento, rúbrica de 10 criterios, anti-patrones y estándar 100✓.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <span aria-current="page">Prompt</span><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Playbook · <span class="l-es">Ingeniería de Prompts</span><span class="l-en">Prompt Engineering</span><span class="l-pt">Engenharia de Prompts</span></span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">Playbook 1 de 3 · profundo</span><span class="l-en">Playbook 1 of 3 · deep</span><span class="l-pt">Playbook 1 de 3 · profundo</span></span>
+    <h1><span class="l-es">Ingeniería de <span class="gradient-text">Prompts</span></span><span class="l-en"><span class="gradient-text">Prompt</span> Engineering</span><span class="l-pt">Engenharia de <span class="gradient-text">Prompts</span></span></h1>
+    <p class="lead"><span class="l-es">Formular con precisión es la palanca de mayor retorno. Un prompt bien diseñado es reproducible, auditable y reutilizable. Aquí está el método.</span><span class="l-en">Precise framing is the highest-return lever. A well-designed prompt is reproducible, auditable and reusable. Here is the method.</span><span class="l-pt">Formular com precisão é a alavanca de maior retorno. Um prompt bem desenhado é reproduzível, auditável e reutilizável. Aqui está o método.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">Anatomía SPEC</span><span class="l-en">SPEC anatomy</span><span class="l-pt">Anatomia SPEC</span></h2>
+    <p><span class="l-es">SPEC estructura un prompt en cuatro bloques. Clic en cada fila para el detalle.</span><span class="l-en">SPEC structures a prompt into four blocks. Click each row for detail.</span><span class="l-pt">SPEC estrutura um prompt em quatro blocos. Clique em cada linha.</span></p>
+    <table class="tbl">
+      <thead><tr><th>SPEC</th><th><span class="l-es">Sección</span><span class="l-en">Section</span><span class="l-pt">Seção</span></th><th><span class="l-es">Pregunta</span><span class="l-en">Question</span><span class="l-pt">Pergunta</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="S · Situación" data-detail="<ul class='rm-cols'><li><b>Responde:</b> ¿para qué? Contexto prospectivo, qué se desbloquea.</li><li><b>Incluye:</b> propósito, encuadre, y la regla de no-inventar si faltan inputs.</li></ul><div class='rm-note'>Sin Situación, el modelo optimiza la respuesta equivocada.</div>"><td><b>S</b></td><td><span class="l-es">Situación</span><span class="l-en">Situation</span><span class="l-pt">Situação</span></td><td><span class="l-es">¿Para qué?</span><span class="l-en">What for?</span><span class="l-pt">Para quê?</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="P · Pedido" data-detail="<ul class='rm-cols'><li><b>Responde:</b> ¿qué necesito? Arquetipo experto + entregable.</li><li><b>Incluye:</b> rol creíble (no genérico) y la forma exacta del entregable.</li></ul><div class='rm-note'>Un arquetipo concreto sube la calidad más que cualquier adjetivo.</div>"><td><b>P</b></td><td><span class="l-es">Pedido</span><span class="l-en">Request</span><span class="l-pt">Pedido</span></td><td><span class="l-es">¿Qué necesito?</span><span class="l-en">What do I need?</span><span class="l-pt">O que preciso?</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="E · Ejecución" data-detail="<ul class='rm-cols'><li><b>Responde:</b> ¿cómo se hace? Método por fases + protocolo.</li><li><b>Incluye:</b> Interpreta &gt; Planifica &gt; Ejecuta, supuestos, límites, casos borde, trade-offs.</li></ul><div class='rm-note'>Aquí vive el rigor: el método explícito evita respuestas plausibles pero falsas.</div>"><td><b>E</b></td><td><span class="l-es">Ejecución</span><span class="l-en">Execution</span><span class="l-pt">Execução</span></td><td><span class="l-es">¿Cómo se hace?</span><span class="l-en">How is it done?</span><span class="l-pt">Como se faz?</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="C · Criterio" data-detail="<ul class='rm-cols'><li><b>Responde:</b> ¿cómo sé que está listo? Checklist específico.</li><li><b>Incluye:</b> formato, tono, audiencia y acción de cierre observable.</li></ul><div class='rm-note'>El checklist convierte 'parece bien' en 'cumple estos puntos'.</div>"><td><b>C</b></td><td><span class="l-es">Criterio</span><span class="l-en">Criteria</span><span class="l-pt">Critério</span></td><td><span class="l-es">¿Cómo sé que está listo?</span><span class="l-en">How do I know it's done?</span><span class="l-pt">Como sei que está pronto?</span></td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'spec-template.md')">Descargar .md</button></div>
+      <pre class="prompt-text">[inputs]
+- VAR_1: {{VAR_1}} > descripción autodescriptiva del input
+- ADJUNTOS: {{ADJUNTOS}} > archivos/URLs o "Sin adjuntos"
+
+[prompt]
+--- S | SITUACION --- (para qué, qué se desbloquea, regla de no-inventar)
+--- P | PEDIDO --- (arquetipo experto + entregable exacto)
+--- E | EJECUCION --- (>> Interpreta > Planifica > Ejecuta; método, supuestos, límites)
+--- C | CRITERIO --- (formato, tono, audiencia, acción de cierre)
+
+[checklist]
+- [ ] criterio verificable 1
+- [ ] criterio verificable 2</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">Los 5 pilares</span><span class="l-en">The 5 pillars</span><span class="l-pt">Os 5 pilares</span></h2>
+    <div class="cards c2">
+      <div class="tile"><span class="k">01</span><h3><span class="l-es">Rol / Arquetipo</span><span class="l-en">Role / Archetype</span><span class="l-pt">Papel / Arquétipo</span></h3><p><span class="l-es">Un experto creíble y específico, no "asistente útil".</span><span class="l-en">A credible, specific expert, not "helpful assistant".</span><span class="l-pt">Um especialista crível e específico, não "assistente útil".</span></p></div>
+      <div class="tile"><span class="k">02</span><h3><span class="l-es">Tarea inequívoca</span><span class="l-en">Unambiguous task</span><span class="l-pt">Tarefa inequívoca</span></h3><p><span class="l-es">Un objetivo, un entregable, una forma de salida.</span><span class="l-en">One goal, one deliverable, one output shape.</span><span class="l-pt">Um objetivo, um entregável, uma forma de saída.</span></p></div>
+      <div class="tile"><span class="k">03</span><h3><span class="l-es">Método explícito</span><span class="l-en">Explicit method</span><span class="l-pt">Método explícito</span></h3><p><span class="l-es">Los pasos o marco que debe seguir, no solo el resultado.</span><span class="l-en">The steps or framework to follow, not just the result.</span><span class="l-pt">Os passos ou marco a seguir, não só o resultado.</span></p></div>
+      <div class="tile"><span class="k">04</span><h3><span class="l-es">Restricciones y límites</span><span class="l-en">Constraints &amp; limits</span><span class="l-pt">Restrições e limites</span></h3><p><span class="l-es">Qué NO hacer, supuestos marcados, casos borde.</span><span class="l-en">What NOT to do, marked assumptions, edge cases.</span><span class="l-pt">O que NÃO fazer, supostos marcados, casos-limite.</span></p></div>
+      <div class="tile"><span class="k">05</span><h3><span class="l-es">Criterio de éxito</span><span class="l-en">Success criteria</span><span class="l-pt">Critério de sucesso</span></h3><p><span class="l-es">El checklist con que se autoevalúa antes de entregar.</span><span class="l-en">The checklist it self-evaluates against before delivering.</span><span class="l-pt">O checklist com que se autoavalia antes de entregar.</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">Notación de inputs + tags de procedencia</span><span class="l-en">Input notation + provenance tags</span><span class="l-pt">Notação de inputs + tags de procedência</span></h2>
+    <p><span class="l-es">Los inputs van como <code>{{VARIABLE}}</code> autodescriptivos: portables entre herramientas y obvios para quien rellena. Toda afirmación lleva su <b>tag de procedencia</b>:</span><span class="l-en">Inputs go as self-describing <code>{{VARIABLE}}</code>: portable across tools and obvious to whoever fills them. Every claim carries its <b>provenance tag</b>:</span><span class="l-pt">Os inputs vão como <code>{{VARIABLE}}</code> autodescritivos: portáveis entre ferramentas e óbvios para quem preenche. Toda afirmação leva sua <b>tag de procedência</b>:</span></p>
+    <p>
+      <span class="proc doc">[DOC]</span> <span class="l-es">documentado/verificable</span><span class="l-en">documented/verifiable</span><span class="l-pt">documentado/verificável</span> &nbsp;
+      <span class="proc inf">[INFERENCIA]</span> <span class="l-es">deducido del contexto</span><span class="l-en">inferred from context</span><span class="l-pt">inferido do contexto</span> &nbsp;
+      <span class="proc sup">[SUPUESTO]</span> <span class="l-es">asunción a confirmar</span><span class="l-en">assumption to confirm</span><span class="l-pt">suposição a confirmar</span>
+    </p>
+    <div class="tip"><b>Regla:</b> <span class="l-es">sin datos inventados. Lo que no es verificable se marca <span class="proc sup">[SUPUESTO]</span> — nunca se disfraza de hecho.</span><span class="l-en">no invented data. Anything not verifiable is marked <span class="proc sup">[SUPUESTO]</span> — never disguised as fact.</span><span class="l-pt">sem dados inventados. O não verificável é marcado <span class="proc sup">[SUPUESTO]</span> — nunca disfarçado de fato.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">Output engineering · few-shot · cadena de pensamiento</span><span class="l-en">Output engineering · few-shot · chain-of-thought</span><span class="l-pt">Output engineering · few-shot · cadeia de pensamento</span></h2>
+    <ul>
+      <li><b>Output engineering.</b> <span class="l-es">Especifica la <b>forma</b> de salida (tabla, JSON, secciones). El formato es parte del pedido, no un detalle.</span><span class="l-en">Specify the output <b>shape</b> (table, JSON, sections). Format is part of the request, not a detail.</span><span class="l-pt">Especifique a <b>forma</b> da saída (tabela, JSON, seções). Formato é parte do pedido.</span></li>
+      <li><b>Few-shot.</b> <span class="l-es">1–3 ejemplos de entrada→salida deseada fijan el estándar mejor que diez adjetivos.</span><span class="l-en">1–3 input→desired-output examples set the standard better than ten adjectives.</span><span class="l-pt">1–3 exemplos entrada→saída fixam o padrão melhor que dez adjetivos.</span></li>
+      <li><b>Chain-of-thought.</b> <span class="l-es">Pide "piensa paso a paso / planifica antes de ejecutar" cuando el problema tiene razonamiento intermedio.</span><span class="l-en">Ask "think step by step / plan before executing" when the problem has intermediate reasoning.</span><span class="l-pt">Peça "pense passo a passo / planeje antes de executar" quando há raciocínio intermediário.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">§05</span><span class="l-es">Evaluación · rúbrica de 10 criterios</span><span class="l-en">Evaluation · 10-criteria rubric</span><span class="l-pt">Avaliação · rubrica de 10 critérios</span></h2>
+    <p><span class="l-es">Cada prompt se mide contra estos 10. Clic en la fila para qué exige cada uno.</span><span class="l-en">Every prompt is scored against these 10. Click a row for what each demands.</span><span class="l-pt">Cada prompt é medido contra estes 10. Clique na linha.</span></p>
+    <table class="tbl">
+      <thead><tr><th>#</th><th><span class="l-es">Criterio</span><span class="l-en">Criterion</span><span class="l-pt">Critério</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="1 · Fundamento" data-detail="<div class='rm-note'>Marco o método real y reconocible — no genérico.</div>"><td>1</td><td>Fundamento</td><td class="more">Ver →</td></tr>
+        <tr data-title="2 · Veracidad" data-detail="<div class='rm-note'>Sin datos inventados; supuestos marcados [SUPUESTO].</div>"><td>2</td><td>Veracidad</td><td class="more">Ver →</td></tr>
+        <tr data-title="3 · Calidad" data-detail="<div class='rm-note'>Arquetipo creíble, pasos accionables.</div>"><td>3</td><td>Calidad</td><td class="more">Ver →</td></tr>
+        <tr data-title="4 · Densidad" data-detail="<div class='rm-note'>Máxima señal por línea; cero relleno.</div>"><td>4</td><td>Densidad</td><td class="more">Ver →</td></tr>
+        <tr data-title="5 · Simplicidad" data-detail="<div class='rm-note'>Lenguaje claro, sin jerga vacía.</div>"><td>5</td><td>Simplicidad</td><td class="more">Ver →</td></tr>
+        <tr data-title="6 · Claridad" data-detail="<div class='rm-note'>Estructura legible, instrucciones inequívocas.</div>"><td>6</td><td>Claridad</td><td class="more">Ver →</td></tr>
+        <tr data-title="7 · Precisión" data-detail="<div class='rm-note'>Params consistentes en los 4 formatos; SPEC bien formado.</div>"><td>7</td><td>Precisión</td><td class="more">Ver →</td></tr>
+        <tr data-title="8 · Profundidad" data-detail="<div class='rm-note'>Cubre matices del tema, no superficial.</div>"><td>8</td><td>Profundidad</td><td class="more">Ver →</td></tr>
+        <tr data-title="9 · Coherencia" data-detail="<div class='rm-note'>Los 4 formatos dicen lo mismo, sin contradicción.</div>"><td>9</td><td>Coherencia</td><td class="more">Ver →</td></tr>
+        <tr data-title="10 · Valor" data-detail="<div class='rm-note'>Resuelve un trabajo real; reutilizable.</div>"><td>10</td><td>Valor</td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§06</span><span class="l-es">Anti-patrones</span><span class="l-en">Anti-patterns</span><span class="l-pt">Antipadrões</span></h2>
+    <div class="warn-box"><ul style="margin:.2rem 0">
+      <li><span class="l-es"><b>El prompt-novela:</b> tres párrafos de contexto y ningún pedido claro.</span><span class="l-en"><b>The novel-prompt:</b> three paragraphs of context and no clear request.</span><span class="l-pt"><b>O prompt-romance:</b> três parágrafos de contexto e nenhum pedido claro.</span></li>
+      <li><span class="l-es"><b>El adjetivo mágico:</b> "sé excelente, detallado, profesional" en vez de un criterio verificable.</span><span class="l-en"><b>The magic adjective:</b> "be excellent, detailed, professional" instead of a verifiable criterion.</span><span class="l-pt"><b>O adjetivo mágico:</b> "seja excelente, detalhado, profissional" em vez de critério verificável.</span></li>
+      <li><span class="l-es"><b>Sin no-inventar:</b> no decirle qué hacer si faltan datos → alucina con seguridad.</span><span class="l-en"><b>No no-invent rule:</b> not telling it what to do when data is missing → it hallucinates confidently.</span><span class="l-pt"><b>Sem regra de não-inventar:</b> não dizer o que fazer se faltam dados → alucina com confiança.</span></li>
+      <li><span class="l-es"><b>Multitarea:</b> cinco objetivos en un prompt → ninguno se cumple bien.</span><span class="l-en"><b>Multitasking:</b> five goals in one prompt → none done well.</span><span class="l-pt"><b>Multitarefa:</b> cinco objetivos num prompt → nenhum bem feito.</span></li>
+    </ul></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§07</span><span class="l-es">Estándar 100✓</span><span class="l-en">100✓ standard</span><span class="l-pt">Padrão 100✓</span></h2>
+    <p><span class="l-es">Antes de dar por bueno un prompt, debe pasar:</span><span class="l-en">Before accepting a prompt, it must pass:</span><span class="l-pt">Antes de aceitar um prompt, ele deve passar:</span></p>
+    <ul class="cl">
+      <li><span class="l-es">Rol, tarea, método, límites y criterio están presentes (5 pilares).</span><span class="l-en">Role, task, method, limits and criteria are present (5 pillars).</span><span class="l-pt">Papel, tarefa, método, limites e critério presentes (5 pilares).</span></li>
+      <li><span class="l-es">Tiene regla de no-inventar y tags de procedencia.</span><span class="l-en">Has a no-invent rule and provenance tags.</span><span class="l-pt">Tem regra de não-inventar e tags de procedência.</span></li>
+      <li><span class="l-es">Produce el mismo nivel de calidad con entradas distintas (reproducible).</span><span class="l-en">Produces the same quality with different inputs (reproducible).</span><span class="l-pt">Produz a mesma qualidade com entradas diferentes (reproduzível).</span></li>
+      <li><span class="l-es">Pasa los 10 criterios de la rúbrica.</span><span class="l-en">Passes the 10 rubric criteria.</span><span class="l-pt">Passa os 10 critérios da rubrica.</span></li>
+    </ul>
+    <p><span class="l-es">¿Listo? Lleva tu prompt al <a href="playbook-context-engineering.html">contexto</a> y luego al <a href="playbook-harness-engineering.html">arnés</a>, o busca uno hecho en la <a href="biblioteca-prompts.html">Biblioteca</a>.</span><span class="l-en">Ready? Take your prompt to <a href="playbook-context-engineering.html">context</a> then the <a href="playbook-harness-engineering.html">harness</a>, or grab a ready one in the <a href="biblioteca-prompts.html">Library</a>.</span><span class="l-pt">Pronto? Leve seu prompt ao <a href="playbook-context-engineering.html">contexto</a> e ao <a href="playbook-harness-engineering.html">arnês</a>, ou pegue um pronto na <a href="biblioteca-prompts.html">Biblioteca</a>.</span></p>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · Playbook <span class="l-es">Ingeniería de Prompts</span><span class="l-en">Prompt Engineering</span><span class="l-pt">Engenharia de Prompts</span> · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

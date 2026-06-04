@@ -1,0 +1,117 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Playbook · Ingeniería de Contexto — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="Ventana de contexto, context rot, priming, RAG/retrieval, chunking, MEMORY.md, archivos-sobre-pegar, soberanía del contexto y apilamiento de reglas.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <span aria-current="page">Context</span><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Playbook · <span class="l-es">Ingeniería de Contexto</span><span class="l-en">Context Engineering</span><span class="l-pt">Engenharia de Contexto</span></span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">Playbook 2 de 3 · profundo</span><span class="l-en">Playbook 2 of 3 · deep</span><span class="l-pt">Playbook 2 de 3 · profundo</span></span>
+    <h1><span class="l-es">Ingeniería de <span class="gradient-text">Contexto</span></span><span class="l-en"><span class="gradient-text">Context</span> Engineering</span><span class="l-pt">Engenharia de <span class="gradient-text">Contexto</span></span></h1>
+    <p class="lead"><span class="l-es">El prompt perfecto falla con contexto pobre. Esta disciplina gestiona <b>qué sabe el modelo cuando responde</b>: qué entra a la ventana, qué se recupera y qué se recuerda.</span><span class="l-en">The perfect prompt fails with poor context. This discipline manages <b>what the model knows when it answers</b>: what enters the window, what is retrieved and what is remembered.</span><span class="l-pt">O prompt perfeito falha com contexto pobre. Esta disciplina gere <b>o que o modelo sabe ao responder</b>: o que entra na janela, o que é recuperado e o que é lembrado.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">La ventana de contexto</span><span class="l-en">The context window</span><span class="l-pt">A janela de contexto</span></h2>
+    <p><span class="l-es">La ventana es finita: todo lo que el modelo "ve" en un turno (instrucciones, historial, archivos, tu mensaje). No es memoria infinita — es un <b>presupuesto</b> que administras.</span><span class="l-en">The window is finite: everything the model "sees" in a turn (instructions, history, files, your message). It is not infinite memory — it is a <b>budget</b> you manage.</span><span class="l-pt">A janela é finita: tudo que o modelo "vê" num turno (instruções, histórico, arquivos, sua mensagem). Não é memória infinita — é um <b>orçamento</b> que você administra.</span></p>
+    <div class="note"><b><span class="l-es">Principio:</span><span class="l-en">Principle:</span><span class="l-pt">Princípio:</span></b> <span class="l-es">señal alta, ruido bajo. Cada token que ocupas con algo irrelevante desplaza algo útil.</span><span class="l-en">high signal, low noise. Every token spent on the irrelevant displaces something useful.</span><span class="l-pt">sinal alto, ruído baixo. Cada token gasto no irrelevante desloca algo útil.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">Context rot</span><span class="l-en">Context rot</span><span class="l-pt">Context rot</span></h2>
+    <p><span class="l-es">A medida que la ventana se llena de historial largo, intentos fallidos y datos pegados, la atención del modelo se degrada: contradice instrucciones tempranas, mezcla hilos, pierde el foco. Eso es <b>context rot</b>.</span><span class="l-en">As the window fills with long history, failed attempts and pasted data, the model's attention degrades: it contradicts early instructions, mixes threads, loses focus. That is <b>context rot</b>.</span><span class="l-pt">À medida que a janela enche de histórico longo, tentativas falhas e dados colados, a atenção do modelo degrada: contradiz instruções iniciais, mistura fios, perde o foco. Isso é <b>context rot</b>.</span></p>
+    <div class="tip"><b><span class="l-es">Antídotos:</span><span class="l-en">Antidotes:</span><span class="l-pt">Antídotos:</span></b> <span class="l-es">empieza un hilo nuevo cuando el actual se ensucia · resume y reinyecta solo lo esencial · usa archivos en vez de pegar.</span><span class="l-en">start a fresh thread when the current one gets dirty · summarize and re-inject only the essentials · use files instead of pasting.</span><span class="l-pt">comece um fio novo quando o atual sujar · resuma e reinjete só o essencial · use arquivos em vez de colar.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">Palancas de contexto</span><span class="l-en">Context levers</span><span class="l-pt">Alavancas de contexto</span></h2>
+    <p><span class="l-es">Clic en cada fila para el detalle.</span><span class="l-en">Click each row for detail.</span><span class="l-pt">Clique em cada linha.</span></p>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Palanca</span><span class="l-en">Lever</span><span class="l-pt">Alavanca</span></th><th><span class="l-es">Para qué</span><span class="l-en">For what</span><span class="l-pt">Para quê</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="Priming" data-detail="<ul class='rm-cols'><li><b>Qué:</b> cargar al inicio las reglas, el rol y las fuentes de verdad antes de pedir nada.</li><li><b>Efecto:</b> el modelo opera 'cebado' con tu marco, no con el genérico.</li></ul><div class='rm-note'>Un buen priming hace que el resto de la sesión necesite menos instrucciones.</div>"><td><b>Priming</b></td><td><span class="l-es">Cebar el marco antes de pedir</span><span class="l-en">Prime the frame before asking</span><span class="l-pt">Cevar o marco antes de pedir</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="RAG / Retrieval" data-detail="<ul class='rm-cols'><li><b>Qué:</b> recuperar solo los fragmentos relevantes de un corpus grande y meterlos en la ventana.</li><li><b>Cuándo:</b> la base de conocimiento no cabe entera o cambia seguido.</li></ul><div class='rm-note'>Recuperas lo justo, no todo: precisión sobre volumen.</div>"><td><b>RAG / Retrieval</b></td><td><span class="l-es">Traer solo lo relevante de un corpus</span><span class="l-en">Bring only the relevant from a corpus</span><span class="l-pt">Trazer só o relevante de um corpus</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Chunking" data-detail="<ul class='rm-cols'><li><b>Qué:</b> partir documentos en trozos coherentes y recuperables.</li><li><b>Regla:</b> un chunk = una idea completa; ni tan grande que diluya, ni tan chico que pierda sentido.</li></ul><div class='rm-note'>El chunking determina la calidad del retrieval.</div>"><td><b>Chunking</b></td><td><span class="l-es">Partir docs en trozos recuperables</span><span class="l-en">Split docs into retrievable chunks</span><span class="l-pt">Dividir docs em trechos recuperáveis</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="MEMORY.md" data-detail="<ul class='rm-cols'><li><b>Qué:</b> un archivo persistente con decisiones, preferencias y aprendizajes que se relee cada sesión.</li><li><b>Efecto:</b> el contexto sobrevive entre conversaciones; no repites lo mismo.</li></ul><div class='rm-note'>La memoria explícita en archivo vence a la memoria implícita del chat.</div>"><td><b>MEMORY.md</b></td><td><span class="l-es">Recordar entre sesiones</span><span class="l-en">Remember across sessions</span><span class="l-pt">Lembrar entre sessões</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Archivos sobre pegar" data-detail="<ul class='rm-cols'><li><b>Qué:</b> adjuntar archivos en vez de pegar texto en el mensaje.</li><li><b>Por qué:</b> estables, versionables, reutilizables; no inflan el historial.</li></ul><div class='rm-note'>Si lo vas a usar más de una vez, que sea archivo.</div>"><td><b><span class="l-es">Archivos sobre pegar</span><span class="l-en">Files over paste</span><span class="l-pt">Arquivos sobre colar</span></b></td><td><span class="l-es">Contexto estable y reusable</span><span class="l-en">Stable, reusable context</span><span class="l-pt">Contexto estável e reusável</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Apilamiento de reglas" data-detail="<ul class='rm-cols'><li><b>Qué:</b> reglas en capas (global → proyecto → tarea); la más específica gana, las generales heredan.</li><li><b>Efecto:</b> un sistema de contexto coherente y sin contradicciones.</li></ul><div class='rm-note'>Lee la regla del padre antes que la del hijo.</div>"><td><b><span class="l-es">Apilamiento de reglas</span><span class="l-en">Rule stacking</span><span class="l-pt">Empilhamento de regras</span></b></td><td><span class="l-es">Reglas en capas, coherentes</span><span class="l-en">Layered, coherent rules</span><span class="l-pt">Regras em camadas, coerentes</span></td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">Soberanía del contexto</span><span class="l-en">Context sovereignty</span><span class="l-pt">Soberania do contexto</span></h2>
+    <p><span class="l-es">Tú decides qué entra y qué no. La soberanía del contexto es controlar tus fuentes de verdad: archivos propios, auditables, versionados — no depender de lo que el modelo "recuerde" de cachés o sesiones previas.</span><span class="l-en">You decide what enters and what does not. Context sovereignty means controlling your sources of truth: your own files, auditable, versioned — not depending on what the model "remembers" from caches or prior sessions.</span><span class="l-pt">Você decide o que entra e o que não. A soberania do contexto é controlar suas fontes de verdade: arquivos próprios, auditáveis, versionados — não depender do que o modelo "lembra" de caches ou sessões prévias.</span></p>
+    <div class="warn-box"><b><span class="l-es">Regla de oro:</span><span class="l-en">Golden rule:</span><span class="l-pt">Regra de ouro:</span></b> <span class="l-es">ante una afirmación importante, el repo local es la verdad; el recuerdo del chat no.</span><span class="l-en">for any important claim, the local repo is truth; the chat's recall is not.</span><span class="l-pt">para qualquer afirmação importante, o repo local é a verdade; a memória do chat não.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§05</span><span class="l-es">Plantilla · MEMORY.md mínimo</span><span class="l-en">Template · minimal MEMORY.md</span><span class="l-pt">Modelo · MEMORY.md mínimo</span></h2>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'MEMORY.md')">Descargar .md</button></div>
+      <pre class="prompt-text"># MEMORY.md — [proyecto/tarea]
+
+## Decisiones (con fecha)
+- 2026-06-03 · [decisión] · razón: [...]
+
+## Preferencias estables
+- [cómo me gusta el output: formato, tono, idioma]
+
+## Aprendizajes
+- [qué funcionó / qué evitar]
+
+## Fuentes de verdad
+- [archivo/sistema] = [qué contiene] (canónico)
+
+## Por confirmar
+- {por_confirmar} [ambigüedad pendiente]</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§06</span><span class="l-es">Anti-patrones</span><span class="l-en">Anti-patterns</span><span class="l-pt">Antipadrões</span></h2>
+    <div class="warn-box"><ul style="margin:.2rem 0">
+      <li><span class="l-es"><b>El volcado:</b> pegar 20 páginas "por si acaso" → context rot inmediato.</span><span class="l-en"><b>The dump:</b> pasting 20 pages "just in case" → instant context rot.</span><span class="l-pt"><b>O despejo:</b> colar 20 páginas "por via das dúvidas" → context rot imediato.</span></li>
+      <li><span class="l-es"><b>Memoria implícita:</b> confiar en que el chat "se acuerde" en vez de un archivo.</span><span class="l-en"><b>Implicit memory:</b> trusting the chat to "remember" instead of a file.</span><span class="l-pt"><b>Memória implícita:</b> confiar que o chat "lembre" em vez de um arquivo.</span></li>
+      <li><span class="l-es"><b>Reglas contradictorias:</b> capas que se pisan sin jerarquía clara.</span><span class="l-en"><b>Contradictory rules:</b> layers that clash with no clear hierarchy.</span><span class="l-pt"><b>Regras contraditórias:</b> camadas que se chocam sem hierarquia clara.</span></li>
+    </ul></div>
+    <p><span class="l-es">Con prompt y contexto resueltos, el siguiente salto es el <a href="playbook-harness-engineering.html">arnés</a>.</span><span class="l-en">With prompt and context solved, the next leap is the <a href="playbook-harness-engineering.html">harness</a>.</span><span class="l-pt">Com prompt e contexto resolvidos, o próximo salto é o <a href="playbook-harness-engineering.html">arnês</a>.</span></p>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · Playbook <span class="l-es">Ingeniería de Contexto</span><span class="l-en">Context Engineering</span><span class="l-pt">Engenharia de Contexto</span> · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

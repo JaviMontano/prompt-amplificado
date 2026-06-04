@@ -1,0 +1,156 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Workbook · Tu primer prompt, context pack y mini-arnés — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="Ejercicio de una sesión: sal con un prompt de alto rendimiento, un context pack mínimo y un mini-arnés propios. Plantillas copiables y descargables.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <span aria-current="page">Workbook</span><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Prompt Amplificado · Workbook</span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">Ejercicio · 1 sesión</span><span class="l-en">Exercise · 1 session</span><span class="l-pt">Exercício · 1 sessão</span></span>
+    <h1><span class="l-es">Tu primer <span class="gradient-text">prompt, context pack y mini-arnés</span></span><span class="l-en">Your first <span class="gradient-text">prompt, context pack &amp; mini-harness</span></span><span class="l-pt">Seu primeiro <span class="gradient-text">prompt, context pack e mini-arnês</span></span></h1>
+    <p class="lead"><span class="l-es">Al terminar esta sesión te llevas <b>tres artefactos reales</b>, no teoría. Trabaja sobre una tarea tuya de hoy.</span><span class="l-en">By the end of this session you take <b>three real artifacts</b>, not theory. Work on a task of yours from today.</span><span class="l-pt">Ao fim desta sessão você leva <b>três artefatos reais</b>, não teoria. Trabalhe numa tarefa sua de hoje.</span></p>
+    <div class="note"><b>Salida (3):</b> <span class="l-es">(a) UN prompt de alto rendimiento · (b) UN context pack mínimo · (c) UN mini-arnés.</span><span class="l-en">(a) ONE high-performance prompt · (b) ONE minimal context pack · (c) ONE mini-harness.</span><span class="l-pt">(a) UM prompt de alto desempenho · (b) UM context pack mínimo · (c) UM mini-arnês.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§00</span><span class="l-es">Preparación</span><span class="l-en">Setup</span><span class="l-pt">Preparação</span></h2>
+    <p><span class="l-es">Elige una tarea concreta y repetible (ej.: redactar el status semanal, revisar un PR, resumir reuniones). Escríbela en una línea. Esa es tu materia prima.</span><span class="l-en">Pick a concrete, repeatable task (e.g. write the weekly status, review a PR, summarize meetings). Write it in one line. That is your raw material.</span><span class="l-pt">Escolha uma tarefa concreta e repetível (ex.: escrever o status semanal, revisar um PR, resumir reuniões). Escreva-a numa linha. Essa é sua matéria-prima.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">Artefacto A · El prompt (SPEC)</span><span class="l-en">Artifact A · The prompt (SPEC)</span><span class="l-pt">Artefato A · O prompt (SPEC)</span></h2>
+    <p><span class="l-es">Rellena la plantilla SPEC: <b>S</b>ituación, <b>P</b>edido, <b>E</b>jecución, <b>C</b>riterio. Copia, pega tus datos y pruébalo.</span><span class="l-en">Fill the SPEC template: <b>S</b>ituation, <b>P</b>edido/Request, <b>E</b>xecution, <b>C</b>riteria. Copy, paste your data and test it.</span><span class="l-pt">Preencha o modelo SPEC: <b>S</b>ituação, <b>P</b>edido, <b>E</b>xecução, <b>C</b>ritério. Copie, cole seus dados e teste.</span></p>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'mi-prompt-spec.md')">Descargar .md</button></div>
+      <pre class="prompt-text">[inputs]
+- TAREA: {{TAREA}} > la tarea concreta que quieres resolver
+- CONTEXTO: {{CONTEXTO}} > datos, restricciones, audiencia
+- ADJUNTOS: {{ADJUNTOS}} > archivos/URLs o "Sin adjuntos"
+
+[prompt]
+
+--- S | SITUACION ---
+Para qué sirve esta tarea y qué se desbloquea al resolverla.
+Si {{TAREA}} está vacía o es ambigua, pídela antes de avanzar; no inventes.
+
+--- P | PEDIDO ---
+Arquetipo: actúa como [experto creíble en el dominio].
+Entregable: [qué quiero exactamente, en qué forma].
+
+--- E | EJECUCION ---
+>> Protocolo MetodologIA: Interpreta > Planifica > Ejecuta.
+Reformula en una línea lo que entendiste, presenta el plan y solo entonces ejecuta.
+Método: [pasos o marco que debe seguir]. Supuestos y límites explícitos.
+
+--- C | CRITERIO ---
+Formato: [estructura de salida]. Tono: [registro]. Audiencia: [quién lo lee].
+Cierre: [acción concreta con la que termina].
+
+[checklist]
+- [ ] Cumple el formato y el tono pedidos
+- [ ] No inventó datos; marcó supuestos
+- [ ] Entrega la acción de cierre</pre>
+    </div>
+    <div class="tip"><b>Test:</b> <span class="l-es">pásalo dos veces con entradas distintas. Si el resultado cambia de calidad, el prompt aún es ambiguo.</span><span class="l-en">run it twice with different inputs. If quality swings, the prompt is still ambiguous.</span><span class="l-pt">rode duas vezes com entradas diferentes. Se a qualidade oscila, o prompt ainda é ambíguo.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">Artefacto B · El context pack mínimo</span><span class="l-en">Artifact B · The minimal context pack</span><span class="l-pt">Artefato B · O context pack mínimo</span></h2>
+    <p><span class="l-es">Reúne lo mínimo que el modelo necesita saber <b>siempre</b> para esta tarea. Guárdalo como un archivo y adjúntalo (no lo pegues entero cada vez).</span><span class="l-en">Gather the minimum the model must <b>always</b> know for this task. Save it as a file and attach it (don't paste it whole each time).</span><span class="l-pt">Reúna o mínimo que o modelo precisa saber <b>sempre</b> para esta tarefa. Salve como arquivo e anexe (não cole inteiro toda vez).</span></p>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'CONTEXT.md')">Descargar .md</button></div>
+      <pre class="prompt-text"># CONTEXT.md — [nombre de la tarea]
+
+## Quién soy / rol
+[tu rol, tu equipo, tu objetivo en esta tarea]
+
+## Reglas duras (siempre)
+- [restricción 1 · ej.: sin datos confidenciales en outputs externos]
+- [restricción 2 · ej.: tono directo, evidencia sobre opinión]
+
+## Vocabulario / convenciones
+- [término] = [definición canónica]
+
+## Fuentes de verdad
+- [archivo/sistema] → [qué contiene]
+
+## Qué NO hacer
+- [anti-objetivo 1]</pre>
+    </div>
+    <div class="note"><b><span class="l-es">Archivos sobre pegar.</span><span class="l-en">Files over paste.</span><span class="l-pt">Arquivos sobre colar.</span></b> <span class="l-es">Un archivo adjunto es estable y reutilizable; el texto pegado se pierde y ensucia la ventana.</span><span class="l-en">An attached file is stable and reusable; pasted text is lost and clutters the window.</span><span class="l-pt">Um arquivo anexo é estável e reutilizável; texto colado se perde e suja a janela.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">Artefacto C · El mini-arnés</span><span class="l-en">Artifact C · The mini-harness</span><span class="l-pt">Artefato C · O mini-arnês</span></h2>
+    <p><span class="l-es">Un arnés mínimo = <b>una herramienta + un bucle de verificación + una guarda</b>. Define el tuyo:</span><span class="l-en">A minimal harness = <b>one tool + one verification loop + one guardrail</b>. Define yours:</span><span class="l-pt">Um arnês mínimo = <b>uma ferramenta + um loop de verificação + uma guarda</b>. Defina o seu:</span></p>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'mini-harness.md')">Descargar .md</button></div>
+      <pre class="prompt-text"># MINI-HARNESS — [tarea]
+
+## 1. Herramienta (tool use)
+El modelo puede usar: [búsqueda / lectura de archivos / ejecutar código / API].
+Cuándo usarla: [condición]. Cuándo NO: [condición].
+
+## 2. Bucle de verificación
+Después de producir, el modelo debe:
+- [ ] Revisar contra el [checklist del prompt]
+- [ ] Si falla un punto → corregir y re-verificar (máx. 2 iteraciones)
+- [ ] Reportar qué verificó
+
+## 3. Guarda (guardrail)
+NUNCA: [acción irreversible / dato sensible / supuesto sin marcar].
+Ante duda → preguntar, no asumir.
+
+## Criterio de "listo"
+[condición observable que indica que el trabajo está terminado]</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">Cierre · checklist de salida</span><span class="l-en">Close · exit checklist</span><span class="l-pt">Fecho · checklist de saída</span></h2>
+    <ul class="cl">
+      <li><span class="l-es">Tengo un prompt SPEC que probé al menos 2 veces.</span><span class="l-en">I have a SPEC prompt I tested at least twice.</span><span class="l-pt">Tenho um prompt SPEC testado ao menos 2 vezes.</span></li>
+      <li><span class="l-es">Tengo un CONTEXT.md guardado como archivo.</span><span class="l-en">I have a CONTEXT.md saved as a file.</span><span class="l-pt">Tenho um CONTEXT.md salvo como arquivo.</span></li>
+      <li><span class="l-es">Tengo un mini-arnés con herramienta, bucle y guarda.</span><span class="l-en">I have a mini-harness with tool, loop and guardrail.</span><span class="l-pt">Tenho um mini-arnês com ferramenta, loop e guarda.</span></li>
+      <li><span class="l-es">Sé cuál es mi criterio de "listo".</span><span class="l-en">I know my "done" criterion.</span><span class="l-pt">Sei qual é meu critério de "pronto".</span></li>
+    </ul>
+    <p><span class="l-es">¿Listo para profundizar? Ve a los <a href="playbook-prompt-engineering.html">playbooks</a> o al <a href="runbook.html">runbook</a>.</span><span class="l-en">Ready to go deeper? Head to the <a href="playbook-prompt-engineering.html">playbooks</a> or the <a href="runbook.html">runbook</a>.</span><span class="l-pt">Pronto para aprofundar? Vá aos <a href="playbook-prompt-engineering.html">playbooks</a> ou ao <a href="runbook.html">runbook</a>.</span></p>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · Workbook · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

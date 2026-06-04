@@ -1,0 +1,120 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Prompt Amplificado — Ingeniería de Prompts, Contexto y Arneses | MetodologIA</title>
+<meta name="description" content="Material abierto sobre ingeniería de prompts, de contexto y de arneses (harness) con (Gen)IA. Masterclass, workbook, tres playbooks, runbook y una biblioteca de 2026 prompts. Método primero, (Gen)IA después. ES/EN/PT. Copyleft.">
+<link rel="canonical" href="https://javimontano.github.io/prompt-amplificado/">
+<link rel="alternate" hreflang="es" href="https://javimontano.github.io/prompt-amplificado/">
+<link rel="alternate" hreflang="en" href="https://javimontano.github.io/prompt-amplificado/">
+<link rel="alternate" hreflang="pt" href="https://javimontano.github.io/prompt-amplificado/">
+<link rel="alternate" hreflang="x-default" href="https://javimontano.github.io/prompt-amplificado/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="MetodologIA">
+<meta property="og:title" content="Prompt Amplificado — Ingeniería de Prompts, Contexto y Arneses">
+<meta property="og:description" content="Método primero, (Gen)IA después. Material abierto ES/EN/PT.">
+<meta property="og:url" content="https://javimontano.github.io/prompt-amplificado/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+<style>
+  .hubhero{background:radial-gradient(circle at 18% -10%,rgba(255,215,0,.18) 0%,transparent 55%),radial-gradient(circle at 92% 110%,rgba(19,125,197,.08) 0%,transparent 55%);padding:3rem 0 2rem;border-bottom:1px solid var(--rule)}
+  .hubhero h1{font-size:clamp(2rem,6vw,3.2rem)}
+  .stats{display:grid;gap:.8rem;grid-template-columns:repeat(2,1fr);margin:1.4rem 0}
+  @media(min-width:680px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stats .cell{background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:.8rem}
+  .stats .num{font-family:var(--f-head);font-weight:800;font-size:1.2rem;color:var(--gold-deep)}
+  .stats .lbl{font-size:.74rem;color:var(--ink2)}
+  .matcard{background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:1.1rem;display:flex;flex-direction:column;gap:.4rem}
+  .matcard .ver{font-family:var(--f-mono);font-size:.68rem;color:var(--mute)}
+  .matcard a.go{margin-top:auto;font-weight:700;color:var(--gold-deep);text-decoration:none}
+  .flow{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.84rem;color:var(--ink2);margin:.6rem 0}
+  .flow b{background:var(--gold);color:var(--navy2);border-radius:var(--rp);padding:.12rem .6rem;font-family:var(--f-head);font-size:.78rem}
+  [data-theme=dark] .flow b{color:#0B1120}
+  .foot-nav{display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;justify-content:center;margin:.6rem 0}
+  .foot-nav a{color:var(--ink2);text-decoration:none;font-size:.85rem}
+</style>
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <span aria-current="page">Hub</span>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Prompt Amplificado</span>
+  <span class="sp"></span>
+  <a class="iconbtn" href="https://metodologia.info/" target="_blank" rel="noopener">metodologia.info</a>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main>
+  <section class="hubhero">
+    <div class="wrap" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow"><span class="l-es">Material abierto · con (Gen)IA</span><span class="l-en">Open material · with (Gen)AI</span><span class="l-pt">Material aberto · com (Gen)IA</span></span>
+      <h1><span class="l-es">Ingeniería de <span class="gradient-text">Prompts, Contexto y Arneses</span></span><span class="l-en"><span class="gradient-text">Prompt, Context &amp; Harness</span> Engineering</span><span class="l-pt">Engenharia de <span class="gradient-text">Prompts, Contexto e Arneses</span></span></h1>
+      <p class="lead"><span class="l-es">Aprende a operar la (Gen)IA en sus tres capas — <b>prompt</b>, <b>contexto</b> y <b>arnés</b> — con un recorrido progresivo y una biblioteca de 2026 prompts listos. Método primero, (Gen)IA después.</span><span class="l-en">Learn to operate (Gen)AI across its three layers — <b>prompt</b>, <b>context</b> and <b>harness</b> — with a progressive path and a library of 2026 ready prompts. Method first, (Gen)AI second.</span><span class="l-pt">Aprenda a operar a (Gen)IA nas três camadas — <b>prompt</b>, <b>contexto</b> e <b>arnês</b> — com um percurso progressivo e uma biblioteca de 2026 prompts prontos. Método primeiro, (Gen)IA depois.</span></p>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem">
+        <a class="iconbtn" style="background:var(--gold);color:var(--navy2);border-color:var(--gold);font-weight:700" href="masterclass.html"><span class="l-es">Empezar por la Masterclass →</span><span class="l-en">Start with the Masterclass →</span><span class="l-pt">Começar pela Masterclass →</span></a>
+        <a class="iconbtn" style="background:var(--navy2)" href="biblioteca-prompts.html"><span class="l-es">Ir a la Biblioteca</span><span class="l-en">Go to the Library</span><span class="l-pt">Ir à Biblioteca</span></a>
+      </div>
+      <div class="stats">
+        <div class="cell"><div class="num">2026</div><div class="lbl"><span class="l-es">prompts en 4 formatos</span><span class="l-en">prompts in 4 formats</span><span class="l-pt">prompts em 4 formatos</span></div></div>
+        <div class="cell"><div class="num">3</div><div class="lbl"><span class="l-es">disciplinas: prompt · contexto · arnés</span><span class="l-en">disciplines: prompt · context · harness</span><span class="l-pt">disciplinas: prompt · contexto · arnês</span></div></div>
+        <div class="cell"><div class="num">8</div><div class="lbl"><span class="l-es">documentos abiertos</span><span class="l-en">open documents</span><span class="l-pt">documentos abertos</span></div></div>
+        <div class="cell"><div class="num">ES·EN·PT</div><div class="lbl"><span class="l-es">trilingüe</span><span class="l-en">trilingual</span><span class="l-pt">trilíngue</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2><span class="num">§01</span><span class="l-es">La experiencia</span><span class="l-en">The experience</span><span class="l-pt">A experiência</span></h2>
+    <p class="lead"><span class="l-es">Un recorrido progresivo, a tu ritmo. Cada pieza te deja listo para la siguiente.</span><span class="l-en">A progressive path, at your pace. Each piece sets you up for the next.</span><span class="l-pt">Um percurso progressivo, no seu ritmo. Cada peça prepara a próxima.</span></p>
+    <div class="flow"><b>Masterclass</b> → <b>Workbook</b> → <b>Playbooks</b> → <b>Runbook</b> → <b>Biblioteca</b></div>
+    <ol>
+      <li><span class="l-es"><b>Masterclass</b> — entiende por qué las tres ingenierías y cómo se conectan.</span><span class="l-en"><b>Masterclass</b> — understand why the three engineerings and how they connect.</span><span class="l-pt"><b>Masterclass</b> — entenda por que as três engenharias e como se conectam.</span></li>
+      <li><span class="l-es"><b>Workbook</b> — en una sesión sales con un prompt, un context pack y un mini-arnés propios.</span><span class="l-en"><b>Workbook</b> — in one session you leave with your own prompt, context pack and mini-harness.</span><span class="l-pt"><b>Workbook</b> — em uma sessão você sai com seu prompt, context pack e mini-arnês.</span></li>
+      <li><span class="l-es"><b>Playbooks</b> — profundizas en cada disciplina: prompt, contexto y arnés.</span><span class="l-en"><b>Playbooks</b> — go deep in each discipline: prompt, context and harness.</span><span class="l-pt"><b>Playbooks</b> — aprofunde em cada disciplina: prompt, contexto e arnês.</span></li>
+      <li><span class="l-es"><b>Runbook</b> — el cómo paso a paso, con catálogos y troubleshooting.</span><span class="l-en"><b>Runbook</b> — the step-by-step how, with catalogs and troubleshooting.</span><span class="l-pt"><b>Runbook</b> — o como passo a passo, com catálogos e troubleshooting.</span></li>
+      <li><span class="l-es"><b>Biblioteca</b> — 2026 prompts listos para copiar, descargar o llevar a tu IA.</span><span class="l-en"><b>Library</b> — 2026 prompts ready to copy, download or send to your AI.</span><span class="l-pt"><b>Biblioteca</b> — 2026 prompts prontos para copiar, baixar ou levar à sua IA.</span></li>
+    </ol>
+  </section>
+
+  <section class="wrap">
+    <h2><span class="num">§02</span><span class="l-es">Material abierto</span><span class="l-en">Open material</span><span class="l-pt">Material aberto</span></h2>
+    <div class="cards c2">
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3><span class="l-es">Masterclass</span><span class="l-en">Masterclass</span><span class="l-pt">Masterclass</span></h3><p><span class="l-es">Landing conceptual: por qué prompt, contexto y arnés. La IA guía; la persona decide.</span><span class="l-en">Conceptual landing: why prompt, context and harness. AI guides; the person decides.</span><span class="l-pt">Landing conceitual: por que prompt, contexto e arnês. A IA guia; a pessoa decide.</span></p><a class="go" href="masterclass.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3>Workbook</h3><p><span class="l-es">Ejercicio de una sesión con plantillas copiables para tus tres artefactos.</span><span class="l-en">One-session exercise with copyable templates for your three artifacts.</span><span class="l-pt">Exercício de uma sessão com modelos copiáveis para seus três artefatos.</span></p><a class="go" href="workbook.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3><span class="l-es">Playbook · Prompt</span><span class="l-en">Playbook · Prompt</span><span class="l-pt">Playbook · Prompt</span></h3><p><span class="l-es">Anatomía SPEC, 5 pilares, rúbrica de 10, few-shot, CoT, anti-patrones, 100✓.</span><span class="l-en">SPEC anatomy, 5 pillars, 10-criteria rubric, few-shot, CoT, anti-patterns, 100✓.</span><span class="l-pt">Anatomia SPEC, 5 pilares, rubrica de 10, few-shot, CoT, antipadrões, 100✓.</span></p><a class="go" href="playbook-prompt-engineering.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3><span class="l-es">Playbook · Context</span><span class="l-en">Playbook · Context</span><span class="l-pt">Playbook · Context</span></h3><p><span class="l-es">Ventana, context rot, priming, RAG, chunking, MEMORY.md, soberanía del contexto.</span><span class="l-en">Window, context rot, priming, RAG, chunking, MEMORY.md, context sovereignty.</span><span class="l-pt">Janela, context rot, priming, RAG, chunking, MEMORY.md, soberania do contexto.</span></p><a class="go" href="playbook-context-engineering.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3><span class="l-es">Playbook · Harness</span><span class="l-en">Playbook · Harness</span><span class="l-pt">Playbook · Harness</span></h3><p><span class="l-es">Tool use, orquestación, loops, multi-agente, guardrails, evals, prompt→skill→plugin→agente.</span><span class="l-en">Tool use, orchestration, loops, multi-agent, guardrails, evals, prompt→skill→plugin→agent.</span><span class="l-pt">Tool use, orquestração, loops, multiagente, guardrails, evals, prompt→skill→plugin→agente.</span></p><a class="go" href="playbook-harness-engineering.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03</span><h3>Runbook</h3><p><span class="l-es">El cómo end-to-end: pasos con CHECK+PROMPT+TEMPLATE, catálogos, troubleshooting, glosario.</span><span class="l-en">The end-to-end how: steps with CHECK+PROMPT+TEMPLATE, catalogs, troubleshooting, glossary.</span><span class="l-pt">O como ponta a ponta: passos com CHECK+PROMPT+TEMPLATE, catálogos, troubleshooting, glossário.</span></p><a class="go" href="runbook.html">Abrir →</a></div>
+      <div class="matcard"><span class="ver">v1.0 · 2026-06-03 · 2026 prompts</span><h3><span class="l-es">Biblioteca de Prompts</span><span class="l-en">Prompt Library</span><span class="l-pt">Biblioteca de Prompts</span></h3><p><span class="l-es">Catálogo navegable: 4 formatos, filtro por disciplina, copiar, descargar .md, ChatGPT/Claude/Gemini.</span><span class="l-en">Browsable catalog: 4 formats, discipline filter, copy, download .md, ChatGPT/Claude/Gemini.</span><span class="l-pt">Catálogo navegável: 4 formatos, filtro por disciplina, copiar, baixar .md, ChatGPT/Claude/Gemini.</span></p><a class="go" href="biblioteca-prompts.html">Abrir →</a></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2><span class="num">§03</span><span class="l-es">Contacto</span><span class="l-en">Contact</span><span class="l-pt">Contato</span></h2>
+    <p><span class="l-es">¿Quieres llevar esto a tu equipo? Escríbenos.</span><span class="l-en">Want to bring this to your team? Write to us.</span><span class="l-pt">Quer levar isto ao seu time? Escreva-nos.</span> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contacto@metodologia.info&su=Prompt%20Amplificado" target="_blank" rel="noopener">contacto@metodologia.info</a> · <a href="https://metodologia.info/" target="_blank" rel="noopener">metodologia.info</a></p>
+  </section>
+</main>
+
+<div class="docset-version">
+  <div class="foot-nav">
+    <a href="masterclass.html">Masterclass</a><a href="workbook.html">Workbook</a>
+    <a href="playbook-prompt-engineering.html">Prompt</a><a href="playbook-context-engineering.html">Context</a><a href="playbook-harness-engineering.html">Harness</a>
+    <a href="runbook.html">Runbook</a><a href="biblioteca-prompts.html"><span class="l-es">Biblioteca</span><span class="l-en">Library</span><span class="l-pt">Biblioteca</span></a>
+  </div>
+  Prompt Amplificado · Hub · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · © 2026 MetodologIA · Copyleft (CC BY-SA 4.0 · <span class="l-es">código MIT</span><span class="l-en">code MIT</span><span class="l-pt">código MIT</span>)
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

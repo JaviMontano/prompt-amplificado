@@ -1,0 +1,139 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Runbook · Construir tu primer prompt, context pack y arnés — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="El cómo end-to-end: pasos numerados con preflight (CHECK + PROMPT + TEMPLATE), catálogos, planes de adopción, troubleshooting y glosario.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <span aria-current="page">Runbook</span><span class="sep">·</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Prompt Amplificado · Runbook</span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">El cómo · end-to-end</span><span class="l-en">The how · end-to-end</span><span class="l-pt">O como · ponta a ponta</span></span>
+    <h1><span class="l-es">Construye tu primer <span class="gradient-text">prompt → context pack → arnés</span></span><span class="l-en">Build your first <span class="gradient-text">prompt → context pack → harness</span></span><span class="l-pt">Construa seu primeiro <span class="gradient-text">prompt → context pack → arnês</span></span></h1>
+    <p class="lead"><span class="l-es">Pasos numerados. Cada paso trae un <b>CHECK</b> (qué verificar antes), un <b>PROMPT</b> y un <b>TEMPLATE</b> copiable. Síguelos en orden.</span><span class="l-en">Numbered steps. Each brings a <b>CHECK</b> (what to verify first), a <b>PROMPT</b> and a copyable <b>TEMPLATE</b>. Follow in order.</span><span class="l-pt">Passos numerados. Cada um traz um <b>CHECK</b> (o que verificar antes), um <b>PROMPT</b> e um <b>TEMPLATE</b> copiável. Siga em ordem.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">Pasos</span><span class="l-en">Steps</span><span class="l-pt">Passos</span></h2>
+
+    <div class="step">
+      <p><span class="snum">1</span><h3 style="display:inline"><span class="l-es">Formula el prompt</span><span class="l-en">Frame the prompt</span><span class="l-pt">Formule o prompt</span></h3></p>
+      <p class="kvs"><b>CHECK:</b> <span class="l-es">¿tienes una tarea concreta y repetible en una línea?</span><span class="l-en">do you have a concrete, repeatable task in one line?</span><span class="l-pt">tem uma tarefa concreta e repetível numa linha?</span></p>
+      <p class="kvs"><b>PROMPT:</b> <span class="l-es">aplica SPEC (ver <a href="playbook-prompt-engineering.html">playbook de prompts</a>).</span><span class="l-en">apply SPEC (see <a href="playbook-prompt-engineering.html">prompt playbook</a>).</span><span class="l-pt">aplique SPEC (veja <a href="playbook-prompt-engineering.html">playbook de prompts</a>).</span></p>
+      <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · spec.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso1-spec.md')">Descargar</button></div>
+      <pre>[inputs]
+- TAREA: {{TAREA}} > tarea concreta
+[prompt]
+S| para qué · P| arquetipo+entregable · E| Interpreta>Planifica>Ejecuta · C| formato+criterio
+[checklist]
+- [ ] reproducible con entradas distintas</pre></div>
+    </div>
+
+    <div class="step">
+      <p><span class="snum">2</span><h3 style="display:inline"><span class="l-es">Arma el context pack</span><span class="l-en">Assemble the context pack</span><span class="l-pt">Monte o context pack</span></h3></p>
+      <p class="kvs"><b>CHECK:</b> <span class="l-es">¿qué necesita saber el modelo SIEMPRE para esta tarea?</span><span class="l-en">what must the model ALWAYS know for this task?</span><span class="l-pt">o que o modelo precisa saber SEMPRE para esta tarefa?</span></p>
+      <p class="kvs"><b>PROMPT:</b> <span class="l-es">guárdalo como archivo y adjúntalo (ver <a href="playbook-context-engineering.html">playbook de contexto</a>).</span><span class="l-en">save it as a file and attach it (see <a href="playbook-context-engineering.html">context playbook</a>).</span><span class="l-pt">salve como arquivo e anexe (veja <a href="playbook-context-engineering.html">playbook de contexto</a>).</span></p>
+      <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · CONTEXT.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso2-context.md')">Descargar</button></div>
+      <pre># CONTEXT.md
+## Rol · ## Reglas duras · ## Vocabulario · ## Fuentes de verdad · ## Qué NO hacer</pre></div>
+    </div>
+
+    <div class="step">
+      <p><span class="snum">3</span><h3 style="display:inline"><span class="l-es">Monta el arnés</span><span class="l-en">Mount the harness</span><span class="l-pt">Monte o arnês</span></h3></p>
+      <p class="kvs"><b>CHECK:</b> <span class="l-es">¿qué herramienta, qué bucle y qué guarda necesita?</span><span class="l-en">which tool, which loop and which guardrail does it need?</span><span class="l-pt">qual ferramenta, loop e guarda precisa?</span></p>
+      <p class="kvs"><b>PROMPT:</b> <span class="l-es">una herramienta + un bucle de verificación + una guarda (ver <a href="playbook-harness-engineering.html">playbook de arneses</a>).</span><span class="l-en">one tool + one verification loop + one guardrail (see <a href="playbook-harness-engineering.html">harness playbook</a>).</span><span class="l-pt">uma ferramenta + um loop + uma guarda (veja <a href="playbook-harness-engineering.html">playbook de arneses</a>).</span></p>
+      <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · harness.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso3-harness.md')">Descargar</button></div>
+      <pre># MINI-HARNESS
+1. Herramienta: [...] (cuándo sí / cuándo no)
+2. Bucle: producir > verificar > corregir (máx 2)
+3. Guarda: NUNCA [acción irreversible]; ante duda, preguntar
+Criterio de "listo": [condición observable]</pre></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">Catálogo · qué usar cuándo</span><span class="l-en">Catalog · what to use when</span><span class="l-pt">Catálogo · o que usar quando</span></h2>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Necesidad</span><span class="l-en">Need</span><span class="l-pt">Necessidade</span></th><th><span class="l-es">Disciplina</span><span class="l-en">Discipline</span><span class="l-pt">Disciplina</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="Respuesta más precisa" data-detail="<div class='rm-note'>Empieza por el prompt: SPEC + arquetipo + criterio. 70% de los casos se resuelven aquí.</div>"><td><span class="l-es">Respuesta más precisa</span><span class="l-en">More precise answer</span><span class="l-pt">Resposta mais precisa</span></td><td>Prompt</td><td class="more">Ver →</td></tr>
+        <tr data-title="El modelo no sabe lo mío" data-detail="<div class='rm-note'>Context: priming + archivos sobre pegar + MEMORY.md. Dale tus fuentes de verdad.</div>"><td><span class="l-es">El modelo no sabe lo mío</span><span class="l-en">The model doesn't know my stuff</span><span class="l-pt">O modelo não sabe o meu</span></td><td>Context</td><td class="more">Ver →</td></tr>
+        <tr data-title="Tarea repetible y confiable" data-detail="<div class='rm-note'>Harness: tool use + bucle de verificación + guardas. De respuesta puntual a sistema.</div>"><td><span class="l-es">Tarea repetible y confiable</span><span class="l-en">Repeatable, reliable task</span><span class="l-pt">Tarefa repetível e confiável</span></td><td>Harness</td><td class="more">Ver →</td></tr>
+        <tr data-title="Algo ya hecho" data-detail="<div class='rm-note'>Biblioteca: 2026 prompts en 4 formatos, filtrables por disciplina. Copia y adapta.</div>"><td><span class="l-es">Algo ya hecho</span><span class="l-en">Something ready-made</span><span class="l-pt">Algo pronto</span></td><td>Biblioteca</td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">Plan de adopción</span><span class="l-en">Adoption plan</span><span class="l-pt">Plano de adoção</span></h2>
+    <div class="cards c3">
+      <div class="tile"><span class="k"><span class="l-es">Semana 1</span><span class="l-en">Week 1</span><span class="l-pt">Semana 1</span></span><h3>Prompt</h3><p><span class="l-es">Convierte tus 3 tareas más frecuentes en prompts SPEC.</span><span class="l-en">Turn your 3 most frequent tasks into SPEC prompts.</span><span class="l-pt">Transforme suas 3 tarefas mais frequentes em prompts SPEC.</span></p></div>
+      <div class="tile"><span class="k"><span class="l-es">Semana 2</span><span class="l-en">Week 2</span><span class="l-pt">Semana 2</span></span><h3>Context</h3><p><span class="l-es">Crea un CONTEXT.md y un MEMORY.md para cada flujo.</span><span class="l-en">Create a CONTEXT.md and MEMORY.md per flow.</span><span class="l-pt">Crie um CONTEXT.md e MEMORY.md por fluxo.</span></p></div>
+      <div class="tile"><span class="k"><span class="l-es">Semana 3+</span><span class="l-en">Week 3+</span><span class="l-pt">Semana 3+</span></span><h3>Harness</h3><p><span class="l-es">Añade bucles y guardas al flujo que más repites.</span><span class="l-en">Add loops and guardrails to your most repeated flow.</span><span class="l-pt">Adicione loops e guardas ao fluxo mais repetido.</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">Troubleshooting</span><span class="l-en">Troubleshooting</span><span class="l-pt">Troubleshooting</span></h2>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Síntoma</span><span class="l-en">Symptom</span><span class="l-pt">Sintoma</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="Respuestas genéricas" data-detail="<div class='rm-note'>Causa: falta arquetipo y criterio. Fix: añade rol específico + checklist de salida.</div>"><td><span class="l-es">Respuestas genéricas</span><span class="l-en">Generic answers</span><span class="l-pt">Respostas genéricas</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Alucina datos" data-detail="<div class='rm-note'>Causa: sin regla de no-inventar. Fix: 'si faltan datos, pregunta; marca [SUPUESTO]'.</div>"><td><span class="l-es">Alucina datos</span><span class="l-en">Hallucinates data</span><span class="l-pt">Alucina dados</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Se contradice / pierde el hilo" data-detail="<div class='rm-note'>Causa: context rot. Fix: hilo nuevo, resume lo esencial, usa archivos.</div>"><td><span class="l-es">Se contradice / pierde el hilo</span><span class="l-en">Contradicts / loses the thread</span><span class="l-pt">Contradiz / perde o fio</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Funciona a veces" data-detail="<div class='rm-note'>Causa: sin verificación. Fix: bucle producir>verificar>corregir + evals con resultado esperado.</div>"><td><span class="l-es">Funciona a veces</span><span class="l-en">Works sometimes</span><span class="l-pt">Funciona às vezes</span></td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§05</span><span class="l-es">Glosario</span><span class="l-en">Glossary</span><span class="l-pt">Glossário</span></h2>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Término</span><span class="l-en">Term</span><span class="l-pt">Termo</span></th><th><span class="l-es">Definición</span><span class="l-en">Definition</span><span class="l-pt">Definição</span></th></tr></thead>
+      <tbody>
+        <tr><td>SPEC</td><td><span class="l-es">Situación · Pedido · Ejecución · Criterio. Anatomía de un prompt.</span><span class="l-en">Situation · Request · Execution · Criteria. Prompt anatomy.</span><span class="l-pt">Situação · Pedido · Execução · Critério. Anatomia de um prompt.</span></td></tr>
+        <tr><td>Context rot</td><td><span class="l-es">Degradación de la atención del modelo cuando la ventana se llena de ruido.</span><span class="l-en">Decay of the model's attention as the window fills with noise.</span><span class="l-pt">Degradação da atenção do modelo quando a janela enche de ruído.</span></td></tr>
+        <tr><td>RAG</td><td><span class="l-es">Recuperar fragmentos relevantes de un corpus para inyectarlos al contexto.</span><span class="l-en">Retrieve relevant chunks from a corpus to inject into context.</span><span class="l-pt">Recuperar trechos relevantes de um corpus para injetar no contexto.</span></td></tr>
+        <tr><td>Harness</td><td><span class="l-es">Todo lo que rodea al modelo: herramientas, bucles, agentes, guardas.</span><span class="l-en">Everything wrapping the model: tools, loops, agents, guardrails.</span><span class="l-pt">Tudo que cerca o modelo: ferramentas, loops, agentes, guardas.</span></td></tr>
+        <tr><td>Guardrail</td><td><span class="l-es">Regla dura que el sistema no puede violar.</span><span class="l-en">Hard rule the system cannot violate.</span><span class="l-pt">Regra dura que o sistema não pode violar.</span></td></tr>
+        <tr><td>Eval</td><td><span class="l-es">Caso de prueba con resultado esperado para medir un agente.</span><span class="l-en">Test case with expected result to measure an agent.</span><span class="l-pt">Caso de teste com resultado esperado para medir um agente.</span></td></tr>
+      </tbody>
+    </table>
+    <p><span class="l-es">¿Buscas prompts hechos? Ve a la <a href="biblioteca-prompts.html">Biblioteca</a>.</span><span class="l-en">Looking for ready prompts? Go to the <a href="biblioteca-prompts.html">Library</a>.</span><span class="l-pt">Procura prompts prontos? Vá à <a href="biblioteca-prompts.html">Biblioteca</a>.</span></p>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · Runbook · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

@@ -1,0 +1,110 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Playbook · Ingeniería de Arneses (Harness) — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="Qué es un harness, tool use, orquestación, loops de verificación, multi-agente, guardrails, evals de agentes y la progresión prompt → skill → plugin → agente.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <a href="masterclass.html">Masterclass</a><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <span aria-current="page">Harness</span><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Playbook · <span class="l-es">Ingeniería de Arneses</span><span class="l-en">Harness Engineering</span><span class="l-pt">Engenharia de Arneses</span></span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">Playbook 3 de 3 · profundo</span><span class="l-en">Playbook 3 of 3 · deep</span><span class="l-pt">Playbook 3 de 3 · profundo</span></span>
+    <h1><span class="l-es">Ingeniería de <span class="gradient-text">Arneses (Harness)</span></span><span class="l-en"><span class="gradient-text">Harness</span> Engineering</span><span class="l-pt">Engenharia de <span class="gradient-text">Arneses (Harness)</span></span></h1>
+    <p class="lead"><span class="l-es">Un prompt produce una respuesta; un <b>arnés</b> produce un sistema. Es todo lo que rodea al modelo para que opere confiable, repetible y seguro: herramientas, bucles, agentes y guardas.</span><span class="l-en">A prompt yields an answer; a <b>harness</b> yields a system. It is everything wrapping the model so it runs reliably, repeatably and safely: tools, loops, agents and guardrails.</span><span class="l-pt">Um prompt gera uma resposta; um <b>arnês</b> gera um sistema. É tudo que cerca o modelo para operar confiável, repetível e seguro: ferramentas, loops, agentes e guardas.</span></p>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">¿Qué es un arnés?</span><span class="l-en">What is a harness?</span><span class="l-pt">O que é um arnês?</span></h2>
+    <p><span class="l-es">Imagina el modelo como un motor. El arnés es el chasis: lo que le da dirección, frenos y tracción. Sin arnés tienes potencia sin control; con arnés, un vehículo.</span><span class="l-en">Think of the model as an engine. The harness is the chassis: what gives it steering, brakes and traction. Without a harness you have power without control; with one, a vehicle.</span><span class="l-pt">Pense no modelo como um motor. O arnês é o chassi: o que dá direção, freios e tração. Sem arnês há potência sem controle; com arnês, um veículo.</span></p>
+    <div class="note"><b><span class="l-es">Cuatro componentes:</span><span class="l-en">Four components:</span><span class="l-pt">Quatro componentes:</span></b> <span class="l-es">herramientas (qué puede hacer) · bucles (cómo se corrige) · agentes (cómo se divide) · guardas (qué nunca hace).</span><span class="l-en">tools (what it can do) · loops (how it self-corrects) · agents (how it divides) · guardrails (what it never does).</span><span class="l-pt">ferramentas (o que pode fazer) · loops (como se corrige) · agentes (como se divide) · guardas (o que nunca faz).</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">Componentes del arnés</span><span class="l-en">Harness components</span><span class="l-pt">Componentes do arnês</span></h2>
+    <p><span class="l-es">Clic en cada fila para el detalle.</span><span class="l-en">Click each row for detail.</span><span class="l-pt">Clique em cada linha.</span></p>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Componente</span><span class="l-en">Component</span><span class="l-pt">Componente</span></th><th><span class="l-es">Función</span><span class="l-en">Function</span><span class="l-pt">Função</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="Tool use" data-detail="<ul class='rm-cols'><li><b>Qué:</b> dar al modelo herramientas (buscar, leer archivos, ejecutar código, llamar APIs).</li><li><b>Regla:</b> define cuándo usar cada una y cuándo NO; la herramienta extiende, no reemplaza el criterio.</li></ul><div class='rm-note'>Una herramienta bien acotada convierte 'creo que' en 'verifiqué que'.</div>"><td><b>Tool use</b></td><td><span class="l-es">Extender lo que el modelo puede hacer</span><span class="l-en">Extend what the model can do</span><span class="l-pt">Estender o que o modelo pode fazer</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Orquestación" data-detail="<ul class='rm-cols'><li><b>Qué:</b> secuenciar pasos con control de flujo determinista (bucles, condiciones, fan-out).</li><li><b>Cuándo:</b> el trabajo tiene etapas claras que conviene fijar fuera del modelo.</li></ul><div class='rm-note'>El control de flujo va en el arnés, no en la esperanza de que el modelo lo recuerde.</div>"><td><b><span class="l-es">Orquestación</span><span class="l-en">Orchestration</span><span class="l-pt">Orquestração</span></b></td><td><span class="l-es">Secuenciar pasos con control</span><span class="l-en">Sequence steps with control</span><span class="l-pt">Sequenciar passos com controle</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Loops de verificación" data-detail="<ul class='rm-cols'><li><b>Qué:</b> producir → verificar contra criterio → corregir → re-verificar.</li><li><b>Límite:</b> tope de iteraciones para evitar bucles infinitos.</li></ul><div class='rm-note'>La verificación adversarial (intentar refutar) atrapa errores plausibles.</div>"><td><b><span class="l-es">Loops de verificación</span><span class="l-en">Verification loops</span><span class="l-pt">Loops de verificação</span></b></td><td><span class="l-es">Auto-corregirse contra criterio</span><span class="l-en">Self-correct against criteria</span><span class="l-pt">Autocorrigir-se contra critério</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Multi-agente" data-detail="<ul class='rm-cols'><li><b>Qué:</b> dividir el trabajo en agentes con roles (buscar, criticar, sintetizar) que corren en paralelo.</li><li><b>Cuándo:</b> el alcance no cabe en un contexto o se beneficia de perspectivas independientes.</li></ul><div class='rm-note'>Un panel de jueces independientes supera a un solo intento iterado.</div>"><td><b>Multi-agente</b></td><td><span class="l-es">Dividir en roles paralelos</span><span class="l-en">Divide into parallel roles</span><span class="l-pt">Dividir em papéis paralelos</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Guardrails" data-detail="<ul class='rm-cols'><li><b>Qué:</b> reglas duras que el sistema no puede violar (acciones irreversibles, datos sensibles).</li><li><b>Default:</b> ante duda, preguntar; nunca asumir en lo irreversible.</li></ul><div class='rm-note'>Las guardas son el contrato de seguridad del sistema.</div>"><td><b>Guardrails</b></td><td><span class="l-es">Lo que el sistema nunca hace</span><span class="l-en">What the system never does</span><span class="l-pt">O que o sistema nunca faz</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Evals de agentes" data-detail="<ul class='rm-cols'><li><b>Qué:</b> casos de prueba con resultado esperado para medir el agente, no solo mirarlo correr.</li><li><b>Mide:</b> precisión, regresiones, costo y comportamiento ante casos borde.</li></ul><div class='rm-note'>Sin evals, 'parece que funciona' no es evidencia.</div>"><td><b>Evals</b></td><td><span class="l-es">Medir el agente con evidencia</span><span class="l-en">Measure the agent with evidence</span><span class="l-pt">Medir o agente com evidência</span></td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">La progresión: prompt → skill → plugin → agente</span><span class="l-en">The progression: prompt → skill → plugin → agent</span><span class="l-pt">A progressão: prompt → skill → plugin → agente</span></h2>
+    <div class="cards c2">
+      <div class="tile"><span class="k">01 · PROMPT</span><h3><span class="l-es">Una instrucción</span><span class="l-en">An instruction</span><span class="l-pt">Uma instrução</span></h3><p><span class="l-es">Resuelve un caso. Reusable copiándolo.</span><span class="l-en">Solves one case. Reusable by copying.</span><span class="l-pt">Resolve um caso. Reusável copiando.</span></p></div>
+      <div class="tile"><span class="k">02 · SKILL</span><h3><span class="l-es">Un prompt empaquetado</span><span class="l-en">A packaged prompt</span><span class="l-pt">Um prompt empacotado</span></h3><p><span class="l-es">Con nombre, disparador y contexto propio. Se invoca, no se copia.</span><span class="l-en">With a name, trigger and own context. Invoked, not copied.</span><span class="l-pt">Com nome, gatilho e contexto próprio. Invocado, não copiado.</span></p></div>
+      <div class="tile"><span class="k">03 · PLUGIN</span><h3><span class="l-es">Un conjunto de skills</span><span class="l-en">A set of skills</span><span class="l-pt">Um conjunto de skills</span></h3><p><span class="l-es">Skills + comandos + agentes que comparten dominio y se distribuyen juntos.</span><span class="l-en">Skills + commands + agents sharing a domain, distributed together.</span><span class="l-pt">Skills + comandos + agentes do mesmo domínio, distribuídos juntos.</span></p></div>
+      <div class="tile"><span class="k">04 · AGENTE</span><h3><span class="l-es">Un sistema autónomo</span><span class="l-en">An autonomous system</span><span class="l-pt">Um sistema autônomo</span></h3><p><span class="l-es">Herramientas + bucles + memoria + guardas que persiguen un objetivo con mínima supervisión.</span><span class="l-en">Tools + loops + memory + guardrails pursuing a goal with minimal supervision.</span><span class="l-pt">Ferramentas + loops + memória + guardas que perseguem um objetivo com mínima supervisão.</span></p></div>
+    </div>
+    <div class="tip"><span class="l-es">Sube de nivel solo cuando el anterior te queda chico. No construyas un agente para lo que resuelve un prompt.</span><span class="l-en">Level up only when the previous one is too small. Don't build an agent for what a prompt solves.</span><span class="l-pt">Suba de nível só quando o anterior ficar pequeno. Não construa um agente para o que um prompt resolve.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">Plantilla · bucle de verificación</span><span class="l-en">Template · verification loop</span><span class="l-pt">Modelo · loop de verificação</span></h2>
+    <div class="prompt-copyable">
+      <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'verify-loop.md')">Descargar .md</button></div>
+      <pre class="prompt-text"># Bucle de verificación
+
+1. PRODUCIR el entregable.
+2. VERIFICAR contra el checklist del criterio.
+   - Por cada punto: ¿se cumple? sí/no + evidencia.
+3. Si algún punto falla → CORREGIR y volver a 2 (máx. 2 iteraciones).
+4. Verificación adversarial: intenta REFUTAR el resultado.
+   Si sobrevive a 2 intentos de refutación, acéptalo.
+5. REPORTAR qué se verificó y qué quedó como [SUPUESTO].</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§05</span><span class="l-es">Anti-patrones</span><span class="l-en">Anti-patterns</span><span class="l-pt">Antipadrões</span></h2>
+    <div class="warn-box"><ul style="margin:.2rem 0">
+      <li><span class="l-es"><b>Agente prematuro:</b> orquestar 5 agentes para lo que un prompt resolvía.</span><span class="l-en"><b>Premature agent:</b> orchestrating 5 agents for what one prompt solved.</span><span class="l-pt"><b>Agente prematuro:</b> orquestrar 5 agentes para o que um prompt resolvia.</span></li>
+      <li><span class="l-es"><b>Sin guardas:</b> dar acciones irreversibles sin confirmación.</span><span class="l-en"><b>No guardrails:</b> granting irreversible actions without confirmation.</span><span class="l-pt"><b>Sem guardas:</b> conceder ações irreversíveis sem confirmação.</span></li>
+      <li><span class="l-es"><b>Sin evals:</b> declarar "funciona" sin un caso de prueba con resultado esperado.</span><span class="l-en"><b>No evals:</b> declaring "it works" without a test case with expected result.</span><span class="l-pt"><b>Sem evals:</b> declarar "funciona" sem um caso de teste com resultado esperado.</span></li>
+      <li><span class="l-es"><b>Bucle infinito:</b> verificación sin tope de iteraciones.</span><span class="l-en"><b>Infinite loop:</b> verification with no iteration cap.</span><span class="l-pt"><b>Loop infinito:</b> verificação sem teto de iterações.</span></li>
+    </ul></div>
+    <p><span class="l-es">Para construir esto paso a paso, ve al <a href="runbook.html">runbook</a>.</span><span class="l-en">To build this step by step, go to the <a href="runbook.html">runbook</a>.</span><span class="l-pt">Para construir isto passo a passo, vá ao <a href="runbook.html">runbook</a>.</span></p>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · Playbook <span class="l-es">Ingeniería de Arneses</span><span class="l-en">Harness Engineering</span><span class="l-pt">Engenharia de Arneses</span> · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>

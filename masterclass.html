@@ -1,0 +1,104 @@
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
+<title>Masterclass · Ingeniería de Prompts, Contexto y Arneses — Prompt Amplificado | MetodologIA</title>
+<meta name="description" content="Por qué la ingeniería de prompts, de contexto y de arneses (harness) define el trabajo con (Gen)IA. Qué aprendes y por qué el método va primero: la IA guía, la persona decide.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+</head><body>
+<div class="reading-progress"></div>
+
+<div class="docset-bar">
+  <span class="set">Prompt Amplificado:</span>
+  <span aria-current="page">Masterclass</span><span class="sep">›</span>
+  <a href="workbook.html">Workbook</a><span class="sep">›</span>
+  <a href="playbook-prompt-engineering.html">Prompt</a><span class="sep">·</span>
+  <a href="playbook-context-engineering.html">Context</a><span class="sep">·</span>
+  <a href="playbook-harness-engineering.html">Harness</a><span class="sep">›</span>
+  <a href="runbook.html">Runbook</a><span class="sep">›</span>
+  <a href="biblioteca-prompts.html">Biblioteca</a><span class="sep">·</span>
+  <a class="hub" href="index.html">↑ Hub</a>
+</div>
+
+<header class="top">
+  <span class="brand">Metodolog<span class="ia">IA</span></span>
+  <span class="role">Prompt Amplificado · <span class="l-es">Masterclass</span><span class="l-en">Masterclass</span><span class="l-pt">Masterclass</span></span>
+  <span class="sp"></span>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow"><span class="l-es">Landing conceptual · 00</span><span class="l-en">Conceptual landing · 00</span><span class="l-pt">Landing conceitual · 00</span></span>
+    <h1><span class="l-es">Ingeniería de <span class="gradient-text">Prompts, Contexto y Arneses</span></span><span class="l-en"><span class="gradient-text">Prompt, Context &amp; Harness</span> Engineering</span><span class="l-pt">Engenharia de <span class="gradient-text">Prompts, Contexto e Arneses</span></span></h1>
+    <p class="lead">
+      <span class="l-es">Trabajar con (Gen)IA no es "pedir cosas a un chat". Es diseñar <b>tres capas</b>: el <b>prompt</b> (qué pides y cómo), el <b>contexto</b> (qué sabe el modelo cuando responde) y el <b>arnés</b> (las herramientas, bucles y guardas que convierten un prompt en un sistema). Esta masterclass te da el mapa.</span>
+      <span class="l-en">Working with (Gen)AI is not "asking a chat for things". It is designing <b>three layers</b>: the <b>prompt</b> (what you ask and how), the <b>context</b> (what the model knows when it answers) and the <b>harness</b> (the tools, loops and guardrails that turn a prompt into a system). This masterclass gives you the map.</span>
+      <span class="l-pt">Trabalhar com (Gen)IA não é "pedir coisas a um chat". É projetar <b>três camadas</b>: o <b>prompt</b> (o que você pede e como), o <b>contexto</b> (o que o modelo sabe ao responder) e o <b>arnês</b> (as ferramentas, loops e guardas que transformam um prompt num sistema). Esta masterclass dá o mapa.</span>
+    </p>
+    <div class="note"><b>Método primero, (Gen)IA después.</b> <span class="l-es">La IA guía; la persona decide. Ninguna de las tres capas reemplaza tu criterio — lo amplifican.</span><span class="l-en">AI guides; the person decides. None of the three layers replaces your judgment — they amplify it.</span><span class="l-pt">A IA guia; a pessoa decide. Nenhuma das três camadas substitui seu critério — elas o amplificam.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">§01</span><span class="l-es">Por qué estas tres ingenierías</span><span class="l-en">Why these three engineerings</span><span class="l-pt">Por que essas três engenharias</span></h2>
+    <p><span class="l-es">El mismo modelo da resultados mediocres o excelentes según cómo lo operes. La diferencia no es "un mejor modelo": es <b>cómo formulas, qué le das de contexto y con qué herramientas lo rodeas</b>. Tres disciplinas, una progresión.</span>
+    <span class="l-en">The same model gives mediocre or excellent results depending on how you operate it. The difference is not "a better model": it is <b>how you frame, what context you give and which tools you wrap around it</b>. Three disciplines, one progression.</span>
+    <span class="l-pt">O mesmo modelo dá resultados medíocres ou excelentes conforme você o opera. A diferença não é "um modelo melhor": é <b>como você formula, que contexto dá e com quais ferramentas o cerca</b>. Três disciplinas, uma progressão.</span></p>
+    <div class="cards c3">
+      <div class="tile"><span class="k">PROMPT</span><h3><span class="l-es">Ingeniería de Prompts</span><span class="l-en">Prompt Engineering</span><span class="l-pt">Engenharia de Prompts</span></h3><p><span class="l-es">Formular con precisión: rol, situación, pedido, criterio. El método <b>SPEC</b> y los 4 formatos.</span><span class="l-en">Frame precisely: role, situation, request, criteria. The <b>SPEC</b> method and the 4 formats.</span><span class="l-pt">Formular com precisão: papel, situação, pedido, critério. O método <b>SPEC</b> e os 4 formatos.</span></p></div>
+      <div class="tile"><span class="k">CONTEXT</span><h3><span class="l-es">Ingeniería de Contexto</span><span class="l-en">Context Engineering</span><span class="l-pt">Engenharia de Contexto</span></h3><p><span class="l-es">Gestionar la ventana: qué entra, qué se prima, qué se recupera (RAG) y qué se recuerda (MEMORY).</span><span class="l-en">Manage the window: what enters, what is primed, what is retrieved (RAG) and what is remembered (MEMORY).</span><span class="l-pt">Gerir a janela: o que entra, o que é primado, o que é recuperado (RAG) e o que é lembrado (MEMORY).</span></p></div>
+      <div class="tile"><span class="k">HARNESS</span><h3><span class="l-es">Ingeniería de Arneses</span><span class="l-en">Harness Engineering</span><span class="l-pt">Engenharia de Arneses</span></h3><p><span class="l-es">Rodear el modelo: herramientas, bucles de verificación, multi-agente y guardas. De prompt a sistema.</span><span class="l-en">Wrap the model: tools, verification loops, multi-agent and guardrails. From prompt to system.</span><span class="l-pt">Cercar o modelo: ferramentas, loops de verificação, multiagente e guardas. De prompt a sistema.</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">§02</span><span class="l-es">La progresión: prompt → contexto → arnés</span><span class="l-en">The progression: prompt → context → harness</span><span class="l-pt">A progressão: prompt → contexto → arnês</span></h2>
+    <p><span class="l-es">Clic en cada fila para ver el detalle.</span><span class="l-en">Click each row for the detail.</span><span class="l-pt">Clique em cada linha para ver o detalhe.</span></p>
+    <table class="tbl">
+      <thead><tr><th><span class="l-es">Capa</span><span class="l-en">Layer</span><span class="l-pt">Camada</span></th><th><span class="l-es">Pregunta que resuelve</span><span class="l-en">Question it answers</span><span class="l-pt">Pergunta que resolve</span></th><th></th></tr></thead>
+      <tbody>
+        <tr data-title="Prompt Engineering" data-detail="<ul class='rm-cols'><li><b>Foco:</b> cómo formulas el pedido</li><li><b>Palancas:</b> rol/arquetipo, SPEC (Situación·Pedido·Ejecución·Criterio), few-shot, cadena de pensamiento, formato de salida</li><li><b>Falla típica:</b> pedido ambiguo → respuesta genérica</li></ul><div class='rm-note'>Empieza aquí: un prompt bien formulado ya resuelve el 70% de los casos.</div>">
+          <td><b>Prompt</b></td><td><span class="l-es">¿Qué pido y cómo?</span><span class="l-en">What do I ask and how?</span><span class="l-pt">O que peço e como?</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Context Engineering" data-detail="<ul class='rm-cols'><li><b>Foco:</b> qué sabe el modelo al responder</li><li><b>Palancas:</b> priming, RAG/retrieval, chunking, MEMORY.md, archivos-sobre-pegar, apilamiento de reglas</li><li><b>Falla típica:</b> context rot — la ventana se llena de ruido y el modelo se pierde</li></ul><div class='rm-note'>El mejor prompt falla si el contexto es pobre o está contaminado.</div>">
+          <td><b>Context</b></td><td><span class="l-es">¿Qué sabe cuando responde?</span><span class="l-en">What does it know when answering?</span><span class="l-pt">O que sabe ao responder?</span></td><td class="more">Ver →</td></tr>
+        <tr data-title="Harness Engineering" data-detail="<ul class='rm-cols'><li><b>Foco:</b> qué rodea al modelo</li><li><b>Palancas:</b> tool use, orquestación, loops de verificación, multi-agente, guardrails, evals</li><li><b>Progresión:</b> prompt → skill → plugin → agente</li></ul><div class='rm-note'>El arnés convierte una buena respuesta puntual en un sistema confiable y repetible.</div>">
+          <td><b>Harness</b></td><td><span class="l-es">¿Con qué lo rodeo?</span><span class="l-en">What do I wrap it with?</span><span class="l-pt">Com o que o cerco?</span></td><td class="more">Ver →</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">§03</span><span class="l-es">Qué aprendes</span><span class="l-en">What you learn</span><span class="l-pt">O que você aprende</span></h2>
+    <ul>
+      <li><span class="l-es">Formular prompts de alto rendimiento con el método <b>SPEC</b> y los 4 formatos (natural, parámetros, SPEC, dupla system/user).</span><span class="l-en">Frame high-performance prompts with the <b>SPEC</b> method and the 4 formats (natural, parameters, SPEC, system/user pair).</span><span class="l-pt">Formular prompts de alto desempenho com o método <b>SPEC</b> e os 4 formatos (natural, parâmetros, SPEC, dupla system/user).</span></li>
+      <li><span class="l-es">Construir un <b>context pack mínimo</b>: priming, MEMORY.md, archivos sobre pegar, y evitar el context rot.</span><span class="l-en">Build a <b>minimal context pack</b>: priming, MEMORY.md, files over paste, and avoid context rot.</span><span class="l-pt">Construir um <b>context pack mínimo</b>: priming, MEMORY.md, arquivos sobre colar, e evitar o context rot.</span></li>
+      <li><span class="l-es">Diseñar un <b>mini-arnés</b>: tool use, un bucle de verificación y guardas básicas.</span><span class="l-en">Design a <b>mini-harness</b>: tool use, a verification loop and basic guardrails.</span><span class="l-pt">Projetar um <b>mini-arnês</b>: tool use, um loop de verificação e guardas básicas.</span></li>
+      <li><span class="l-es">Evaluar tus prompts con una <b>rúbrica de 10 criterios</b> y reconocer anti-patrones.</span><span class="l-en">Evaluate your prompts with a <b>10-criteria rubric</b> and spot anti-patterns.</span><span class="l-pt">Avaliar seus prompts com uma <b>rubrica de 10 critérios</b> e reconhecer antipadrões.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">§04</span><span class="l-es">El recorrido</span><span class="l-en">The path</span><span class="l-pt">O percurso</span></h2>
+    <p><span class="l-es">Esta masterclass es la puerta. Después:</span><span class="l-en">This masterclass is the door. Then:</span><span class="l-pt">Esta masterclass é a porta. Depois:</span></p>
+    <div class="cards c2">
+      <div class="tile"><h3><a href="workbook.html">Workbook →</a></h3><p><span class="l-es">Una sesión práctica: sales con un prompt, un context pack y un mini-arnés propios.</span><span class="l-en">A hands-on session: you leave with your own prompt, context pack and mini-harness.</span><span class="l-pt">Uma sessão prática: você sai com seu prompt, context pack e mini-arnês.</span></p></div>
+      <div class="tile"><h3><a href="playbook-prompt-engineering.html">Playbooks →</a></h3><p><span class="l-es">Tres playbooks profundos: Prompt, Context y Harness Engineering, con anatomía, pilares y anti-patrones.</span><span class="l-en">Three deep playbooks: Prompt, Context and Harness Engineering, with anatomy, pillars and anti-patterns.</span><span class="l-pt">Três playbooks profundos: Prompt, Context e Harness Engineering, com anatomia, pilares e antipadrões.</span></p></div>
+      <div class="tile"><h3><a href="runbook.html">Runbook →</a></h3><p><span class="l-es">El "cómo" end-to-end, paso a paso, con catálogos y troubleshooting.</span><span class="l-en">The end-to-end "how", step by step, with catalogs and troubleshooting.</span><span class="l-pt">O "como" ponta a ponta, passo a passo, com catálogos e troubleshooting.</span></p></div>
+      <div class="tile"><h3><a href="biblioteca-prompts.html">Biblioteca →</a></h3><p><span class="l-es">2026 prompts listos, en 4 formatos, filtrables por disciplina.</span><span class="l-en">2026 ready prompts, in 4 formats, filterable by discipline.</span><span class="l-pt">2026 prompts prontos, em 4 formatos, filtráveis por disciplina.</span></p></div>
+    </div>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal"><div class="modal-card">
+  <div class="modal-head"><div><span class="modal-tag">DETALLE · capa</span><h3 id="row-modal-title">Detalle</h3></div><button class="modal-close" data-close aria-label="Cerrar">&times;</button></div>
+  <div class="modal-body" id="row-modal-body"></div>
+</div></dialog>
+
+<div class="docset-version">
+  Prompt Amplificado · <span class="l-es">Masterclass</span><span class="l-en">Masterclass</span><span class="l-pt">Masterclass</span> · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+</div>
+<script src="estilos/doc.js"></script>
+</body></html>
