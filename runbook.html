@@ -45,12 +45,22 @@
       <p class="kvs"><b>CHECK:</b> <span class="l-es">¿tienes una tarea concreta y repetible en una línea?</span><span class="l-en">do you have a concrete, repeatable task in one line?</span><span class="l-pt">tem uma tarefa concreta e repetível numa linha?</span></p>
       <p class="kvs"><b>PROMPT:</b> <span class="l-es">aplica SPEC (ver <a href="playbook-prompt-engineering.html">playbook de prompts</a>).</span><span class="l-en">apply SPEC (see <a href="playbook-prompt-engineering.html">prompt playbook</a>).</span><span class="l-pt">aplique SPEC (veja <a href="playbook-prompt-engineering.html">playbook de prompts</a>).</span></p>
       <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · spec.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso1-spec.md')">Descargar</button></div>
-      <pre>[inputs]
+      <pre class="prompt-text l-es">[inputs]
 - TAREA: {{TAREA}} > tarea concreta
 [prompt]
 S| para qué · P| arquetipo+entregable · E| Interpreta>Planifica>Ejecuta · C| formato+criterio
 [checklist]
-- [ ] reproducible con entradas distintas</pre></div>
+- [ ] reproducible con entradas distintas</pre><pre class="prompt-text l-en">[inputs]
+- TASK: {{TASK}} > concrete task
+[prompt]
+S| what for · P| archetype+deliverable · E| Interpret>Plan>Execute · C| format+criteria
+[checklist]
+- [ ] reproducible with different inputs</pre><pre class="prompt-text l-pt">[inputs]
+- TAREFA: {{TAREFA}} > tarefa concreta
+[prompt]
+S| para quê · P| arquétipo+entregável · E| Interprete>Planeje>Execute · C| formato+critério
+[checklist]
+- [ ] reproduzível com entradas diferentes</pre></div>
     </div>
 
     <div class="step">
@@ -58,8 +68,10 @@ S| para qué · P| arquetipo+entregable · E| Interpreta>Planifica>Ejecuta · C|
       <p class="kvs"><b>CHECK:</b> <span class="l-es">¿qué necesita saber el modelo SIEMPRE para esta tarea?</span><span class="l-en">what must the model ALWAYS know for this task?</span><span class="l-pt">o que o modelo precisa saber SEMPRE para esta tarefa?</span></p>
       <p class="kvs"><b>PROMPT:</b> <span class="l-es">guárdalo como archivo y adjúntalo (ver <a href="playbook-context-engineering.html">playbook de contexto</a>).</span><span class="l-en">save it as a file and attach it (see <a href="playbook-context-engineering.html">context playbook</a>).</span><span class="l-pt">salve como arquivo e anexe (veja <a href="playbook-context-engineering.html">playbook de contexto</a>).</span></p>
       <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · CONTEXT.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso2-context.md')">Descargar</button></div>
-      <pre># CONTEXT.md
-## Rol · ## Reglas duras · ## Vocabulario · ## Fuentes de verdad · ## Qué NO hacer</pre></div>
+      <pre class="prompt-text l-es"># CONTEXT.md
+## Rol · ## Reglas duras · ## Vocabulario · ## Fuentes de verdad · ## Qué NO hacer</pre><pre class="prompt-text l-en"># CONTEXT.md
+## Role · ## Hard rules · ## Vocabulary · ## Sources of truth · ## What NOT to do</pre><pre class="prompt-text l-pt"># CONTEXT.md
+## Papel · ## Regras duras · ## Vocabulário · ## Fontes de verdade · ## O que NÃO fazer</pre></div>
     </div>
 
     <div class="step">
@@ -67,11 +79,19 @@ S| para qué · P| arquetipo+entregable · E| Interpreta>Planifica>Ejecuta · C|
       <p class="kvs"><b>CHECK:</b> <span class="l-es">¿qué herramienta, qué bucle y qué guarda necesita?</span><span class="l-en">which tool, which loop and which guardrail does it need?</span><span class="l-pt">qual ferramenta, loop e guarda precisa?</span></p>
       <p class="kvs"><b>PROMPT:</b> <span class="l-es">una herramienta + un bucle de verificación + una guarda (ver <a href="playbook-harness-engineering.html">playbook de arneses</a>).</span><span class="l-en">one tool + one verification loop + one guardrail (see <a href="playbook-harness-engineering.html">harness playbook</a>).</span><span class="l-pt">uma ferramenta + um loop + uma guarda (veja <a href="playbook-harness-engineering.html">playbook de arneses</a>).</span></p>
       <div class="codebox"><div class="codebox-head"><span class="codebox-name">TEMPLATE · harness.md</span><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'paso3-harness.md')">Descargar</button></div>
-      <pre># MINI-HARNESS
+      <pre class="prompt-text l-es"># MINI-HARNESS
 1. Herramienta: [...] (cuándo sí / cuándo no)
 2. Bucle: producir > verificar > corregir (máx 2)
 3. Guarda: NUNCA [acción irreversible]; ante duda, preguntar
-Criterio de "listo": [condición observable]</pre></div>
+Criterio de "listo": [condición observable]</pre><pre class="prompt-text l-en"># MINI-HARNESS
+1. Tool: [...] (when yes / when no)
+2. Loop: produce > verify > fix (max 2)
+3. Guardrail: NEVER [irreversible action]; when in doubt, ask
+"Done" criterion: [observable condition]</pre><pre class="prompt-text l-pt"># MINI-HARNESS
+1. Ferramenta: [...] (quando sim / quando não)
+2. Loop: produzir > verificar > corrigir (máx 2)
+3. Guarda: NUNCA [ação irreversível]; na dúvida, perguntar
+Critério de "pronto": [condição observável]</pre></div>
     </div>
   </section>
 

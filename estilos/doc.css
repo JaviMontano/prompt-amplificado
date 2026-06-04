@@ -107,5 +107,19 @@ html[lang="en"] .l-es{display:none}html[lang="en"] .l-en{display:inline}html[lan
 html[lang="en"] .l-pt{display:none}
 html[lang="pt"] .l-es{display:none}html[lang="pt"] .l-en{display:none}html[lang="pt"] .l-pt{display:inline}
 .l-es.block{display:block}
+/* multilingual <pre> blocks (prompts/codeboxes): keep block display per active lang */
+.prompt-text{display:block}
+.prompt-text.l-en,.prompt-text.l-pt{display:none}
+html[lang="en"] .prompt-text.l-es{display:none}html[lang="en"] .prompt-text.l-en{display:block}
+html[lang="pt"] .prompt-text.l-es{display:none}html[lang="pt"] .prompt-text.l-pt{display:block}
+/* diagrama 3 capas (concéntrico) */
+.layers{margin:1.2rem 0;display:flex;flex-direction:column;gap:0;border-radius:var(--r3);overflow:hidden;border:1px solid var(--rule)}
+.layers .lyr{padding:1rem 1.2rem;border-bottom:1px solid var(--rule)}
+.layers .lyr:last-child{border-bottom:none}
+.layers .lyr .lk{font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.layers .l-prompt{background:rgba(19,125,197,.10)}.layers .l-prompt .lk{color:var(--blue)}
+.layers .l-context{background:rgba(21,128,61,.10)}.layers .l-context .lk{color:var(--ok)}
+.layers .l-harness{background:rgba(184,134,11,.12)}.layers .l-harness .lk{color:var(--gold-deep)}
+.layers .lyr p{margin:.2rem 0 0;font-size:.9rem;color:var(--ink2)}
 .triple{position:fixed;right:1rem;bottom:1rem;display:flex;gap:.4rem;z-index:50}
 .triple .iconbtn{background:var(--navy2);box-shadow:0 4px 14px rgba(10,18,42,.3)}

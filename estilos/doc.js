@@ -36,9 +36,13 @@
   });
 
   /* ----- prompts copiables ----- */
+  function visiblePre(box){
+    var lang=document.documentElement.lang||'es';
+    return box.querySelector('.prompt-text.l-'+lang+',pre.l-'+lang)||box.querySelector('.prompt-text,pre');
+  }
   window.copyPrompt=function(btn){
     var box=btn.closest('.prompt-copyable')||btn.closest('.codebox');if(!box)return;
-    var pre=box.querySelector('.prompt-text,pre');if(!pre)return;
+    var pre=visiblePre(box);if(!pre)return;
     var tx=pre.textContent.trim();
     function flash(){var done={es:'Copiado ✓',en:'Copied ✓',pt:'Copiado ✓'}[document.documentElement.lang]||'Copiado ✓';var old=btn.textContent;btn.textContent=done;btn.classList.add('ok');setTimeout(function(){btn.textContent=old;btn.classList.remove('ok')},1600);}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(tx).then(flash).catch(fb);}else{fb();}
@@ -46,7 +50,7 @@
   };
   window.downloadPrompt=function(btn,filename){
     var box=btn.closest('.prompt-copyable')||btn.closest('.codebox');if(!box)return;
-    var pre=box.querySelector('.prompt-text,pre');if(!pre)return;
+    var pre=visiblePre(box);if(!pre)return;
     var blob=new Blob([pre.textContent.trim()],{type:'text/markdown'});
     var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=filename||'prompt.md';a.click();URL.revokeObjectURL(u);
   };

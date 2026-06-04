@@ -48,7 +48,7 @@
     <p><span class="l-es">Rellena la plantilla SPEC: <b>S</b>ituación, <b>P</b>edido, <b>E</b>jecución, <b>C</b>riterio. Copia, pega tus datos y pruébalo.</span><span class="l-en">Fill the SPEC template: <b>S</b>ituation, <b>P</b>edido/Request, <b>E</b>xecution, <b>C</b>riteria. Copy, paste your data and test it.</span><span class="l-pt">Preencha o modelo SPEC: <b>S</b>ituação, <b>P</b>edido, <b>E</b>xecução, <b>C</b>ritério. Copie, cole seus dados e teste.</span></p>
     <div class="prompt-copyable">
       <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'mi-prompt-spec.md')">Descargar .md</button></div>
-      <pre class="prompt-text">[inputs]
+      <pre class="prompt-text l-es">[inputs]
 - TAREA: {{TAREA}} > la tarea concreta que quieres resolver
 - CONTEXTO: {{CONTEXTO}} > datos, restricciones, audiencia
 - ADJUNTOS: {{ADJUNTOS}} > archivos/URLs o "Sin adjuntos"
@@ -76,6 +76,62 @@ Cierre: [acción concreta con la que termina].
 - [ ] Cumple el formato y el tono pedidos
 - [ ] No inventó datos; marcó supuestos
 - [ ] Entrega la acción de cierre</pre>
+      <pre class="prompt-text l-en">[inputs]
+- TASK: {{TASK}} > the concrete task you want to solve
+- CONTEXT: {{CONTEXT}} > data, constraints, audience
+- ATTACHMENTS: {{ATTACHMENTS}} > files/URLs or "No attachments"
+
+[prompt]
+
+--- S | SITUATION ---
+What this task is for and what gets unblocked by solving it.
+If {{TASK}} is empty or ambiguous, ask for it before proceeding; do not invent.
+
+--- P | REQUEST ---
+Archetype: act as [credible expert in the domain].
+Deliverable: [what I want exactly, in what form].
+
+--- E | EXECUTION ---
+>> MetodologIA protocol: Interpret > Plan > Execute.
+Restate in one line what you understood, present the plan and only then execute.
+Method: [steps or framework to follow]. Explicit assumptions and limits.
+
+--- C | CRITERIA ---
+Format: [output structure]. Tone: [register]. Audience: [who reads it].
+Close: [concrete action it ends with].
+
+[checklist]
+- [ ] Meets the requested format and tone
+- [ ] Invented no data; marked assumptions
+- [ ] Delivers the closing action</pre>
+      <pre class="prompt-text l-pt">[inputs]
+- TAREFA: {{TAREFA}} > a tarefa concreta que quer resolver
+- CONTEXTO: {{CONTEXTO}} > dados, restrições, audiência
+- ANEXOS: {{ANEXOS}} > arquivos/URLs ou "Sem anexos"
+
+[prompt]
+
+--- S | SITUAÇÃO ---
+Para que serve esta tarefa e o que se desbloqueia ao resolvê-la.
+Se {{TAREFA}} estiver vazia ou ambígua, peça antes de avançar; não invente.
+
+--- P | PEDIDO ---
+Arquétipo: atue como [especialista crível no domínio].
+Entregável: [o que quero exatamente, em que forma].
+
+--- E | EXECUÇÃO ---
+>> Protocolo MetodologIA: Interprete > Planeje > Execute.
+Reformule numa linha o que entendeu, apresente o plano e só então execute.
+Método: [passos ou marco a seguir]. Supostos e limites explícitos.
+
+--- C | CRITÉRIO ---
+Formato: [estrutura de saída]. Tom: [registro]. Audiência: [quem lê].
+Fecho: [ação concreta com que termina].
+
+[checklist]
+- [ ] Cumpre o formato e o tom pedidos
+- [ ] Não inventou dados; marcou supostos
+- [ ] Entrega a ação de fecho</pre>
     </div>
     <div class="tip"><b>Test:</b> <span class="l-es">pásalo dos veces con entradas distintas. Si el resultado cambia de calidad, el prompt aún es ambiguo.</span><span class="l-en">run it twice with different inputs. If quality swings, the prompt is still ambiguous.</span><span class="l-pt">rode duas vezes com entradas diferentes. Se a qualidade oscila, o prompt ainda é ambíguo.</span></div>
   </section>
@@ -85,7 +141,7 @@ Cierre: [acción concreta con la que termina].
     <p><span class="l-es">Reúne lo mínimo que el modelo necesita saber <b>siempre</b> para esta tarea. Guárdalo como un archivo y adjúntalo (no lo pegues entero cada vez).</span><span class="l-en">Gather the minimum the model must <b>always</b> know for this task. Save it as a file and attach it (don't paste it whole each time).</span><span class="l-pt">Reúna o mínimo que o modelo precisa saber <b>sempre</b> para esta tarefa. Salve como arquivo e anexe (não cole inteiro toda vez).</span></p>
     <div class="prompt-copyable">
       <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'CONTEXT.md')">Descargar .md</button></div>
-      <pre class="prompt-text"># CONTEXT.md — [nombre de la tarea]
+      <pre class="prompt-text l-es"># CONTEXT.md — [nombre de la tarea]
 
 ## Quién soy / rol
 [tu rol, tu equipo, tu objetivo en esta tarea]
@@ -102,6 +158,40 @@ Cierre: [acción concreta con la que termina].
 
 ## Qué NO hacer
 - [anti-objetivo 1]</pre>
+      <pre class="prompt-text l-en"># CONTEXT.md — [task name]
+
+## Who I am / role
+[your role, your team, your goal in this task]
+
+## Hard rules (always)
+- [constraint 1 · e.g.: no confidential data in external outputs]
+- [constraint 2 · e.g.: direct tone, evidence over opinion]
+
+## Vocabulary / conventions
+- [term] = [canonical definition]
+
+## Sources of truth
+- [file/system] → [what it contains]
+
+## What NOT to do
+- [anti-goal 1]</pre>
+      <pre class="prompt-text l-pt"># CONTEXT.md — [nome da tarefa]
+
+## Quem sou / papel
+[seu papel, seu time, seu objetivo nesta tarefa]
+
+## Regras duras (sempre)
+- [restrição 1 · ex.: sem dados confidenciais em outputs externos]
+- [restrição 2 · ex.: tom direto, evidência sobre opinião]
+
+## Vocabulário / convenções
+- [termo] = [definição canônica]
+
+## Fontes de verdade
+- [arquivo/sistema] → [o que contém]
+
+## O que NÃO fazer
+- [antiobjetivo 1]</pre>
     </div>
     <div class="note"><b><span class="l-es">Archivos sobre pegar.</span><span class="l-en">Files over paste.</span><span class="l-pt">Arquivos sobre colar.</span></b> <span class="l-es">Un archivo adjunto es estable y reutilizable; el texto pegado se pierde y ensucia la ventana.</span><span class="l-en">An attached file is stable and reusable; pasted text is lost and clutters the window.</span><span class="l-pt">Um arquivo anexo é estável e reutilizável; texto colado se perde e suja a janela.</span></div>
   </section>
@@ -111,7 +201,7 @@ Cierre: [acción concreta con la que termina].
     <p><span class="l-es">Un arnés mínimo = <b>una herramienta + un bucle de verificación + una guarda</b>. Define el tuyo:</span><span class="l-en">A minimal harness = <b>one tool + one verification loop + one guardrail</b>. Define yours:</span><span class="l-pt">Um arnês mínimo = <b>uma ferramenta + um loop de verificação + uma guarda</b>. Defina o seu:</span></p>
     <div class="prompt-copyable">
       <div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">Copiar</button><button class="copy-btn" type="button" onclick="downloadPrompt(this,'mini-harness.md')">Descargar .md</button></div>
-      <pre class="prompt-text"># MINI-HARNESS — [tarea]
+      <pre class="prompt-text l-es"># MINI-HARNESS — [tarea]
 
 ## 1. Herramienta (tool use)
 El modelo puede usar: [búsqueda / lectura de archivos / ejecutar código / API].
@@ -129,6 +219,42 @@ Ante duda → preguntar, no asumir.
 
 ## Criterio de "listo"
 [condición observable que indica que el trabajo está terminado]</pre>
+      <pre class="prompt-text l-en"># MINI-HARNESS — [task]
+
+## 1. Tool (tool use)
+The model may use: [search / read files / run code / API].
+When to use it: [condition]. When NOT: [condition].
+
+## 2. Verification loop
+After producing, the model must:
+- [ ] Check against the [prompt checklist]
+- [ ] If a point fails → fix and re-verify (max. 2 iterations)
+- [ ] Report what it verified
+
+## 3. Guardrail
+NEVER: [irreversible action / sensitive data / unmarked assumption].
+When in doubt → ask, don't assume.
+
+## "Done" criterion
+[observable condition signaling the work is finished]</pre>
+      <pre class="prompt-text l-pt"># MINI-HARNESS — [tarefa]
+
+## 1. Ferramenta (tool use)
+O modelo pode usar: [busca / leitura de arquivos / executar código / API].
+Quando usar: [condição]. Quando NÃO: [condição].
+
+## 2. Loop de verificação
+Após produzir, o modelo deve:
+- [ ] Revisar contra o [checklist do prompt]
+- [ ] Se um ponto falhar → corrigir e reverificar (máx. 2 iterações)
+- [ ] Reportar o que verificou
+
+## 3. Guarda (guardrail)
+NUNCA: [ação irreversível / dado sensível / suposto sem marcar].
+Na dúvida → perguntar, não assumir.
+
+## Critério de "pronto"
+[condição observável que indica que o trabalho terminou]</pre>
     </div>
   </section>
 
