@@ -36,7 +36,9 @@ copia, descarga `.md` o lleva el prompt directo a ChatGPT, Claude o Gemini.
 - **Búsqueda + comandos**: busca en el **cuerpo** del prompt; **command palette** (`Ctrl/⌘+K` o `/`); **slash-invoke** por `command`; comandos `/a–/z` con toggle; orden por calidad/A-Z/categoría.
 - **Deep-linking**: estado en URL (`?q=&disc=&cat=&sort=`) y prompt direccionable por `#id`; botón **Compartir**.
 - **A11y · i18n**: `<option>`/placeholder/conteo traducidos (ES·EN·PT), `aria-live`, skip-link, foco al cerrar modal, estado "sin resultados".
-- **Capa de invocación parametrizada** (78 prompts: `/0–/9` + 42 verbos + `/a–/z`): cada uno con **2–4 parámetros con defaults** (no inputs, cero fricción). Selectores en el modal reescriben el prompt al vuelo; toggle para anteponer cabecera «Parámetros: …»; los defaults reproducen el comportamiento previo. Generador reproducible: `tools/robustecer-comandos.py` (backup en `biblioteca-data.json.bak`).
+- **Capa de invocación parametrizada** (78 prompts: `/0–/9` + 42 verbos + `/a–/z`): cada uno con **2–4 parámetros con defaults** escritos en el texto (parámetros, NO inputs; cero fricción — funcionan tal cual). **4 versiones mejoradas y diferenciadas** por comando: `natural` (prosa lista para pegar) · `parámetros` (config explícita, fácil de editar) · `SPEC` (andamiaje S·P·E·C) · `dupla` (system/user).
+  - UI simple del comando: explicación + línea «Ajustables: …» (read-only, con defaults y alternativas) + selección de versión + **textarea editable** (ajustas los valores en texto antes de exportar) + exportar (copiar/.md/ChatGPT/Claude/Gemini). El resto del catálogo queda en lectura.
+  - Generador reproducible: `tools/robustecer-comandos.py` (backup en `biblioteca-data.json.bak`).
 
 ## Local
 

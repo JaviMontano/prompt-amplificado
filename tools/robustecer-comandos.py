@@ -315,14 +315,55 @@ add("/y", "Y · Revisión final", "Revisión pre-entrega: completitud, formato, 
 add("/z", "Z · Zoom out", "Perspectiva estratégica: panorama, implicaciones sistémicas.",
     "Zoom out. Perspectiva estratégica. Conecta con el panorama general: objetivos de largo plazo, implicaciones sistémicas, qué estamos pasando por alto.", [], tail=("ext",))
 
-# ---------- aplicar ----------
+# ---------- render + scaffolds ----------
 def render(body, params):
+    """Sustituye [[key]] por el texto del default -> prosa limpia (sin tokens)."""
     out = body
     for p in params:
-        d = p["def"]
-        txt = next((o[2] for o in p["opts"] if o[0] == d), "")
+        txt = next((o[2] for o in p["opts"] if o[0] == p["def"]), "")
         out = out.replace("[[%s]]" % p["key"], txt)
-    return re.sub(r'[ ]{2,}', ' ', out).strip()
+    return re.sub(r'[ \t]{2,}', ' ', re.sub(r'[ \t]+\n', '\n', out)).strip()
+
+def val_of(p):
+    """Valor de default a mostrar en la versión 'parámetros' (texto inyectado o etiqueta)."""
+    o = next((o for o in p["opts"] if o[0] == p["def"]), p["opts"][0])
+    return o[2] if o[2] else o[1]
+
+def alt_labels(p):
+    return [o[1] for o in p["opts"] if o[0] != p["def"]]
+
+def clean_params(params):
+    """Quita tokens de presentación; opts solo informan la versión 'parámetros' y la explicación UI."""
+    out = []
+    for p in params:
+        out.append({"key": p["key"], "label": p["label"], "def": p["def"],
+                    "opts": [[o[0], o[1]] for o in p["opts"]]})  # opts ligeros (v,label) para UI
+    return out
+
+def mk_natural(body, params):
+    return render(body, params) + "\n\n" + PROTO
+
+def mk_parametros(desc, params):
+    lines = ["PARÁMETROS (edita los valores a tu caso):"]
+    for p in params:
+        alts = alt_labels(p)
+        extra = ("   ·alt: " + " | ".join(alts)) if alts else ""
+        lines.append("· %s: %s%s" % (p["label"], val_of(p), extra))
+    return desc + "\n\n" + "\n".join(lines) + "\n\nEjecuta usando exactamente esos parámetros.\n\n" + PROTO
+
+def mk_spec(desc, body, params):
+    fmt = next((p for p in params if p["key"] in ("formato", "salida")), None)
+    crit = val_of(fmt) if fmt else "claro, accionable, sin relleno"
+    return ("[S] Situación: el contenido o la tarea que te comparto.\n"
+            "[P] Pedido: %s\n"
+            "[E] Ejecución: %s\n"
+            "[C] Criterio: %s; máxima calidad, listo para usar.") % (desc, render(body, params), crit)
+
+def mk_dupla(title, body, params):
+    return {
+        "system": "Eres un asistente experto de MetodologIA para «%s». Aplicas el método con criterios explícitos.\n\n%s" % (title, PROTO),
+        "user": render(body, params)
+    }
 
 def main():
     data = json.load(open(DATA, encoding='utf-8'))
@@ -331,7 +372,7 @@ def main():
     if miss:
         print("WARN comandos no encontrados:", miss)
     n = 0
-    fillers = [P_idioma, P_tono, P_ext, P_evid]   # presets de default vacío para garantizar 2–4
+    fillers = [P_idioma, P_tono, P_ext, P_evid]   # garantiza 2–4 parámetros
     for cmd, (title, desc, body, params) in S.items():
         r = bycmd.get(cmd)
         if not r:
@@ -346,17 +387,11 @@ def main():
             keys.add(p["key"]); params.append(p); body += "[[%s]]" % p["key"]
         r['title'] = title
         r['desc'] = desc
-        r['params'] = params
-        rendered = render(body, params)            # == comportamiento actual con defaults
-        r['formats']['natural'] = body + "\n\n" + PROTO   # plantilla con tokens + footer
-        r['formats']['natural_params'] = body              # plantilla con tokens (sin footer)
-        r['formats']['spec'] = body
-        r['formats']['dupla'] = {
-            "system": "Eres un asistente MetodologIA.\n\n" + PROTO,
-            "user": body
-        }
-        r['_default_preview'] = rendered[:120]
-        del r['_default_preview']
+        r['params'] = clean_params(params)          # solo metadato de explicación (read-only)
+        r['formats']['natural'] = mk_natural(body, params)          # prosa, defaults inline, lista para pegar
+        r['formats']['natural_params'] = mk_parametros(desc, params) # parámetros explícitos, fáciles de editar
+        r['formats']['spec'] = mk_spec(desc, body, params)          # andamiaje S·P·E·C
+        r['formats']['dupla'] = mk_dupla(title, body, params)       # system/user
         n += 1
     if not os.path.exists(DATA + '.bak'):
         shutil.copy(DATA, DATA + '.bak')   # preserva el original (no sobrescribir en re-runs)
