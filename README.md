@@ -29,6 +29,15 @@ cada uno en 4 formatos: natural · parámetros · SPEC MetodologIA · dupla syst
 Filtra por **disciplina** (Prompting · Context · Harness · Meta), categoría o tag;
 copia, descarga `.md` o lleva el prompt directo a ChatGPT, Claude o Gemini.
 
+### v1.1 (2026-06-05) — robustez
+
+- **Capa editorial**: hero, storytelling, conceptos (diagrama de 3 capas + los 4 formatos) y "cómo usar", reutilizando `estilos/doc.css` (sin CSS duplicado).
+- **Performance**: render incremental por lotes (60) con `IntersectionObserver`, búsqueda con debounce e índice precomputado.
+- **Búsqueda + comandos**: busca en el **cuerpo** del prompt; **command palette** (`Ctrl/⌘+K` o `/`); **slash-invoke** por `command`; comandos `/a–/z` con toggle; orden por calidad/A-Z/categoría.
+- **Deep-linking**: estado en URL (`?q=&disc=&cat=&sort=`) y prompt direccionable por `#id`; botón **Compartir**.
+- **A11y · i18n**: `<option>`/placeholder/conteo traducidos (ES·EN·PT), `aria-live`, skip-link, foco al cerrar modal, estado "sin resultados".
+- **Capa de invocación parametrizada** (78 prompts: `/0–/9` + 42 verbos + `/a–/z`): cada uno con **2–4 parámetros con defaults** (no inputs, cero fricción). Selectores en el modal reescriben el prompt al vuelo; toggle para anteponer cabecera «Parámetros: …»; los defaults reproducen el comportamiento previo. Generador reproducible: `tools/robustecer-comandos.py` (backup en `biblioteca-data.json.bak`).
+
 ## Local
 
 ```bash

@@ -1,71 +1,105 @@
-<!doctype html><html lang="es" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="es" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F9FAFB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0A122A" media="(prefers-color-scheme: dark)">
 <title>Biblioteca de Prompts · 2026 — Prompt Amplificado | MetodologIA</title>
-<meta name="description" content="Catálogo navegable de 2026 prompts en 4 formatos (natural, parámetros, SPEC MetodologIA, dupla system/user). Filtra por disciplina —Prompting · Context · Harness— categoría o tag. Copia, descarga .md o lleva directo a ChatGPT, Claude o Gemini. Recursos Abiertos.">
+<meta name="description" content="Catálogo navegable de 2026 prompts en 4 formatos (natural, parámetros, SPEC MetodologIA, dupla system/user). Filtra por disciplina —Prompting · Context · Harness · Meta— categoría o tag. Busca en el cuerpo, invoca por comando, comparte por URL. Copia, descarga .md o lleva directo a ChatGPT, Claude o Gemini. Recursos Abiertos.">
+<link rel="canonical" href="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
+<link rel="alternate" hreflang="es" href="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
+<link rel="alternate" hreflang="en" href="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
+<link rel="alternate" hreflang="pt" href="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
+<link rel="alternate" hreflang="x-default" href="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="MetodologIA">
+<meta property="og:title" content="Biblioteca de Prompts · 2026 — Prompt Amplificado">
+<meta property="og:description" content="2026 prompts en 4 formatos, filtrables por disciplina, categoría o tag. Método primero, (Gen)IA después. ES/EN/PT.">
+<meta property="og:url" content="https://javimontano.github.io/prompt-amplificado/biblioteca-prompts.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--navy:#122562;--navy2:#1a3580;--gold:#FFD700;--gold-deep:#B8860B;--blue:#137DC5;--ink:#1F2833;--ink2:#4A5568;--mute:#808080;--paper:#F9FAFB;--card:#FFFFFF;--rule:rgba(18,37,98,.10);--ok:#15803d;--f-head:'Poppins',system-ui,sans-serif;--f-body:'Montserrat',system-ui,sans-serif;--r:14px}
-[data-theme=dark]{--ink:#F0F4F8;--ink2:#CBD5E1;--mute:#94A3B8;--paper:#0B1120;--card:#111B30;--rule:rgba(255,255,255,.10)}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);line-height:1.6}
-h1,.brand{font-family:var(--f-head);font-weight:800}
-/* ---- docset bar ---- */
-.docset-bar{background:#0A122A;color:#f4f1e8;font-family:var(--f-body);font-size:.8rem;padding:.5rem .9rem;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .55rem;justify-content:center;border-bottom:2px solid var(--gold)}
-.docset-bar .set{color:var(--gold);font-weight:700;letter-spacing:.03em}
-.docset-bar a{color:#f4f1e8;text-decoration:none}.docset-bar a:hover{color:var(--gold)}
-.docset-bar .sep{opacity:.4}.docset-bar [aria-current=page]{color:var(--gold);font-weight:700}
-.docset-bar .hub{color:#cbd5e1}
-/* ---- header ---- */
-header.top{position:sticky;top:0;z-index:20;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:.7rem 1.1rem;display:flex;align-items:center;gap:.8rem;border-bottom:3px solid var(--gold)}
-.brand{font-size:1.15rem;color:#fff}.brand .ia{color:var(--gold)}.top .sp{flex:1}
-.iconbtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:9px;padding:.35rem .6rem;cursor:pointer;font-family:var(--f-body);font-size:.8rem}
-.wrap{max-width:1180px;margin:0 auto;padding:1.2rem}.hero{padding:1.2rem 0 .4rem}.hero h1{font-size:clamp(1.6rem,4vw,2.4rem)}.hero p{color:var(--ink2);max-width:70ch}
-.controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0;position:sticky;top:54px;z-index:10;background:var(--paper);padding:.5rem 0}
-.controls input,.controls select{font-family:var(--f-body);padding:.5rem .7rem;border:1px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink)}
-.controls input{flex:1;min-width:220px}.count{color:var(--mute);font-size:.85rem;align-self:center}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="estilos/doc.css">
+<style>
+/* ===== biblioteca-prompts · estilos propios del catálogo (lo común vive en estilos/doc.css) ===== */
+:root{--catmax:1180px}
+.skip-link{position:absolute;left:.5rem;top:-3rem;z-index:80;background:var(--gold);color:var(--navy2);padding:.5rem .8rem;border-radius:8px;font-weight:700;transition:top .15s}
+.skip-link:focus{top:.5rem}
+/* hero editorial */
+.bib-hero{background:radial-gradient(circle at 18% -10%,rgba(255,215,0,.18) 0%,transparent 55%),radial-gradient(circle at 92% 110%,rgba(19,125,197,.08) 0%,transparent 55%);border-bottom:1px solid var(--rule)}
+.stats{display:grid;gap:.8rem;grid-template-columns:repeat(2,1fr);margin:1.4rem 0}
+@media(min-width:680px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stats .cell{background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:.8rem}
+.stats .num{font-family:var(--f-head);font-weight:800;font-size:1.2rem;color:var(--gold-deep)}
+.stats .lbl{font-size:.74rem;color:var(--ink2)}
+.flow{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.84rem;color:var(--ink2);margin:.6rem 0}
+.flow b{background:var(--gold);color:var(--navy2);border-radius:var(--rp);padding:.12rem .6rem;font-family:var(--f-head);font-size:.78rem}
+[data-theme=dark] .flow b{color:#0B1120}
+.fmt-grid{display:grid;gap:.7rem;grid-template-columns:1fr;margin:.8rem 0}
+@media(min-width:640px){.fmt-grid{grid-template-columns:1fr 1fr}}
+.fmt-grid .tile .k{font-family:var(--f-mono);font-size:.7rem;color:var(--gold-deep);font-weight:700}
+/* catálogo */
+.catwrap{max-width:var(--catmax);margin:0 auto;padding:0 1.2rem 3rem}
+.controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.controls .field{position:relative;flex:1;min-width:240px;display:flex}
+.controls input[type=search]{width:100%;font-family:var(--f-body);padding:.55rem 2rem .55rem .7rem;border:1px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink)}
+.controls select{font-family:var(--f-body);padding:.55rem .7rem;border:1px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink)}
+.clear-q{position:absolute;right:.4rem;top:50%;transform:translateY(-50%);border:none;background:transparent;color:var(--mute);font-size:1.1rem;cursor:pointer;display:none}
+.controls .field.has-val .clear-q{display:block}
+.cmds-toggle{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--ink2);border:1px solid var(--rule);border-radius:10px;padding:.4rem .6rem;background:var(--card);cursor:pointer}
+.cmds-toggle[aria-pressed=true]{background:var(--gold);color:var(--navy2);border-color:var(--gold)}
+.count{color:var(--mute);font-size:.85rem;align-self:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:1rem;display:flex;flex-direction:column;gap:.5rem}
-.card h3{margin:.1rem 0;font-size:1.0rem;font-family:var(--f-head)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:1rem;display:flex;flex-direction:column;gap:.5rem;content-visibility:auto;contain-intrinsic-size:auto 220px}
+.card h3{margin:.1rem 0;font-size:1rem;font-family:var(--f-head)}
 .chips{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center}
-.cat{display:inline-block;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--navy);background:var(--gold);padding:.12rem .5rem;border-radius:999px}
+.cat{display:inline-block;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--navy2);background:var(--gold);padding:.12rem .5rem;border-radius:999px}
 [data-theme=dark] .cat{color:#0B1120}
+.cmdtag{display:inline-block;font-family:var(--f-mono);font-size:.62rem;font-weight:700;color:var(--gold-deep);border:1px solid rgba(184,134,11,.45);border-radius:999px;padding:.1rem .45rem}
 .disc{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:999px;padding:.12rem .5rem;border:1px solid var(--rule)}
 .disc.d-Prompting{background:rgba(19,125,197,.14);color:var(--blue)}
 .disc.d-Context{background:rgba(21,128,61,.14);color:var(--ok)}
 .disc.d-Harness{background:rgba(184,134,11,.16);color:var(--gold-deep)}
-.disc.d-Meta{background:rgba(128,90,213,.16);color:#7c3aed}
+.disc.d-Meta{background:rgba(124,58,237,.16);color:#7c3aed}
 [data-theme=dark] .disc.d-Prompting{color:#7cc4f0}[data-theme=dark] .disc.d-Meta{color:#b794f4}
 .desc{color:var(--ink2);font-size:.84rem}.tags{display:flex;gap:.3rem;flex-wrap:wrap}
 .tag{font-size:.64rem;color:var(--ink2);border:1px solid var(--rule);border-radius:999px;padding:.06rem .45rem}
 .card .acts{margin-top:auto}
 .btn{font-family:var(--f-body);font-size:.72rem;font-weight:600;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:9px;padding:.34rem .6rem;cursor:pointer}
-.btn.primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}.btn:hover{border-color:var(--gold)}
+.btn.primary{background:var(--gold);color:var(--navy2);border-color:var(--gold)}.btn:hover{border-color:var(--gold)}
 .btn.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
-/* ---- modal (homólogo a #row-modal) ---- */
-dialog.smodal{border:none;border-radius:14px;padding:0;max-width:min(820px,95vw);width:100%;max-height:90vh;background:transparent;color:var(--ink)}
-dialog.smodal::backdrop{background:rgba(10,18,42,.55);backdrop-filter:blur(2px)}
-.modal-card{background:var(--card);border-radius:14px;display:flex;flex-direction:column;max-height:90vh;overflow:hidden;border:1px solid var(--rule)}
-.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1rem 1.1rem;background:var(--navy);color:#fff;border-bottom:3px solid var(--gold)}
-.modal-head h3{color:#fff;font-size:1.05rem;margin:.15rem 0 0}
-.modal-tag{display:inline-block;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.modal-close{background:transparent;border:none;color:#fff;font-size:1.5rem;cursor:pointer;padding:.1rem .4rem;border-radius:6px;line-height:1}
-.modal-close:hover{background:rgba(255,255,255,.15)}
-.modal-body{padding:1.1rem;overflow-y:auto;flex:1}
-.rm-note{background:#fff8d6;border-left:4px solid var(--gold-deep);border-radius:8px;padding:.7rem .9rem;margin:.2rem 0 .8rem;color:#1a1f2e;font-size:.88rem}
-[data-theme=dark] .rm-note{background:rgba(255,215,0,.08);color:var(--ink)}
+.empty{text-align:center;color:var(--ink2);padding:2.5rem 1rem;border:1px dashed var(--rule);border-radius:var(--r2)}
+.empty b{font-family:var(--f-head);color:var(--ink)}
+#sentinel{height:1px}
+.loadmore{display:block;margin:1.2rem auto 0;}
+/* modal (lo base —smodal/modal-*— viene de doc.css) */
 .rm-meta{display:flex;gap:.4rem;flex-wrap:wrap;margin:.2rem 0 .7rem;font-size:.72rem;color:var(--ink2)}
 .rm-meta b{color:var(--ink)}
 .tabs{display:flex;gap:.2rem;border-bottom:1px solid var(--rule);flex-wrap:wrap;margin-top:.4rem}
 .tab{font-size:.72rem;font-weight:600;padding:.32rem .5rem;cursor:pointer;color:var(--mute);border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--f-body)}
-.tab.on{color:var(--navy);border-bottom-color:var(--gold)}[data-theme=dark] .tab.on{color:var(--gold)}
-pre.body{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,monospace;font-size:.74rem;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:.7rem;max-height:46vh;overflow:auto;margin:.4rem 0 0}
-.acts{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.6rem}
-/* ---- footer ---- */
-.docset-version{text-align:center;font-family:var(--f-body);font-size:.75rem;color:var(--mute);padding:1.4rem 1rem;border-top:1px solid var(--rule)}
-.docset-version a{color:var(--gold-deep);text-decoration:none}
-/* ---- i18n ---- */
-.l-en,.l-pt{display:none}
-html[lang="en"] .l-es{display:none}html[lang="en"] .l-en{display:inline}html[lang="en"] .l-pt{display:none}
-html[lang="pt"] .l-es{display:none}html[lang="pt"] .l-en{display:none}html[lang="pt"] .l-pt{display:inline}
+.tab.on{color:var(--navy2);border-bottom-color:var(--gold)}[data-theme=dark] .tab.on{color:var(--gold)}
+pre.body{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.74rem;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:.7rem;max-height:46vh;overflow:auto;margin:.4rem 0 0}
+.modal-body .acts{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.6rem}
+/* parámetros (no inputs) */
+.params{display:flex;flex-wrap:wrap;gap:.5rem .7rem;align-items:flex-end;margin:.6rem 0 .2rem;padding:.6rem .7rem;border:1px dashed var(--rule);border-radius:10px;background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.params .pfield{display:flex;flex-direction:column;gap:.2rem}
+.params label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2)}
+.params select{font-family:var(--f-body);font-size:.78rem;padding:.3rem .5rem;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink)}
+.params .phdr{margin-left:auto;display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;color:var(--ink2)}
+.params .preset{font-family:var(--f-mono);font-size:.6rem;color:var(--gold-deep);align-self:center}
+/* command palette */
+dialog.palette{border:none;border-radius:14px;padding:0;max-width:min(640px,95vw);width:100%;background:transparent;margin-top:8vh}
+dialog.palette::backdrop{background:rgba(10,18,42,.55);backdrop-filter:blur(2px)}
+.palette-card{background:var(--card);border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(10,18,42,.4)}
+.palette-card input{width:100%;border:none;border-bottom:1px solid var(--rule);background:transparent;color:var(--ink);font-family:var(--f-body);font-size:1rem;padding:.9rem 1rem;outline:none}
+.palette-list{list-style:none;margin:0;padding:.3rem;max-height:52vh;overflow:auto}
+.palette-list li{padding:.5rem .7rem;border-radius:9px;cursor:pointer;display:flex;gap:.5rem;align-items:baseline}
+.palette-list li.sel,.palette-list li:hover{background:rgba(255,215,0,.14)}
+.palette-list .pcmd{font-family:var(--f-mono);font-size:.72rem;color:var(--gold-deep);min-width:3.2rem}
+.palette-list .ptitle{font-size:.86rem;color:var(--ink)}
+.palette-list .pcat{margin-left:auto;font-size:.66rem;color:var(--mute)}
+.palette-hint{padding:.5rem 1rem;font-size:.7rem;color:var(--mute);border-top:1px solid var(--rule);display:flex;gap:.8rem;flex-wrap:wrap}
+kbd{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--rule);border-bottom-width:2px;border-radius:5px;padding:.02em .35em;color:var(--ink2)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.skip-link{transition:none}}
 </style></head><body>
+<div class="reading-progress"></div>
+<a class="skip-link" href="#catalogo"><span class="l-es">Saltar al catálogo</span><span class="l-en">Skip to catalog</span><span class="l-pt">Pular para o catálogo</span></a>
 
 <div class="docset-bar">
   <span class="set">Prompt Amplificado:</span>
@@ -81,56 +115,104 @@ html[lang="pt"] .l-es{display:none}html[lang="pt"] .l-en{display:none}html[lang=
 
 <header class="top">
   <span class="brand">Metodolog<span class="ia">IA</span></span>
-  <span style="font-size:.8rem;opacity:.85"><span class="l-es">Biblioteca de Prompts · 2026</span><span class="l-en">Prompt Library · 2026</span><span class="l-pt">Biblioteca de Prompts · 2026</span></span>
+  <span class="role"><span class="l-es">Biblioteca · 2026</span><span class="l-en">Library · 2026</span><span class="l-pt">Biblioteca · 2026</span></span>
   <span class="sp"></span>
-  <button class="iconbtn" id="langbtn" type="button" aria-label="Cambiar idioma ES EN PT" title="ES / EN / PT">ES</button>
-  <button class="iconbtn" id="theme" aria-label="Cambiar modo" title="Claro / Oscuro">Modo</button>
+  <button class="iconbtn" id="palette-open" type="button" title="Buscar (Ctrl/Cmd + K)" aria-label="Abrir buscador rápido">⌘K</button>
+  <button class="iconbtn" id="langbtn" type="button" title="ES / EN / PT" aria-label="Cambiar idioma">ES</button>
+  <button class="iconbtn" id="theme" type="button" title="Claro / Oscuro" aria-label="Cambiar tema">☾</button>
 </header>
 
-<div class="wrap">
-  <section class="hero">
-    <h1><span class="l-es">Biblioteca de Prompts</span><span class="l-en">Prompt Library</span><span class="l-pt">Biblioteca de Prompts</span></h1>
-    <p>
-      <span class="l-es"><b>2026 prompts</b>, cada uno en 4 formatos — lenguaje natural, con parámetros, SPEC MetodologIA y dupla system/user. Filtra por <b>disciplina</b> (Prompting · Context · Harness · Meta), categoría o tag. Pulsa <b>Ver</b> para copiar, descargar <code>.md</code> o llevarlo directo a ChatGPT, Claude o Gemini. Recursos Abiertos.</span>
-      <span class="l-en"><b>2026 prompts</b>, each in 4 formats — natural language, parameterized, SPEC MetodologIA and system/user pair. Filter by <b>discipline</b> (Prompting · Context · Harness · Meta), category or tag. Hit <b>View</b> to copy, download <code>.md</code> or send it straight to ChatGPT, Claude or Gemini. Open resources.</span>
-      <span class="l-pt"><b>2026 prompts</b>, cada um em 4 formatos — linguagem natural, com parâmetros, SPEC MetodologIA e dupla system/user. Filtre por <b>disciplina</b> (Prompting · Context · Harness · Meta), categoria ou tag. Toque em <b>Ver</b> para copiar, baixar <code>.md</code> ou enviar direto ao ChatGPT, Claude ou Gemini. Recursos Abertos.</span>
-    </p>
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="bib-hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="l-es">Recursos abiertos · con (Gen)IA</span><span class="l-en">Open resources · with (Gen)AI</span><span class="l-pt">Recursos abertos · com (Gen)IA</span></span>
+      <h1><span class="l-es">Biblioteca de <span class="gradient-text">Prompts</span></span><span class="l-en"><span class="gradient-text">Prompt</span> Library</span><span class="l-pt">Biblioteca de <span class="gradient-text">Prompts</span></span></h1>
+      <p class="lead">
+        <span class="l-es"><b>2026 prompts</b>, cada uno en <b>4 formatos</b> — lenguaje natural, con parámetros, SPEC MetodologIA y dupla system/user. Filtra por disciplina, categoría o tag; busca en el cuerpo, invoca por comando y comparte por URL. <b>Método primero, (Gen)IA después.</b></span>
+        <span class="l-en"><b>2026 prompts</b>, each in <b>4 formats</b> — natural language, parameterized, SPEC MetodologIA and system/user pair. Filter by discipline, category or tag; search the body, invoke by command and share by URL. <b>Method first, (Gen)AI second.</b></span>
+        <span class="l-pt"><b>2026 prompts</b>, cada um em <b>4 formatos</b> — linguagem natural, com parâmetros, SPEC MetodologIA e dupla system/user. Filtre por disciplina, categoria ou tag; busque no corpo, invoque por comando e compartilhe por URL. <b>Método primeiro, (Gen)IA depois.</b></span>
+      </p>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem">
+        <a class="iconbtn" style="background:var(--gold);color:var(--navy2);border-color:var(--gold);font-weight:700" href="#catalogo"><span class="l-es">Ir al catálogo ↓</span><span class="l-en">Go to catalog ↓</span><span class="l-pt">Ir ao catálogo ↓</span></a>
+        <a class="iconbtn" style="background:var(--navy2)" href="masterclass.html"><span class="l-es">Empezar por la Masterclass</span><span class="l-en">Start with the Masterclass</span><span class="l-pt">Começar pela Masterclass</span></a>
+      </div>
+      <div class="stats">
+        <div class="cell"><div class="num">2026</div><div class="lbl"><span class="l-es">prompts en 4 formatos</span><span class="l-en">prompts in 4 formats</span><span class="l-pt">prompts em 4 formatos</span></div></div>
+        <div class="cell"><div class="num">16</div><div class="lbl"><span class="l-es">categorías</span><span class="l-en">categories</span><span class="l-pt">categorias</span></div></div>
+        <div class="cell"><div class="num">4</div><div class="lbl"><span class="l-es">disciplinas: prompt · contexto · arnés · meta</span><span class="l-en">disciplines: prompt · context · harness · meta</span><span class="l-pt">disciplinas: prompt · contexto · arnês · meta</span></div></div>
+        <div class="cell"><div class="num">ES·EN·PT</div><div class="lbl"><span class="l-es">trilingüe · copyleft</span><span class="l-en">trilingual · copyleft</span><span class="l-pt">trilíngue · copyleft</span></div></div>
+      </div>
+    </div>
   </section>
 
-  <div class="controls">
-    <input id="q" type="search" placeholder="Buscar por título, tag o contenido…" aria-label="Buscar">
-    <select id="disc" aria-label="Filtrar disciplina">
-      <option value=""><span>Todas las disciplinas</span></option>
-      <option value="Prompting">Prompting</option>
-      <option value="Context">Context</option>
-      <option value="Harness">Harness</option>
-      <option value="Meta">Meta</option>
-    </select>
-    <select id="cat" aria-label="Filtrar categoría">
-      <option value="">Todas las categorías</option>
-      <option value="Comunicación y Contenido">Comunicación y Contenido</option>
-      <option value="Consulting">Consulting</option>
-      <option value="Datos y Analítica">Datos y Analítica</option>
-      <option value="Desarrollo">Desarrollo</option>
-      <option value="Estrategia">Estrategia</option>
-      <option value="Finanzas y Operaciones">Finanzas y Operaciones</option>
-      <option value="Gestión de Proyectos">Gestión de Proyectos</option>
-      <option value="IA y Automatización">IA y Automatización</option>
-      <option value="Liderazgo y Equipos">Liderazgo y Equipos</option>
-      <option value="Marketing">Marketing</option>
-      <option value="Meta-Prompting">Meta-Prompting</option>
-      <option value="Personal y Productividad">Personal y Productividad</option>
-      <option value="Producto">Producto</option>
-      <option value="Universal">Universal</option>
-      <option value="Ventas">Ventas</option>
-      <option value="Vibe Coding">Vibe Coding</option>
-    </select>
-    <span class="count" id="count"></span>
-  </div>
-  <div class="grid" id="grid"></div>
-</div>
+  <!-- ===== §01 QUÉ ES / STORYTELLING ===== -->
+  <section class="wrap">
+    <h2><span class="num">§01</span><span class="l-es">Qué es esta biblioteca</span><span class="l-en">What this library is</span><span class="l-pt">O que é esta biblioteca</span></h2>
+    <p class="lead"><span class="l-es">No es una lista de trucos: es un <b>catálogo operativo</b>. Cada prompt nació de un método —SPEC MetodologIA— y llega en cuatro formatos para que lo uses tal cual o lo adaptes a tu flujo. La IA guía; la persona decide.</span><span class="l-en">Not a list of tricks: an <b>operational catalog</b>. Each prompt comes from a method —SPEC MetodologIA— in four formats so you use it as-is or adapt it to your flow. AI guides; the person decides.</span><span class="l-pt">Não é uma lista de truques: é um <b>catálogo operacional</b>. Cada prompt nasceu de um método —SPEC MetodologIA— em quatro formatos para usar como está ou adaptar ao seu fluxo. A IA guia; a pessoa decide.</span></p>
+    <div class="flow"><b>Masterclass</b> → <b>Workbook</b> → <b>Playbooks</b> → <b>Runbook</b> → <b><span class="l-es">Biblioteca</span><span class="l-en">Library</span><span class="l-pt">Biblioteca</span></b></div>
+    <p><span class="l-es">La Biblioteca es la última pieza del recorrido <a href="index.html">Prompt Amplificado</a>: cuando ya entiendes el método, aquí ejecutas. ¿Te falta marco? Lee la <a href="masterclass.html">Masterclass</a> y los <a href="playbook-prompt-engineering.html">playbooks</a>.</span><span class="l-en">The Library is the final piece of the <a href="index.html">Prompt Amplificado</a> path: once you grasp the method, here you execute. Need the frame? Read the <a href="masterclass.html">Masterclass</a> and the <a href="playbook-prompt-engineering.html">playbooks</a>.</span><span class="l-pt">A Biblioteca é a última peça do percurso <a href="index.html">Prompt Amplificado</a>: quando você entende o método, aqui executa. Falta marco? Leia a <a href="masterclass.html">Masterclass</a> e os <a href="playbook-prompt-engineering.html">playbooks</a>.</span></p>
+  </section>
 
-<dialog class="smodal" id="row-modal">
+  <!-- ===== §02 CONCEPTOS ===== -->
+  <section class="wrap">
+    <h2><span class="num">§02</span><span class="l-es">Conceptos en 1 minuto</span><span class="l-en">Concepts in 1 minute</span><span class="l-pt">Conceitos em 1 minuto</span></h2>
+    <p><span class="l-es">Operar (Gen)IA tiene <b>tres capas</b>. La Biblioteca etiqueta cada prompt por la disciplina que más exige:</span><span class="l-en">Operating (Gen)AI has <b>three layers</b>. The Library tags each prompt by the discipline it leans on most:</span><span class="l-pt">Operar (Gen)IA tem <b>três camadas</b>. A Biblioteca rotula cada prompt pela disciplina que mais exige:</span></p>
+    <div class="layers">
+      <div class="lyr l-prompt"><span class="lk">Prompting</span><p><span class="l-es">La instrucción: qué pides y cómo. SPEC, few-shot, cadena de pensamiento.</span><span class="l-en">The instruction: what you ask and how. SPEC, few-shot, chain-of-thought.</span><span class="l-pt">A instrução: o que você pede e como. SPEC, few-shot, chain-of-thought.</span></p></div>
+      <div class="lyr l-context"><span class="lk">Context</span><p><span class="l-es">Lo que la IA sabe al responder: priming, RAG, memoria, fuentes.</span><span class="l-en">What the AI knows when answering: priming, RAG, memory, sources.</span><span class="l-pt">O que a IA sabe ao responder: priming, RAG, memória, fontes.</span></p></div>
+      <div class="lyr l-harness"><span class="lk">Harness</span><p><span class="l-es">El andamiaje: herramientas, loops, multi-agente, guardrails, evals.</span><span class="l-en">The scaffolding: tools, loops, multi-agent, guardrails, evals.</span><span class="l-pt">O andaime: ferramentas, loops, multiagente, guardrails, evals.</span></p></div>
+    </div>
+    <h3><span class="l-es">Los 4 formatos de cada prompt</span><span class="l-en">The 4 formats of each prompt</span><span class="l-pt">Os 4 formatos de cada prompt</span></h3>
+    <div class="fmt-grid">
+      <div class="tile"><span class="k">natural</span><p><span class="l-es">Lenguaje llano, listo para pegar en cualquier chat.</span><span class="l-en">Plain language, ready to paste into any chat.</span><span class="l-pt">Linguagem simples, pronta para colar em qualquer chat.</span></p></div>
+      <div class="tile"><span class="k">parámetros</span><p><span class="l-es">Con variables <code>{{...}}</code> para parametrizar y reutilizar.</span><span class="l-en">With <code>{{...}}</code> variables to parameterize and reuse.</span><span class="l-pt">Com variáveis <code>{{...}}</code> para parametrizar e reutilizar.</span></p></div>
+      <div class="tile"><span class="k">SPEC</span><p><span class="l-es">Estructura MetodologIA: Situación · Pedido · Ejecución · Criterio.</span><span class="l-en">MetodologIA structure: Situation · Request · Execution · Criteria.</span><span class="l-pt">Estrutura MetodologIA: Situação · Pedido · Execução · Critério.</span></p></div>
+      <div class="tile"><span class="k">dupla</span><p><span class="l-es">Par <code>system</code> / <code>user</code> para APIs y agentes.</span><span class="l-en"><code>system</code> / <code>user</code> pair for APIs and agents.</span><span class="l-pt">Par <code>system</code> / <code>user</code> para APIs e agentes.</span></p></div>
+    </div>
+    <div class="note"><b>Tip:</b> <span class="l-es">¿Buscas un atajo? Pulsa <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> o teclea <kbd>/</kbd> para el buscador rápido. Escribe un comando como <code>/prioriza</code>, <code>/compara</code> o una letra (<code>/a</code>…<code>/z</code>) para invocar directo.</span><span class="l-en">Want a shortcut? Hit <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> or press <kbd>/</kbd> for quick search. Type a command like <code>/prioriza</code>, <code>/compara</code> or a letter (<code>/a</code>…<code>/z</code>) to invoke directly.</span><span class="l-pt">Quer um atalho? Toque <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> ou pressione <kbd>/</kbd> para a busca rápida. Digite um comando como <code>/prioriza</code>, <code>/compara</code> ou uma letra (<code>/a</code>…<code>/z</code>) para invocar direto.</span></div>
+  </section>
+
+  <!-- ===== §03 CÓMO USAR ===== -->
+  <section class="wrap">
+    <h2><span class="num">§03</span><span class="l-es">Cómo usarla</span><span class="l-en">How to use it</span><span class="l-pt">Como usar</span></h2>
+    <div class="step"><span class="snum">1</span><h3><span class="l-es">Busca o filtra</span><span class="l-en">Search or filter</span><span class="l-pt">Busque ou filtre</span></h3><p class="kvs"><span class="l-es">Por título, tag o <b>cuerpo</b> del prompt; acota por disciplina y categoría; ordena por calidad.</span><span class="l-en">By title, tag or prompt <b>body</b>; narrow by discipline and category; sort by quality.</span><span class="l-pt">Por título, tag ou <b>corpo</b> do prompt; refine por disciplina e categoria; ordene por qualidade.</span></p></div>
+    <div class="step"><span class="snum">2</span><h3><span class="l-es">Abre con “Ver”</span><span class="l-en">Open with “View”</span><span class="l-pt">Abra com “Ver”</span></h3><p class="kvs"><span class="l-es">Alterna los 4 formatos en pestañas dentro del prompt.</span><span class="l-en">Switch the 4 formats in tabs inside the prompt.</span><span class="l-pt">Alterne os 4 formatos em abas dentro do prompt.</span></p></div>
+    <div class="step"><span class="snum">3</span><h3><span class="l-es">Copia, descarga o lleva a tu IA</span><span class="l-en">Copy, download or send to your AI</span><span class="l-pt">Copie, baixe ou envie à sua IA</span></h3><p class="kvs"><span class="l-es">Copiar · <code>.md</code> · ChatGPT / Claude / Gemini · o comparte el enlace directo.</span><span class="l-en">Copy · <code>.md</code> · ChatGPT / Claude / Gemini · or share the direct link.</span><span class="l-pt">Copiar · <code>.md</code> · ChatGPT / Claude / Gemini · ou compartilhe o link direto.</span></p></div>
+  </section>
+
+  <!-- ===== §04 CATÁLOGO ===== -->
+  <section class="catwrap" id="catalogo">
+    <h2 style="max-width:none"><span class="num">§04</span><span class="l-es">Catálogo</span><span class="l-en">Catalog</span><span class="l-pt">Catálogo</span></h2>
+    <div class="controls" role="search">
+      <span class="field" id="qfield">
+        <input id="q" type="search" placeholder="Buscar por título, tag o contenido…" aria-label="Buscar prompts" autocomplete="off">
+        <button class="clear-q" id="clear-q" type="button" aria-label="Limpiar búsqueda" title="Limpiar">&times;</button>
+      </span>
+      <select id="disc" aria-label="Filtrar por disciplina">
+        <option value="">— disciplinas —</option>
+        <option value="Prompting">Prompting</option>
+        <option value="Context">Context</option>
+        <option value="Harness">Harness</option>
+        <option value="Meta">Meta</option>
+      </select>
+      <select id="cat" aria-label="Filtrar por categoría"></select>
+      <select id="sort" aria-label="Ordenar">
+        <option value="rel">— orden —</option>
+        <option value="q">★ calidad</option>
+        <option value="az">A → Z</option>
+        <option value="cat">categoría</option>
+      </select>
+      <button class="cmds-toggle" id="cmds" type="button" aria-pressed="false" title="Mostrar comandos /a–/z"><span>/</span><span class="l-es">comandos</span><span class="l-en">commands</span><span class="l-pt">comandos</span></button>
+      <span class="count" id="count" role="status" aria-live="polite"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div id="sentinel"></div>
+    <button class="btn loadmore" id="loadmore" type="button" hidden><span class="l-es">Cargar más</span><span class="l-en">Load more</span><span class="l-pt">Carregar mais</span></button>
+  </section>
+</main>
+
+<dialog class="smodal" id="row-modal" aria-labelledby="rm-title">
   <div class="modal-card">
     <div class="modal-head">
       <div>
@@ -143,106 +225,273 @@ html[lang="pt"] .l-es{display:none}html[lang="pt"] .l-en{display:none}html[lang=
   </div>
 </dialog>
 
+<dialog class="palette" id="palette" aria-label="Buscador rápido">
+  <div class="palette-card">
+    <input id="palette-q" type="search" placeholder="Buscar o invocar (ej. /prioriza, /compara, /a)…" aria-label="Buscar o invocar" autocomplete="off">
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Resultados"></ul>
+    <div class="palette-hint"><span><kbd>↑</kbd><kbd>↓</kbd> <span class="l-es">navegar</span><span class="l-en">navigate</span><span class="l-pt">navegar</span></span><span><kbd>Enter</kbd> <span class="l-es">abrir</span><span class="l-en">open</span><span class="l-pt">abrir</span></span><span><kbd>Esc</kbd> <span class="l-es">cerrar</span><span class="l-en">close</span><span class="l-pt">fechar</span></span></div>
+  </div>
+</dialog>
+
 <div class="docset-version">
-  Prompt Amplificado · <span class="l-es">Biblioteca</span><span class="l-en">Library</span><span class="l-pt">Biblioteca</span> · v1.0 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-03 · MetodologIA · <a href="index.html">↑ Hub</a>
+  <div class="foot-nav" style="display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;justify-content:center;margin:.6rem 0">
+    <a href="masterclass.html">Masterclass</a><a href="workbook.html">Workbook</a>
+    <a href="playbook-prompt-engineering.html">Prompt</a><a href="playbook-context-engineering.html">Context</a><a href="playbook-harness-engineering.html">Harness</a>
+    <a href="runbook.html">Runbook</a><a href="index.html">Hub</a>
+  </div>
+  Prompt Amplificado · <span class="l-es">Biblioteca</span><span class="l-en">Library</span><span class="l-pt">Biblioteca</span> · v1.1 · <span class="l-es">actualizado</span><span class="l-en">updated</span><span class="l-pt">atualizado</span> 2026-06-05 · © 2026 MetodologIA · Copyleft (CC BY-SA 4.0 · <span class="l-es">código MIT</span><span class="l-en">code MIT</span><span class="l-pt">código MIT</span>) · <a href="index.html">↑ Hub</a>
 </div>
 
+<script src="estilos/doc.js"></script>
 <script>
-/* ---------- theme + lang toggles (homólogo al hub) ---------- */
+/* ===================== biblioteca · lógica del catálogo ===================== */
 (function(){
-  var html=document.documentElement;
-  try{var t=localStorage.getItem('mdg_theme');if(t==='dark')html.dataset.theme='dark';var l=localStorage.getItem('mdg_locale');if(l==='en'||l==='pt')html.lang=l;}catch(e){}
-  var tb=document.getElementById('theme'); if(tb) tb.onclick=function(){html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('mdg_theme',html.dataset.theme)}catch(e){}};
-  var langs=['es','en','pt'], lb=document.getElementById('langbtn');
-  function setLang(l){if(langs.indexOf(l)<0)l='es';html.lang=l;try{localStorage.setItem('mdg_locale',l)}catch(e){}if(lb)lb.textContent=l.toUpperCase();}
-  setLang(html.lang||'es');
-  if(lb) lb.onclick=function(){var i=langs.indexOf(html.lang);setLang(langs[(i+1)%langs.length]);};
-})();
+'use strict';
+var html=document.documentElement;
 
-/* ---------- data + helpers ---------- */
-var DATA=[];
+/* ---- i18n diccionario UI (chrome dinámico) ---- */
+var DICT={
+  es:{ph:'Buscar por título, tag o contenido…',allCat:'— categorías —',countSuf:function(n,t){return n+' / '+t+' prompts';},ver:'Ver',when:'Cuándo usarlo',inputs:'inputs',params:'parámetros',showParams:'Anteponer parámetros',copy:'Copiar',copied:'✓ Copiado',dl:'Descargar .md',share:'Compartir',shared:'✓ Enlace copiado',noResT:'Sin resultados',noResB:'Ajusta la búsqueda o limpia los filtros.',clearAll:'Limpiar filtros',quality:'Calidad'},
+  en:{ph:'Search by title, tag or content…',allCat:'— categories —',countSuf:function(n,t){return n+' / '+t+' prompts';},ver:'View',when:'When to use it',inputs:'inputs',params:'parameters',showParams:'Prepend parameters',copy:'Copy',copied:'✓ Copied',dl:'Download .md',share:'Share',shared:'✓ Link copied',noResT:'No results',noResB:'Adjust your search or clear the filters.',clearAll:'Clear filters',quality:'Quality'},
+  pt:{ph:'Buscar por título, tag ou conteúdo…',allCat:'— categorias —',countSuf:function(n,t){return n+' / '+t+' prompts';},ver:'Ver',when:'Quando usar',inputs:'inputs',params:'parâmetros',showParams:'Antepor parâmetros',copy:'Copiar',copied:'✓ Copiado',dl:'Baixar .md',share:'Compartilhar',shared:'✓ Link copiado',noResT:'Sem resultados',noResB:'Ajuste a busca ou limpe os filtros.',clearAll:'Limpar filtros',quality:'Qualidade'}
+};
+function L(){return DICT[html.lang]||DICT.es;}
+
+/* ---- helpers ---- */
+function norm(s){return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
 var FMT=[['natural','Natural'],['natural_params','Parámetros'],['spec','SPEC'],['dupla','Dupla']];
-function flat(r,k){if(k==='dupla'){var d=r.formats.dupla;return 'SYSTEM:\n'+d.system+'\n\nUSER:\n'+d.user}return r.formats[k]||''}
+function flat(r,k){if(k==='dupla'){var d=r.formats.dupla||{};return 'SYSTEM:\n'+(d.system||'')+'\n\nUSER:\n'+(d.user||'');}return r.formats[k]||'';}
+function optOf(p,v){for(var i=0;i<p.opts.length;i++){if(p.opts[i][0]===v)return p.opts[i];}return p.opts[0];}
+function applyParams(text,params,vals){var t=text;(params||[]).forEach(function(p){var o=optOf(p,(vals&&vals[p.key]!=null)?vals[p.key]:p.def);t=t.split('[['+p.key+']]').join(o[2]||'');});return t.replace(/[ \t]{2,}/g,' ').replace(/[ \t]+\n/g,'\n');}
+function paramHeader(params,vals){var a=(params||[]).map(function(p){var o=optOf(p,(vals&&vals[p.key]!=null)?vals[p.key]:p.def);return p.label+'='+o[1];});return a.length?('Parámetros: '+a.join(' · ')+'\n\n'):'';}
 function disciplina(r){
-  var c=r.category, t=(r.tags||[]).join(' ');
+  var c=r.category,t=(r.tags||[]).join(' ');
   if(c==='Meta-Prompting') return 'Meta';
   if(c==='IA y Automatización'||c==='Vibe Coding'||c==='Desarrollo'||/automatizacion|pipeline|observabilidad|orquesta|agente|agent|workflow|harness|despliegue|ci-cd|devops|integracion/.test(t)) return 'Harness';
   if(/contexto|rag|memoria|retrieval|priming|conocimiento|documentacion|grounding|fuentes/.test(t)) return 'Context';
   return 'Prompting';
 }
-function nInputs(r){var s=r.formats.natural_params||r.formats.spec||'';var m=s.match(/\{\{[^}]+\}\}/g)||[];var set={};m.forEach(function(x){set[x.replace(/[^A-Za-z0-9_]/g,'')]=1});return Object.keys(set).length}
-function slug(r){return (r.command||r.id||'prompt').replace(/^\//,'').replace(/[^a-z0-9._-]+/gi,'-').replace(/^-+|-+$/g,'').toLowerCase()}
+function nInputs(r){var s=r.formats.natural_params||r.formats.spec||'';var m=s.match(/\{\{[^}]+\}\}/g)||[];var set={};m.forEach(function(x){set[x.replace(/[^A-Za-z0-9_]/g,'')]=1;});return Object.keys(set).length;}
+function slug(r){return (r.command||r.id||'prompt').replace(/^\//,'').replace(/[^a-z0-9._-]+/gi,'-').replace(/^-+|-+$/g,'').toLowerCase();}
+function isCmd(r){return r.subcategory==='Comando letra';}
 
-/* ---------- modal ---------- */
-var modal=document.getElementById('row-modal');
-modal.addEventListener('click',function(e){if(e.target===modal)modal.close();});
-modal.querySelector('[data-close]').addEventListener('click',function(){modal.close();});
-function openModal(r){
-  document.getElementById('rm-tag').textContent=disciplina(r).toUpperCase()+' · '+r.category;
+/* ---- estado + índice ---- */
+var DATA=[],INDEX=[],BYID={},CATS=[];
+var grid=document.getElementById('grid'),q=document.getElementById('q'),cat=document.getElementById('cat'),disc=document.getElementById('disc'),sort=document.getElementById('sort'),count=document.getElementById('count'),cmdsBtn=document.getElementById('cmds'),clearBtn=document.getElementById('clear-q'),qfield=document.getElementById('qfield'),sentinel=document.getElementById('sentinel'),loadmore=document.getElementById('loadmore');
+var FILTERED=[],shown=0,BATCH=60,showCmds=false;
+
+/* ---- modal ---- */
+var modal=document.getElementById('row-modal'),lastFocus=null;
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+modal.querySelector('[data-close]').addEventListener('click',closeModal);
+modal.addEventListener('close',function(){clearHash();if(lastFocus&&lastFocus.focus)lastFocus.focus();});
+function closeModal(){if(modal.open)modal.close();}
+function openModal(r,push){
+  var T=L(),lang=html.lang||'es',d=disciplina(r);
+  document.getElementById('rm-tag').textContent=(isCmd(r)?'COMANDO '+(r.command||''):d.toUpperCase()+' · '+r.category);
   document.getElementById('rm-title').textContent=r.title;
-  var ni=nInputs(r), qv=(r.q!=null?(' · <b>Calidad</b> '+r.q+'/10'):'');
-  var L={es:{when:'Cuándo usarlo',inputs:'inputs',copy:'Copiar',dl:'Descargar .md'},en:{when:'When to use it',inputs:'inputs',copy:'Copy',dl:'Download .md'},pt:{when:'Quando usar',inputs:'inputs',copy:'Copiar',dl:'Baixar .md'}};
-  var lang=document.documentElement.lang||'es', T=L[lang]||L.es;
+  var ni=nInputs(r),qv=(r.q!=null?(' · <b>'+T.quality+'</b> '+r.q+'/10'):'');
   var body=document.getElementById('rm-body');
-  var tagspan=(r.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>'}).join(' ');
+  var tagspan=(r.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join(' ');
+  var hasP=r.params&&r.params.length, metaCount=hasP?(r.params.length+' '+(L().params)):(ni+' '+T.inputs);
   body.innerHTML=
-    '<div class="rm-meta"><span class="disc d-'+disciplina(r)+'">'+disciplina(r)+'</span>'+
-    '<span><b>'+ni+'</b> '+T.inputs+'</span>'+qv+'</div>'+
+    '<div class="rm-meta"><span class="disc d-'+d+'">'+d+'</span>'+(r.command?'<span class="cmdtag">'+r.command+'</span>':'')+
+    '<span><b>'+metaCount.split(' ')[0]+'</b> '+metaCount.split(' ').slice(1).join(' ')+'</span>'+qv+'</div>'+
     '<div class="rm-note"><b>'+T.when+':</b> '+(r.desc||'—')+'</div>'+
     '<div class="tags">'+tagspan+'</div>'+
+    (hasP?'<div class="params" id="rm-params"></div>':'')+
     '<div class="tabs" id="rm-tabs"></div>'+
     '<pre class="body" id="rm-pre"></pre>'+
     '<div class="acts">'+
       '<button class="btn primary" id="rm-copy">'+T.copy+'</button>'+
       '<button class="btn" id="rm-dl">'+T.dl+'</button>'+
+      '<button class="btn" id="rm-share">'+T.share+'</button>'+
       '<button class="btn" id="rm-gpt">ChatGPT</button>'+
       '<button class="btn" id="rm-claude">Claude</button>'+
       '<button class="btn" id="rm-gemini">Gemini</button>'+
     '</div>';
-  var cur='natural';
-  var tabs=document.getElementById('rm-tabs'), pre=document.getElementById('rm-pre');
-  FMT.forEach(function(p){var k=p[0],lbl=p[1];var b=document.createElement('button');b.className='tab'+(k===cur?' on':'');b.textContent=lbl;
-    b.onclick=function(){cur=k;[].forEach.call(tabs.children,function(c){c.classList.remove('on')});b.classList.add('on');pre.textContent=flat(r,k);};tabs.appendChild(b);});
-  pre.textContent=flat(r,cur);
-  document.getElementById('rm-copy').onclick=function(e){var tx=flat(r,cur);(navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).catch(function(){var ta=document.createElement('textarea');ta.value=tx;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(_){}ta.remove();});e.target.textContent='✓';e.target.classList.add('ok');setTimeout(function(){e.target.textContent=T.copy;e.target.classList.remove('ok')},1500);};
-  document.getElementById('rm-dl').onclick=function(){var tx=flat(r,cur);var blob=new Blob([tx],{type:'text/markdown'});var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=slug(r)+'.'+cur+'.md';a.click();URL.revokeObjectURL(u);};
-  document.getElementById('rm-gpt').onclick=function(){window.open('https://chatgpt.com/?q='+encodeURIComponent(flat(r,cur)),'_blank');};
-  document.getElementById('rm-claude').onclick=function(){window.open('https://claude.ai/new?q='+encodeURIComponent(flat(r,cur)),'_blank');};
-  document.getElementById('rm-gemini').onclick=function(){var tx=flat(r,cur);if(navigator.clipboard)navigator.clipboard.writeText(tx).catch(function(){});window.open('https://gemini.google.com/app','_blank');};
+  var cur='natural',tabs=document.getElementById('rm-tabs'),pre=document.getElementById('rm-pre');
+  var pv={},headerOn=false;
+  if(hasP)r.params.forEach(function(p){pv[p.key]=p.def;});
+  function curText(){return (headerOn?paramHeader(r.params,pv):'')+applyParams(flat(r,cur),r.params,pv);}
+  function refresh(){pre.textContent=curText();}
+  if(hasP){
+    var pc=document.getElementById('rm-params');
+    r.params.forEach(function(p){
+      var f=document.createElement('div');f.className='pfield';
+      var lab=document.createElement('label');lab.textContent=p.label;lab.htmlFor='pp-'+p.key;
+      var sel=document.createElement('select');sel.id='pp-'+p.key;
+      p.opts.forEach(function(o){var op=document.createElement('option');op.value=o[0];op.textContent=o[1];if(o[0]===p.def)op.selected=true;sel.appendChild(op);});
+      sel.onchange=function(){pv[p.key]=sel.value;refresh();};
+      f.appendChild(lab);f.appendChild(sel);pc.appendChild(f);
+    });
+    var hl=document.createElement('label');hl.className='phdr';
+    var cbx=document.createElement('input');cbx.type='checkbox';cbx.id='rm-phdr';
+    cbx.onchange=function(){headerOn=cbx.checked;refresh();};
+    hl.appendChild(cbx);hl.appendChild(document.createTextNode(L().showParams));pc.appendChild(hl);
+  }
+  FMT.forEach(function(p){var k=p[0],lbl=p[1],b=document.createElement('button');b.className='tab'+(k===cur?' on':'');b.textContent=lbl;b.setAttribute('role','tab');
+    b.onclick=function(){cur=k;[].forEach.call(tabs.children,function(c){c.classList.remove('on');});b.classList.add('on');refresh();};tabs.appendChild(b);});
+  refresh();
+  function copy(tx){return (navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).catch(function(){var ta=document.createElement('textarea');ta.value=tx;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_){}ta.remove();});}
+  document.getElementById('rm-copy').onclick=function(e){copy(curText());var b=e.target;b.textContent=L().copied;b.classList.add('ok');setTimeout(function(){b.textContent=L().copy;b.classList.remove('ok');},1500);};
+  document.getElementById('rm-dl').onclick=function(){var tx=curText(),blob=new Blob([tx],{type:'text/markdown'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=slug(r)+'.'+cur+'.md';a.click();URL.revokeObjectURL(u);};
+  document.getElementById('rm-share').onclick=function(e){var url=location.origin+location.pathname+location.search+'#'+encodeURIComponent(r.id);copy(url);var b=e.target;b.textContent=L().shared;b.classList.add('ok');setTimeout(function(){b.textContent=L().share;b.classList.remove('ok');},1500);};
+  document.getElementById('rm-gpt').onclick=function(){window.open('https://chatgpt.com/?q='+encodeURIComponent(curText()),'_blank','noopener');};
+  document.getElementById('rm-claude').onclick=function(){window.open('https://claude.ai/new?q='+encodeURIComponent(curText()),'_blank','noopener');};
+  document.getElementById('rm-gemini').onclick=function(){copy(curText());window.open('https://gemini.google.com/app','_blank','noopener');};
+  lastFocus=document.activeElement;
+  if(push!==false){try{history.replaceState(null,'',location.pathname+location.search+'#'+encodeURIComponent(r.id));}catch(_){}}
   if(modal.showModal)modal.showModal();else modal.setAttribute('open','');
 }
+function clearHash(){if(location.hash){try{history.replaceState(null,'',location.pathname+location.search);}catch(_){}}}
 
-/* ---------- cards + render ---------- */
+/* ---- card ---- */
 function card(r){
-  var el=document.createElement('div');el.className='card';
-  var d=disciplina(r);
-  var tags=(r.tags||[]).slice(0,5).map(function(t){return '<span class="tag">'+t+'</span>'}).join('');
-  var ver={es:'Ver',en:'View',pt:'Ver'}[document.documentElement.lang]||'Ver';
-  el.innerHTML='<div class="chips"><span class="cat">'+r.category+'</span><span class="disc d-'+d+'">'+d+'</span></div>'+
-    '<h3>'+r.title+'</h3><div class="desc">'+(r.desc||'')+'</div><div class="tags">'+tags+'</div>'+
-    '<div class="acts"><button class="btn primary rm-open">'+ver+' →</button></div>';
+  var el=document.createElement('div');el.className='card';var d=disciplina(r);
+  var tags=(r.tags||[]).slice(0,5).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
+  var top=isCmd(r)?'<span class="cmdtag">'+(r.command||'/')+'</span>':'<span class="cat">'+r.category+'</span>';
+  el.innerHTML='<div class="chips">'+top+'<span class="disc d-'+d+'">'+d+'</span></div>'+
+    '<h3>'+r.title+'</h3>'+(r.desc?'<div class="desc">'+r.desc+'</div>':'')+'<div class="tags">'+tags+'</div>'+
+    '<div class="acts"><button class="btn primary rm-open">'+L().ver+' →</button></div>';
   el.querySelector('.rm-open').onclick=function(){openModal(r);};
   return el;
 }
-var grid=document.getElementById('grid'),q=document.getElementById('q'),cat=document.getElementById('cat'),disc=document.getElementById('disc'),count=document.getElementById('count');
-function render(){
-  var qq=q.value.toLowerCase(),cc=cat.value,dd=disc.value;grid.innerHTML='';var n=0;var frag=document.createDocumentFragment();
-  DATA.forEach(function(r){
-    var hay=(r.title+' '+(r.desc||'')+' '+(r.tags||[]).join(' ')).toLowerCase();
-    if((!cc||r.category===cc)&&(!dd||disciplina(r)===dd)&&(!qq||hay.indexOf(qq)>=0)){frag.appendChild(card(r));n++;}
-  });
-  grid.appendChild(frag);
-  var w={es:' / '+DATA.length+' prompts',en:' / '+DATA.length+' prompts',pt:' / '+DATA.length+' prompts'}[document.documentElement.lang]||'';
-  count.textContent=n+w;
-}
-q.oninput=render;cat.onchange=render;disc.onchange=render;
-document.getElementById('langbtn').addEventListener('click',function(){setTimeout(render,0);});
 
-/* ---------- load dataset ---------- */
-count.textContent='Cargando…';
-fetch('biblioteca-data.json').then(function(r){return r.json()}).then(function(j){DATA=j.filter(function(r){return r.subcategory!=='Comando letra'});render();}).catch(function(e){
-  count.textContent='Error al cargar el dataset.';
-  grid.innerHTML='<p style="color:var(--ink2)"><span class="l-es">No se pudo cargar <code>biblioteca-data.json</code>. Si abres el archivo localmente, sírvelo por HTTP (p. ej. <code>python3 -m http.server</code>).</span><span class="l-en">Could not load <code>biblioteca-data.json</code>. If opening locally, serve it over HTTP (e.g. <code>python3 -m http.server</code>).</span><span class="l-pt">Não foi possível carregar <code>biblioteca-data.json</code>. Se abrir localmente, sirva via HTTP (ex.: <code>python3 -m http.server</code>).</span></p>';
+/* ---- filtrar + ordenar ---- */
+function compute(){
+  var qq=norm(q.value.trim()),cc=cat.value,dd=disc.value,slash=qq.charAt(0)==='/';
+  var so=sort.value,out=[];
+  for(var i=0;i<DATA.length;i++){var r=DATA[i],ix=INDEX[i];
+    if(isCmd(r)&&!showCmds&&!slash) continue;
+    if(cc&&r.category!==cc) continue;
+    if(dd&&ix.disc!==dd) continue;
+    if(qq){ if(slash){ if(ix.cmd.indexOf(qq)!==0) continue; } else if(ix.hay.indexOf(qq)<0) continue; }
+    out.push(i);
+  }
+  if(so==='q') out.sort(function(a,b){return (DATA[b].q||0)-(DATA[a].q||0);});
+  else if(so==='az') out.sort(function(a,b){return INDEX[a].t<INDEX[b].t?-1:1;});
+  else if(so==='cat') out.sort(function(a,b){var c=DATA[a].category<DATA[b].category?-1:DATA[a].category>DATA[b].category?1:0;return c||((DATA[b].q||0)-(DATA[a].q||0));});
+  return out;
+}
+function applyFilters(){
+  FILTERED=compute();shown=0;grid.innerHTML='';
+  var T=L();count.textContent=T.countSuf(FILTERED.length,DATA.length);
+  if(!FILTERED.length){
+    grid.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+T.noResT+'</b><br>'+T.noResB+' <button class="btn" id="reset-f" style="margin-top:.6rem">'+T.clearAll+'</button></div>';
+    var rf=document.getElementById('reset-f');if(rf)rf.onclick=resetFilters;
+    loadmore.hidden=true;return;
+  }
+  renderMore();
+}
+function renderMore(){
+  var frag=document.createDocumentFragment(),end=Math.min(shown+BATCH,FILTERED.length);
+  for(var i=shown;i<end;i++) frag.appendChild(card(DATA[FILTERED[i]]));
+  grid.appendChild(frag);shown=end;
+  loadmore.hidden=shown>=FILTERED.length;
+}
+function resetFilters(){q.value='';cat.value='';disc.value='';sort.value='rel';showCmds=false;cmdsBtn.setAttribute('aria-pressed','false');qfield.classList.remove('has-val');syncURL();applyFilters();}
+
+/* ---- URL state ---- */
+function syncURL(){
+  var p=new URLSearchParams();
+  if(q.value.trim())p.set('q',q.value.trim());
+  if(disc.value)p.set('disc',disc.value);
+  if(cat.value)p.set('cat',cat.value);
+  if(sort.value&&sort.value!=='rel')p.set('sort',sort.value);
+  if(showCmds)p.set('cmds','1');
+  var qs=p.toString();
+  try{history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+(location.hash||''));}catch(_){}
+}
+function readURL(){
+  var p=new URLSearchParams(location.search);
+  if(p.get('q'))q.value=p.get('q');
+  if(p.get('disc'))disc.value=p.get('disc');
+  if(p.get('cat'))cat.value=p.get('cat');
+  if(p.get('sort'))sort.value=p.get('sort');
+  if(p.get('cmds')==='1'){showCmds=true;cmdsBtn.setAttribute('aria-pressed','true');}
+  if(q.value.trim())qfield.classList.add('has-val');
+}
+
+/* ---- command palette ---- */
+var pal=document.getElementById('palette'),palQ=document.getElementById('palette-q'),palList=document.getElementById('palette-list'),palSel=0,palItems=[];
+function openPalette(){palQ.value='';renderPalette('');if(pal.showModal)pal.showModal();else pal.setAttribute('open','');setTimeout(function(){palQ.focus();},30);}
+function closePalette(){if(pal.open)pal.close();}
+pal.addEventListener('click',function(e){if(e.target===pal)closePalette();});
+function renderPalette(v){
+  var qq=norm(v.trim()),slash=qq.charAt(0)==='/',res=[];
+  for(var i=0;i<DATA.length&&res.length<30;i++){var r=DATA[i],ix=INDEX[i];
+    if(!qq){res.push(r);continue;}
+    if(slash){if(ix.cmd.indexOf(qq)===0)res.push(r);}
+    else if(ix.t.indexOf(qq)>=0||ix.cmd.indexOf(qq)>=0||ix.tg.indexOf(qq)>=0)res.push(r);
+  }
+  palItems=res;palSel=0;palList.innerHTML='';
+  res.forEach(function(r,i){var li=document.createElement('li');li.setAttribute('role','option');li.className=i===0?'sel':'';
+    li.innerHTML='<span class="pcmd">'+(r.command||'')+'</span><span class="ptitle">'+r.title+'</span><span class="pcat">'+r.category+'</span>';
+    li.onclick=function(){closePalette();openModal(r);};palList.appendChild(li);});
+}
+function palMove(d){if(!palItems.length)return;palList.children[palSel].classList.remove('sel');palSel=(palSel+d+palItems.length)%palItems.length;var li=palList.children[palSel];li.classList.add('sel');li.scrollIntoView({block:'nearest'});}
+palQ.addEventListener('input',function(){renderPalette(palQ.value);});
+palQ.addEventListener('keydown',function(e){
+  if(e.key==='ArrowDown'){e.preventDefault();palMove(1);}
+  else if(e.key==='ArrowUp'){e.preventDefault();palMove(-1);}
+  else if(e.key==='Enter'){e.preventDefault();if(palItems[palSel]){closePalette();openModal(palItems[palSel]);}}
 });
+document.getElementById('palette-open').onclick=openPalette;
+
+/* ---- atajos teclado globales ---- */
+document.addEventListener('keydown',function(e){
+  var tag=(e.target.tagName||'').toLowerCase(),typing=tag==='input'||tag==='select'||tag==='textarea';
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPalette();}
+  else if(e.key==='/'&&!typing&&!pal.open){e.preventDefault();openPalette();}
+});
+
+/* ---- i18n: retraducir chrome al cambiar idioma ---- */
+function retranslate(){var T=L();q.placeholder=T.ph;cat.options[0].textContent=T.allCat;
+  if(DATA.length){count.textContent=T.countSuf(FILTERED.length,DATA.length);} }
+document.getElementById('langbtn').addEventListener('click',function(){setTimeout(function(){retranslate();applyFilters();},0);});
+
+/* ---- listeners controles ---- */
+var deb;
+q.addEventListener('input',function(){qfield.classList.toggle('has-val',!!q.value);clearTimeout(deb);deb=setTimeout(function(){syncURL();applyFilters();},120);});
+clearBtn.onclick=function(){q.value='';qfield.classList.remove('has-val');syncURL();applyFilters();q.focus();};
+cat.onchange=function(){syncURL();applyFilters();};
+disc.onchange=function(){syncURL();applyFilters();};
+sort.onchange=function(){syncURL();applyFilters();};
+cmdsBtn.onclick=function(){showCmds=!showCmds;cmdsBtn.setAttribute('aria-pressed',showCmds?'true':'false');syncURL();applyFilters();};
+loadmore.onclick=renderMore;
+window.addEventListener('popstate',function(){var id=decodeURIComponent((location.hash||'').slice(1));if(id&&BYID[id])openModal(BYID[id],false);else closeModal();});
+
+/* ---- scroll infinito ---- */
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting&&shown<FILTERED.length)renderMore();});},{rootMargin:'600px'}).observe(sentinel);
+}
+
+/* ---- carga ---- */
+count.textContent='Cargando…';
+fetch('biblioteca-data.json').then(function(r){return r.json();}).then(function(j){
+  DATA=j;
+  // índice + catálogo
+  var catset={};
+  for(var i=0;i<DATA.length;i++){var r=DATA[i];BYID[r.id]=r;catset[r.category]=1;
+    INDEX[i]={
+      t:norm(r.title),
+      tg:norm((r.tags||[]).join(' ')),
+      cmd:norm(r.command||''),
+      disc:disciplina(r),
+      hay:norm(r.title+' '+(r.desc||'')+' '+(r.tags||[]).join(' ')+' '+(r.command||'')+' '+applyParams(flat(r,'natural'),r.params)+' '+applyParams(flat(r,'spec'),r.params))
+    };
+  }
+  CATS=Object.keys(catset).sort();
+  var T=L();var o0=document.createElement('option');o0.value='';o0.textContent=T.allCat;cat.appendChild(o0);
+  CATS.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;cat.appendChild(o);});
+  retranslate();readURL();applyFilters();
+  // deep-link a prompt
+  var id=decodeURIComponent((location.hash||'').slice(1));if(id&&BYID[id])openModal(BYID[id],false);
+}).catch(function(){
+  count.textContent='Error al cargar el dataset.';
+  grid.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="l-es">No se pudo cargar <code>biblioteca-data.json</code>. Si abres el archivo localmente, sírvelo por HTTP (p. ej. <code>python3 -m http.server</code>).</span><span class="l-en">Could not load <code>biblioteca-data.json</code>. If opening locally, serve it over HTTP (e.g. <code>python3 -m http.server</code>).</span><span class="l-pt">Não foi possível carregar <code>biblioteca-data.json</code>. Se abrir localmente, sirva via HTTP (ex.: <code>python3 -m http.server</code>).</span></div>';
+});
+})();
 </script>
 </body></html>
