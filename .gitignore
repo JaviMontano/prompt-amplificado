@@ -11,3 +11,6 @@ tools/xl-nd-*
 tools/xl-ndg.js
 tools/xl-natdesc.js
 tools/xl-gl.js
+tools/xl-meta.js
+tools/xl-intro.js
+tools/meta-seed.es.json

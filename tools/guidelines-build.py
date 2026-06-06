@@ -10,6 +10,15 @@ HERE = os.path.dirname(__file__)
 ROOT = os.path.join(HERE, '..')
 LANGS = ['es', 'en', 'pt']
 DATA = {l: json.load(open(os.path.join(HERE, 'guidelines.%s.json' % l), encoding='utf-8')) for l in LANGS}
+def _loadmeta():
+    try:
+        return {l: json.load(open(os.path.join(HERE, 'meta.%s.json' % l), encoding='utf-8')) for l in LANGS}
+    except Exception:
+        return None
+META = _loadmeta()
+FMTCMD = {'natural': '/crear-natural', 'parametros': '/crear-parametros', 'spec': '/crear-spec', 'dupla': '/crear-dupla'}
+METALBL = {'es': 'Meta-prompt para crear este formato', 'en': 'Meta-prompt to create this format', 'pt': 'Meta-prompt para criar este formato'}
+COPY = {'es': 'Copiar', 'en': 'Copy', 'pt': 'Copiar'}
 ORDER = ['general', 'natural', 'parametros', 'spec', 'dupla']
 FMTS = ['natural', 'parametros', 'spec', 'dupla']
 SECLBL = {
@@ -69,6 +78,10 @@ def biblio_section():
       '<p class="lead">' + tri_ui('sub') + '</p>\n'
       '<div class="note"><b>' + tri_doc('general', 'title') + '.</b> ' + tri_doc('general', 'intro') + '</div>\n'
       '<div class="fmt-grid">' + ''.join(cards) + '</div>\n'
+      '<div class="note"><b><span class="l-es">Meta-prompts</span><span class="l-en">Meta-prompts</span><span class="l-pt">Meta-prompts</span>.</b> '
+      '<span class="l-es">Genera prompts con <code>/crear-natural</code> · <code>/crear-parametros</code> · <code>/crear-spec</code> · <code>/crear-dupla</code>, y elige formato con <code>/elegir-formato</code> — búscalos en el catálogo (categoría Meta-Prompting) o en <a href="crear-prompts.html">Crear prompts</a>.</span>'
+      '<span class="l-en">Generate prompts with <code>/crear-natural</code> · <code>/crear-parametros</code> · <code>/crear-spec</code> · <code>/crear-dupla</code>, and pick a format with <code>/elegir-formato</code> — find them in the catalog (Meta-Prompting) or in <a href="crear-prompts.html">Create prompts</a>.</span>'
+      '<span class="l-pt">Gere prompts com <code>/crear-natural</code> · <code>/crear-parametros</code> · <code>/crear-spec</code> · <code>/crear-dupla</code>, e escolha o formato com <code>/elegir-formato</code> — no catálogo (Meta-Prompting) ou em <a href="crear-prompts.html">Criar prompts</a>.</span></div>\n'
       '<p style="margin-top:.8rem"><a class="iconbtn" style="background:var(--gold);color:var(--navy2);border-color:var(--gold);font-weight:700" href="crear-prompts.html">' + tri_ui('full') + '</a></p>\n'
       '</section>\n'
       '<!-- GUIDELINES:END -->')
@@ -101,13 +114,24 @@ def doc_block(key):
     parts.append('</section>')
     return '\n'.join(parts)
 
+def copyable(cmd, field='natural'):
+    if not META or cmd not in META['es']: return ''
+    pres = ''.join('<pre class="prompt-text l-%s">%s</pre>' % (l, esc(META[l].get(cmd, META['es'][cmd])[field])) for l in LANGS)
+    btn = ''.join('<span class="l-%s">%s</span>' % (l, COPY[l]) for l in LANGS)
+    return ('<div class="prompt-copyable"><div class="ph"><button class="copy-btn" type="button" onclick="copyPrompt(this)">' + btn + '</button></div>' + pres + '</div>')
+
 def fmt_panel(key):
     secs = []
     for sec in ['guidelines', 'guardrails', 'workflow', 'acceptance', 'dod']:
         if not DATA['es'][key].get(sec): continue
         secs.append('<h4>' + tri_label(sec) + '</h4>' + tri_list(key, sec, ordered=(sec == 'workflow')))
-    return ('<div class="fmt-panel fp-%s" id="%s"><div class="ph"><span class="fk">%s</span><h3>%s</h3><p>%s</p></div><div class="bd">%s</div></div>'
-            % (key, key, key, tri_doc(key, 'title'), tri_doc(key, 'intro'), ''.join(secs)))
+    meta = ''
+    cmd = FMTCMD.get(key)
+    if cmd and META and cmd in META['es']:
+        mlbl = ''.join('<span class="l-%s">%s</span>' % (l, METALBL[l]) for l in LANGS)
+        meta = '<h4>' + mlbl + '</h4>' + copyable(cmd)
+    return ('<div class="fmt-panel fp-%s" id="%s"><div class="ph"><span class="fk">%s</span><h3>%s</h3><p>%s</p></div><div class="bd">%s%s</div></div>'
+            % (key, key, key, tri_doc(key, 'title'), tri_doc(key, 'intro'), ''.join(secs), meta))
 
 def formats_section():
     head = ('<section class="wrap"><h2>'
@@ -131,7 +155,16 @@ def build_page():
       '  <span aria-current="page">' + tri_ui('crear') + '</span><span class="sep">·</span>\n'
       '  <a class="hub" href="index.html">↑ Hub</a>\n'
       '</div>')
-    blocks = doc_block('general') + '\n\n' + formats_section()
+    master = ''
+    if META and '/elegir-formato' in META['es']:
+        master = ('<section class="wrap"><h2>'
+                  '<span class="l-es">Meta-prompt maestro</span><span class="l-en">Master meta-prompt</span><span class="l-pt">Meta-prompt mestre</span>'
+                  '</h2><p class="lead">'
+                  '<span class="l-es">¿No sabes qué formato usar? Pega este meta-prompt: analiza tu caso, elige el mejor formato y genera el prompt.</span>'
+                  '<span class="l-en">Not sure which format to use? Paste this meta-prompt: it analyzes your case, picks the best format and generates the prompt.</span>'
+                  '<span class="l-pt">Não sabe qual formato usar? Cole este meta-prompt: analisa seu caso, escolhe o melhor formato e gera o prompt.</span>'
+                  '</p>' + copyable('/elegir-formato') + '</section>')
+    blocks = doc_block('general') + '\n\n' + master + '\n\n' + formats_section()
     page = (
 '''<!doctype html><html lang="es" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
