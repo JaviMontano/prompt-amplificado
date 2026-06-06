@@ -1,3 +1,9 @@
 *.bak
 .playwright-mcp/
 *.pre-xl
+tools/xl-out-*.json
+tools/xl-es.json
+tools/xl-tr-*.js
+tools/xl-retry-*.js
+tools/xl-workflow.js
+tools/xl-seed.json
