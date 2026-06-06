@@ -10,3 +10,4 @@ tools/xl-seed.json
 tools/xl-nd-*
 tools/xl-ndg.js
 tools/xl-natdesc.js
+tools/xl-gl.js
