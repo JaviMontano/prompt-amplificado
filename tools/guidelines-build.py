@@ -101,6 +101,24 @@ def doc_block(key):
     parts.append('</section>')
     return '\n'.join(parts)
 
+def fmt_panel(key):
+    secs = []
+    for sec in ['guidelines', 'guardrails', 'workflow', 'acceptance', 'dod']:
+        if not DATA['es'][key].get(sec): continue
+        secs.append('<h4>' + tri_label(sec) + '</h4>' + tri_list(key, sec, ordered=(sec == 'workflow')))
+    return ('<div class="fmt-panel fp-%s" id="%s"><div class="ph"><span class="fk">%s</span><h3>%s</h3><p>%s</p></div><div class="bd">%s</div></div>'
+            % (key, key, key, tri_doc(key, 'title'), tri_doc(key, 'intro'), ''.join(secs)))
+
+def formats_section():
+    head = ('<section class="wrap"><h2>'
+            '<span class="l-es">Estándar por formato</span><span class="l-en">Standard by format</span><span class="l-pt">Padrão por formato</span>'
+            '</h2><p class="lead">'
+            '<span class="l-es">Misma estructura en los cuatro formatos: guidelines · guardrails · workflow · criterios · DoD.</span>'
+            '<span class="l-en">Same structure across the four formats: guidelines · guardrails · workflow · criteria · DoD.</span>'
+            '<span class="l-pt">Mesma estrutura nos quatro formatos: diretrizes · guardrails · fluxo · critérios · DoD.</span>'
+            '</p><div class="fmt-cols">')
+    return head + ''.join(fmt_panel(f) for f in FMTS) + '</div></section>'
+
 def build_page():
     docset = (
       '<div class="docset-bar">\n'
@@ -113,7 +131,7 @@ def build_page():
       '  <span aria-current="page">' + tri_ui('crear') + '</span><span class="sep">·</span>\n'
       '  <a class="hub" href="index.html">↑ Hub</a>\n'
       '</div>')
-    blocks = '\n\n'.join(doc_block(k) for k in ORDER)
+    blocks = doc_block('general') + '\n\n' + formats_section()
     page = (
 '''<!doctype html><html lang="es" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -125,6 +143,20 @@ def build_page():
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="estilos/doc.css">
+<style>
+.fmt-cols{display:grid;gap:1rem;grid-template-columns:1fr;margin:1rem 0}
+@media(min-width:780px){.fmt-cols{grid-template-columns:1fr 1fr}}
+.fmt-panel{border:1px solid var(--rule);border-radius:var(--r2);background:var(--card);overflow:hidden;display:flex;flex-direction:column}
+.fmt-panel .ph{padding:.7rem .9rem;border-bottom:3px solid var(--accent,var(--gold));background:var(--navy2);color:#fff}
+.fmt-panel .ph .fk{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent,var(--gold))}
+.fmt-panel .ph h3{color:#fff;margin:.1rem 0;font-size:1.02rem}
+.fmt-panel .ph p{color:#dfe7f5;font-size:.8rem;margin:.25rem 0 0}
+.fmt-panel .bd{padding:.5rem .9rem .9rem}
+.fmt-panel h4{font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-deep);margin:.8rem 0 .25rem;font-family:var(--f-head)}
+.fmt-panel ul,.fmt-panel ol{margin:.2rem 0;padding-left:1.15rem}
+.fmt-panel li{margin:.22rem 0;font-size:.85rem;line-height:1.5}
+.fp-natural{--accent:var(--blue)}.fp-parametros{--accent:var(--gold-deep)}.fp-spec{--accent:var(--ok)}.fp-dupla{--accent:#7c3aed}
+</style>
 </head><body>
 <div class="reading-progress"></div>
 ''' + docset + '''
