@@ -7,3 +7,6 @@ tools/xl-tr-*.js
 tools/xl-retry-*.js
 tools/xl-workflow.js
 tools/xl-seed.json
+tools/xl-nd-*
+tools/xl-ndg.js
+tools/xl-natdesc.js
