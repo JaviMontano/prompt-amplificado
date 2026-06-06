@@ -82,6 +82,13 @@ pre.body{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);fo
 .adjust-hint{color:var(--mute);font-size:.72rem}
 .rm-ta{width:100%;box-sizing:border-box;white-space:pre-wrap;font-family:var(--f-mono);font-size:.78rem;line-height:1.5;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:.7rem;margin:.4rem 0 0;color:var(--ink);resize:vertical;min-height:160px}
 .rm-ta:focus{outline:2px solid color-mix(in srgb,var(--gold) 60%,transparent);outline-offset:1px;border-color:var(--gold)}
+.bondades{margin:.5rem 0;border:1px solid var(--rule);border-radius:10px;background:var(--card);font-size:.82rem;overflow:hidden}
+.bondades summary{cursor:pointer;padding:.5rem .7rem;font-weight:700;color:var(--gold-deep);font-family:var(--f-head);list-style:none}
+.bondades summary::-webkit-details-marker{display:none}
+.bondades summary:before{content:'▸ ';}.bondades[open] summary:before{content:'▾ ';}
+.bondades .bd-row{padding:.5rem .7rem;border-top:1px solid var(--rule)}
+.bondades .bd-row b{display:block;color:var(--ink);font-size:.68rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:.2rem}
+.bondades .bd-row div{color:var(--ink2);white-space:pre-wrap;max-height:30vh;overflow:auto}
 /* command palette */
 dialog.palette{border:none;border-radius:14px;padding:0;max-width:min(640px,95vw);width:100%;background:transparent;margin-top:8vh}
 dialog.palette::backdrop{background:rgba(10,18,42,.55);backdrop-filter:blur(2px)}
@@ -279,27 +286,44 @@ var grid=document.getElementById('grid'),q=document.getElementById('q'),cat=docu
 var FILTERED=[],shown=0,BATCH=60,showCmds=false;
 
 /* ---- modal ---- */
-var modal=document.getElementById('row-modal'),lastFocus=null;
+var modal=document.getElementById('row-modal'),lastFocus=null,CURR=null;
 modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
 modal.querySelector('[data-close]').addEventListener('click',closeModal);
 modal.addEventListener('close',function(){clearHash();if(lastFocus&&lastFocus.focus)lastFocus.focus();});
 function closeModal(){if(modal.open)modal.close();}
 function openModal(r,push){
-  var T=L(),lang=html.lang||'es',d=disciplina(r);
+  CURR=r; lastFocus=document.activeElement;
+  renderModalBody(r);
+  if(push!==false){try{history.replaceState(null,'',location.pathname+location.search+'#'+encodeURIComponent(r.id));}catch(_){}}
+  if(modal.showModal)modal.showModal();else modal.setAttribute('open','');
+}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function bondadesHTML(b){
+  if(!b)return '';
+  var LB={how_to_use:'Cómo usarlo',importance:'Por qué importa',common_errors:'Errores comunes',exercise:'Ejercicio 3 min',example:'Ejemplo'};
+  var rows=Object.keys(LB).filter(function(k){return b[k];}).map(function(k){
+    return '<div class="bd-row"><b>'+LB[k]+'</b><div>'+esc(b[k]).replace(/\n/g,'<br>')+'</div></div>';});
+  return rows.length?('<details class="bondades"><summary>Bondades · cómo sacarle jugo</summary>'+rows.join('')+'</details>'):'';
+}
+function renderModalBody(r){
+  var T=L(),lang=(r.tri&&r.tri[html.lang])?html.lang:'es',d=disciplina(r);
+  var t2=r.tri?(r.tri[lang]||r.tri.es):null;
+  var fmtObj=t2?t2.formats:r.formats;
+  var title=t2?t2.title:r.title, desc=t2?t2.desc:(r.desc||'—');
+  var qv=(r.q!=null?(' · <b>'+T.quality+'</b> '+r.q+'/10'):'');
   document.getElementById('rm-tag').textContent=(isCmd(r)?'COMANDO '+(r.command||''):d.toUpperCase()+' · '+r.category);
-  document.getElementById('rm-title').textContent=r.title;
-  var ni=nInputs(r),qv=(r.q!=null?(' · <b>'+T.quality+'</b> '+r.q+'/10'):'');
+  document.getElementById('rm-title').textContent=title;
   var body=document.getElementById('rm-body');
   var tagspan=(r.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join(' ');
-  var hasP=r.params&&r.params.length;
+  var editable=!!r.tri, hasP=r.params&&r.params.length;
   var adj=hasP?('<div class="adjust"><b>'+T.adjust+':</b> '+adjustLine(r.params)+'<br><span class="adjust-hint">'+T.adjustHint+'</span></div>'):'';
   body.innerHTML=
     '<div class="rm-meta"><span class="disc d-'+d+'">'+d+'</span>'+(r.command?'<span class="cmdtag">'+r.command+'</span>':'')+qv+'</div>'+
-    '<div class="rm-note"><b>'+T.when+':</b> '+(r.desc||'—')+'</div>'+
-    adj+
+    '<div class="rm-note"><b>'+T.when+':</b> '+esc(desc)+'</div>'+
+    adj+ bondadesHTML(t2&&t2.bondades)+
     (tagspan?'<div class="tags">'+tagspan+'</div>':'')+
     '<div class="tabs" id="rm-tabs"></div>'+
-    (hasP?'<textarea class="rm-ta" id="rm-ta" spellcheck="false" aria-label="Prompt editable"></textarea>':'<pre class="body" id="rm-pre"></pre>')+
+    (editable?'<textarea class="rm-ta" id="rm-ta" spellcheck="false" aria-label="Prompt editable"></textarea>':'<pre class="body" id="rm-pre"></pre>')+
     '<div class="acts">'+
       '<button class="btn primary" id="rm-copy">'+T.copy+'</button>'+
       '<button class="btn" id="rm-dl">'+T.dl+'</button>'+
@@ -310,11 +334,12 @@ function openModal(r,push){
     '</div>';
   var cur='natural',tabs=document.getElementById('rm-tabs');
   var ta=document.getElementById('rm-ta'),pre=document.getElementById('rm-pre');
-  function setText(v){if(ta){ta.value=v;ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight+2,window.innerHeight*0.46)+'px';}else{pre.textContent=v;}}
+  function flatF(k){var f=fmtObj||{};if(k==='dupla'){var dd=f.dupla||{};return 'SYSTEM:\n'+(dd.system||'')+'\n\nUSER:\n'+(dd.user||'');}return f[k]||'';}
+  function setText(v){if(ta){ta.value=v;ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight+2,window.innerHeight*0.5)+'px';}else{pre.textContent=v;}}
   function getText(){return ta?ta.value:pre.textContent;}
   FMT.forEach(function(p){var k=p[0],lbl=p[1],b=document.createElement('button');b.className='tab'+(k===cur?' on':'');b.textContent=lbl;b.setAttribute('role','tab');
-    b.onclick=function(){cur=k;[].forEach.call(tabs.children,function(c){c.classList.remove('on');});b.classList.add('on');setText(flat(r,k));};tabs.appendChild(b);});
-  setText(flat(r,cur));
+    b.onclick=function(){cur=k;[].forEach.call(tabs.children,function(c){c.classList.remove('on');});b.classList.add('on');setText(flatF(k));};tabs.appendChild(b);});
+  setText(flatF(cur));
   function copy(tx){return (navigator.clipboard?navigator.clipboard.writeText(tx):Promise.reject()).catch(function(){var t2=document.createElement('textarea');t2.value=tx;document.body.appendChild(t2);t2.select();try{document.execCommand('copy');}catch(_){}t2.remove();});}
   document.getElementById('rm-copy').onclick=function(e){copy(getText());var b=e.target;b.textContent=L().copied;b.classList.add('ok');setTimeout(function(){b.textContent=L().copy;b.classList.remove('ok');},1500);};
   document.getElementById('rm-dl').onclick=function(){var tx=getText(),blob=new Blob([tx],{type:'text/markdown'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=slug(r)+'.'+cur+'.md';a.click();URL.revokeObjectURL(u);};
@@ -322,9 +347,6 @@ function openModal(r,push){
   document.getElementById('rm-gpt').onclick=function(){window.open('https://chatgpt.com/?q='+encodeURIComponent(getText()),'_blank','noopener');};
   document.getElementById('rm-claude').onclick=function(){window.open('https://claude.ai/new?q='+encodeURIComponent(getText()),'_blank','noopener');};
   document.getElementById('rm-gemini').onclick=function(){copy(getText());window.open('https://gemini.google.com/app','_blank','noopener');};
-  lastFocus=document.activeElement;
-  if(push!==false){try{history.replaceState(null,'',location.pathname+location.search+'#'+encodeURIComponent(r.id));}catch(_){}}
-  if(modal.showModal)modal.showModal();else modal.setAttribute('open','');
 }
 function clearHash(){if(location.hash){try{history.replaceState(null,'',location.pathname+location.search);}catch(_){}}}
 
@@ -431,7 +453,7 @@ document.addEventListener('keydown',function(e){
 /* ---- i18n: retraducir chrome al cambiar idioma ---- */
 function retranslate(){var T=L();q.placeholder=T.ph;cat.options[0].textContent=T.allCat;
   if(DATA.length){count.textContent=T.countSuf(FILTERED.length,DATA.length);} }
-document.getElementById('langbtn').addEventListener('click',function(){setTimeout(function(){retranslate();applyFilters();},0);});
+document.getElementById('langbtn').addEventListener('click',function(){setTimeout(function(){retranslate();applyFilters();if(modal.open&&CURR)renderModalBody(CURR);},0);});
 
 /* ---- listeners controles ---- */
 var deb;

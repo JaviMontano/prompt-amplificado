@@ -315,6 +315,91 @@ add("/y", "Y · Revisión final", "Revisión pre-entrega: completitud, formato, 
 add("/z", "Z · Zoom out", "Perspectiva estratégica: panorama, implicaciones sistémicas.",
     "Zoom out. Perspectiva estratégica. Conecta con el panorama general: objetivos de largo plazo, implicaciones sistémicas, qué estamos pasando por alto.", [], tail=("ext",))
 
+# ---------- criterio de aceptación + límite/caso borde por comando ----------
+# crit = qué debe cumplir la salida para ser buena. edge = cómo manejar ambigüedad/falta de datos / qué NO hacer.
+CE = {
+"/0": ("Reformulas rol, objetivo y restricciones sin que yo corrija; las preguntas son bloqueantes, no cosméticas.", "Ante ambigüedad pregunta, no asumas. No ejecutes nada en este paso."),
+"/1": ("La frase Qué + Para Qué + Para Quién es aprobable sin edición.", "Si la idea es vaga, marca qué falta antes de validar; no la completes inventando."),
+"/2": ("El SPEC es ejecutable por un tercero sin contexto extra.", "Si un campo S/P/E/C queda supuesto, decláralo explícito en vez de rellenarlo."),
+"/3": ("Cada fase tiene entrada, salida y criterio de hecho; dependencias y riesgos visibles.", "No planifiques sobre supuestos no confirmados; márcalos como riesgo."),
+"/4": ("Draft completo, sin secciones vacías; pendientes marcados, no omitidos.", "Si falta un dato usa [PENDIENTE] y continúa; no inventes para rellenar."),
+"/5": ("Cada dato con fuente o marcado como estimación; ejemplos verificables.", "No agregues longitud sin sustancia; si no hay fuente, dilo."),
+"/6": ("El output es más corto que el input sin perder lo esencial.", "No elimines matices que cambian la decisión."),
+"/7": ("Cada punto del checklist con veredicto y evidencia; las fallas se enrutan a 5/6.", "No marques OK por defecto: criterio que no aplica, justifícalo."),
+"/8": ("Usable sin edición por la audiencia destino; formato del Criterio aplicado.", "Si el Criterio (C) no se definió, pídelo antes de cerrar."),
+"/9": ("Los 2 prompts reproducen el resultado de hoy en 1 paso.", "Si el historial es insuficiente, indica qué falta para reusarlo."),
+"/compara": ("Scoring justificado por celda; la recomendación se deriva de los totales, no de preferencia.", "Opción sin dato en un criterio: márcala, no asumas 0 implícito."),
+"/prioriza": ("El #1 es defendible ante un escéptico; cada ítem con un porqué accionable.", "Si faltan datos para puntuar, pídelos o marca el supuesto; no inventes prioridad."),
+"/reformula": ("Mismo significado, mejor forma; cero cambios de fondo sin señalar.", "Si detectas un error de fondo, sepáralo de la reescritura."),
+"/debate": ("Cada postura con su mejor argumento; la síntesis no es un empate tibio.", "No fuerces equidistancia si la evidencia inclina a un lado."),
+"/investiga": ("Cada hallazgo con [FUENTE]; gaps explícitos; cero afirmación sin soporte.", "Sin fuente fiable, dilo; no rellenes con datos plausibles."),
+"/documenta": ("Estructura navegable, metadata completa, archivable sin edición.", "Datos faltantes en metadata: marcados, no inventados."),
+"/diagrama": ("Sintaxis válida y renderizable; relaciones correctas.", "Si el concepto no es diagramable, propón el tipo más fiel y dilo."),
+"/evalua": ("Cada dimensión puntuada con razón; total y recomendación coherentes.", "Criterio sin evidencia: declara la confianza, no inventes el número."),
+"/optimiza": ("Cada mejora con impacto estimado y costo; ordenadas por ratio beneficio/esfuerzo.", "No propongas optimización sin un cuello de botella identificado."),
+"/automatiza": ("Por oportunidad: herramienta, ROI en h/semana y complejidad.", "Si un paso exige juicio humano, no lo marques automatizable."),
+"/desafia": ("Ataca supuestos, no estilo; cada riesgo con cómo se manifiesta.", "Implacable con la idea, no con la persona."),
+"/calibra": ("El registro coincide con la audiencia sin perder exactitud.", "Si la audiencia no está clara, pregúntala antes de calibrar."),
+"/resume": ("Conclusión accionable primero; nada esencial omitido.", "No introduzcas información ausente del original."),
+"/traduce": ("Preserva intención, tono y términos técnicos; suena nativo.", "Término sin equivalente: mantenlo y aclara entre paréntesis."),
+"/profundiza": ("Aporta capas no obvias: datos, casos, contraposturas.", "No infles con generalidades; cada párrafo agrega algo nuevo."),
+"/simplifica": ("Más corto que el input, idea intacta.", "No simplifiques al punto de volverlo incorrecto."),
+"/contextualiza": ("Conecta antecedentes y por qué importa ahora, sin perder foco.", "No derives en historia irrelevante; ata todo al caso."),
+"/cuantifica": ("Cada cualitativo con número, rango u orden de magnitud y su base.", "Sin dato: estimación fundamentada y marcada, no cifra inventada."),
+"/visualiza": ("Tipo, layout y jerarquía suficientes para producir el visual.", "Si los datos no soportan el gráfico, propón otro."),
+"/personaliza": ("Cada recomendación referencia rol, sector o restricción real.", "Falta contexto del usuario: pídelo, no generalices."),
+"/estructura": ("Pirámide MECE: sin solapes ni huecos; conclusión arriba.", "Si los elementos no son MECE, reagrupa y dilo."),
+"/argumenta": ("Tesis + soporte con evidencia + contraargumento anticipado.", "No afirmes sin dato o razonamiento explícito."),
+"/predice": ("Cada escenario con condiciones, probabilidad e implicación.", "Extrapola con base; sin señal, dilo, no adivines."),
+"/mapea": ("Nodos, relaciones y jerarquías completos; sintaxis válida.", "Relación incierta: márcala como hipótesis."),
+"/pareto": ("El 20% identificado con justificación de su peso.", "Si la distribución no es 80/20, repórtalo, no la fuerces."),
+"/verifica": ("Cada afirmación etiquetada (verificado/duda/incorrecto) + confianza.", "No marques verificado sin fuente; lo dudoso se separa."),
+"/operacionaliza": ("Quién, qué, cuándo y cómo se mide por acción; ejecutable mañana.", "Acción sin responsable o métrica está incompleta: márcala."),
+"/sintetiza": ("1 documento; contradicciones resueltas; esencia intacta.", "Conflicto entre fuentes: decláralo y resuélvelo, no lo ocultes."),
+"/segmenta": ("Segmentos con entregable parcial y dependencias claras.", "No crees dependencias circulares entre segmentos."),
+"/escenarios": ("Conservador, base y agresivo con supuestos y probabilidad.", "Supuestos explícitos; sin ellos el escenario no sirve."),
+"/prototipa": ("MVP que valida la hipótesis nombrada; dice qué NO valida.", "No sobre-construyas; descartable por diseño."),
+"/escala": ("Qué se rompe a 10x y qué cambiar/automatizar, por capa.", "No asumas que lo actual escala lineal."),
+"/aterriza": ("Cada concepto a acción, fecha, responsable y entregable medible.", "Generalidad sin dueño no está aterrizada."),
+"/conecta": ("Conexiones no obvias con el porqué de la relación.", "No fuerces vínculos espurios; calidad sobre cantidad."),
+"/auditoria": ("Cada elemento completo/faltante/incorrecto + severidad + fix.", "Hallazgo sin evidencia: bájalo a observación."),
+"/narrativa": ("Arco situación-tensión-resolución fiel a los datos.", "La historia no distorsiona el dato; emoción sin manipular."),
+"/benchmark": ("Métrica > tu estado > mejor práctica > gap > acción, con fuente.", "Compara contra un benchmark aplicable, no contra uno inaplicable."),
+"/diagnostica": ("Síntomas y causas separados; la prescripción se liga a la causa.", "No confundas síntoma con causa raíz."),
+"/estrategia": ("Objetivo, palancas, trade-offs y riesgos atados a recursos reales.", "Sin restricciones reales no es estrategia, es deseo."),
+"/feedback": ("SBI con hechos observables; pedido de cambio concreto.", "Describe comportamiento, no etiquetas de carácter."),
+"/reversa": ("Priming + SPEC que reproducen el resultado en 1 paso.", "Historial insuficiente: indica qué falta."),
+"/defiende": ("Cada objeción con respuesta fundamentada y evidencia.", "Anticipa la objeción más fuerte, no la más fácil."),
+"/a": ("Confirmas los insights clave antes de pasar a lo operativo.", "Si algo del plan es dudoso, señálalo antes de proceder."),
+"/b": ("Briefing con fuentes recientes y perspectivas alternas.", "Sin fuente fiable, dilo; no rellenes."),
+"/c": ("Versión limpia; ambigüedades resueltas a favor de la claridad.", "Cambio de fondo (no de forma): sepáralo y avísame."),
+"/d": ("Componentes con definición, relevancia y dependencias.", "Parte incierta: márcala, no la fuerces."),
+"/e": ("Rúbrica de 10 aplicada; iteras hasta la meta; entregas solo la versión final.", "No entregues borradores intermedios."),
+"/f": ("Escaneable y ejecutivo en 5 segundos; jerarquía clara.", "No cambies el contenido al formatear."),
+"/g": ("Alternativas distintas con ventaja y trade-off, en tabla.", "Variantes reales, no la misma idea reescrita."),
+"/h": ("Ítems accionables, verificables, ordenados por impacto.", "Ítem no verificable: reformúlalo."),
+"/i": ("Objetivo, decisiones, abiertos, supuestos y próximos pasos.", "Marca lo que no quedó claro en la sesión."),
+"/j": ("Cada afirmación con dato, fuente, marco o razonamiento.", "Sin soporte: márcalo como supuesto."),
+"/k": ("Cada insight con su implicación y acción.", "Takeaway sin acción es observación, no clave."),
+"/l": ("Ventajas y desventajas ponderadas + recomendación.", "No omitas el contra incómodo."),
+"/m": ("Eleva profundidad, estructura y precisión; solo la versión final.", "No degrades lo que ya funcionaba."),
+"/n": ("La acción inmediata de mayor palanca, con qué, quién y cuándo.", "Una sola acción, no una lista."),
+"/o": ("Timeline con hitos, dependencias y fechas.", "Fecha incierta: estímala y márcala."),
+"/p": ("Detalle experto con ejemplos y matices nuevos.", "No repitas lo dicho con más palabras."),
+"/q": ("Preguntas críticas no formuladas que cambian conclusiones.", "Prioriza las bloqueantes sobre las cosméticas."),
+"/r": ("Conclusión + evidencia + próximos pasos en 3 párrafos.", "No agregues información nueva."),
+"/s": ("Mejor solución integrando fortalezas y mitigando debilidades.", "Si las opciones son incompatibles, dilo y elige."),
+"/t": ("Tono e intención preservados; suena nativo.", "Término sin equivalente: mantén y aclara."),
+"/u": ("Documento único coherente; contradicciones resueltas.", "Conflicto entre fuentes: resuélvelo explícito."),
+"/v": ("OK/confirmar/incorrecto por afirmación + corrección.", "No marques OK sin base."),
+"/w": ("3 escenarios con activación, impacto y acción.", "Supuestos explícitos por escenario."),
+"/x": ("Datos estructurados (tabla/JSON) completos y fieles.", "Dato ausente: vacío marcado, no inventado."),
+"/y": ("Completitud, consistencia y formato listos para uso.", "Si algo bloquea la entrega, detente y señálalo."),
+"/z": ("Conexión con objetivos de largo plazo e implicaciones sistémicas.", "No pierdas el caso concreto al abstraer."),
+}
+CE_DEFAULT = ("Salida accionable, completa y sin afirmaciones sin respaldo.",
+              "Ante ambigüedad o falta de datos, pregunta o marca el supuesto; no inventes.")
+
 # ---------- render + scaffolds ----------
 def render(body, params):
     """Sustituye [[key]] por el texto del default -> prosa limpia (sin tokens)."""
@@ -340,29 +425,31 @@ def clean_params(params):
                     "opts": [[o[0], o[1]] for o in p["opts"]]})  # opts ligeros (v,label) para UI
     return out
 
-def mk_natural(body, params):
-    return render(body, params) + "\n\n" + PROTO
+def mk_natural(body, params, crit, edge):
+    return "%s\n\nCriterio: %s\nEvita: %s\n\n%s" % (render(body, params), crit, edge, PROTO)
 
-def mk_parametros(desc, params):
+def mk_parametros(desc, params, crit, edge):
     lines = ["PARÁMETROS (edita los valores a tu caso):"]
     for p in params:
         alts = alt_labels(p)
         extra = ("   ·alt: " + " | ".join(alts)) if alts else ""
         lines.append("· %s: %s%s" % (p["label"], val_of(p), extra))
-    return desc + "\n\n" + "\n".join(lines) + "\n\nEjecuta usando exactamente esos parámetros.\n\n" + PROTO
+    return ("%s\n\n%s\n\nEjecuta usando exactamente esos parámetros.\n\n"
+            "Criterio de aceptación: %s\nLímites: %s\n\n%s") % (desc, "\n".join(lines), crit, edge, PROTO)
 
-def mk_spec(desc, body, params):
+def mk_spec(desc, body, params, crit, edge):
     fmt = next((p for p in params if p["key"] in ("formato", "salida")), None)
-    crit = val_of(fmt) if fmt else "claro, accionable, sin relleno"
+    fmt_txt = (val_of(fmt) + "; ") if fmt else ""
     return ("[S] Situación: el contenido o la tarea que te comparto.\n"
             "[P] Pedido: %s\n"
-            "[E] Ejecución: %s\n"
-            "[C] Criterio: %s; máxima calidad, listo para usar.") % (desc, render(body, params), crit)
+            "[E] Ejecución: %s Evita: %s\n"
+            "[C] Criterio: %s%s\n\n%s") % (desc, render(body, params), edge, fmt_txt, crit, PROTO)
 
-def mk_dupla(title, body, params):
+def mk_dupla(title, body, params, crit, edge):
     return {
-        "system": "Eres un asistente experto de MetodologIA para «%s». Aplicas el método con criterios explícitos.\n\n%s" % (title, PROTO),
-        "user": render(body, params)
+        "system": ("Eres un asistente experto de MetodologIA para «%s». Aplicas el método con criterios explícitos. "
+                   "Guardrail: %s\n\n%s") % (title, edge, PROTO),
+        "user": "%s\n\nCriterio: %s" % (render(body, params), crit)
     }
 
 def main():
@@ -385,13 +472,15 @@ def main():
             if p["key"] in keys:
                 continue
             keys.add(p["key"]); params.append(p); body += "[[%s]]" % p["key"]
+        crit, edge = CE.get(cmd, CE_DEFAULT)
         r['title'] = title
         r['desc'] = desc
-        r['params'] = clean_params(params)          # solo metadato de explicación (read-only)
-        r['formats']['natural'] = mk_natural(body, params)          # prosa, defaults inline, lista para pegar
-        r['formats']['natural_params'] = mk_parametros(desc, params) # parámetros explícitos, fáciles de editar
-        r['formats']['spec'] = mk_spec(desc, body, params)          # andamiaje S·P·E·C
-        r['formats']['dupla'] = mk_dupla(title, body, params)       # system/user
+        r['params'] = clean_params(params)                                  # metadato de explicación (read-only)
+        r['crit'] = crit; r['edge'] = edge                                  # trazabilidad: criterio + límite
+        r['formats']['natural'] = mk_natural(body, params, crit, edge)      # prosa lista para pegar
+        r['formats']['natural_params'] = mk_parametros(desc, params, crit, edge)  # parámetros explícitos
+        r['formats']['spec'] = mk_spec(desc, body, params, crit, edge)      # andamiaje S·P·E·C
+        r['formats']['dupla'] = mk_dupla(title, body, params, crit, edge)   # system/user con guardrail
         n += 1
     if not os.path.exists(DATA + '.bak'):
         shutil.copy(DATA, DATA + '.bak')   # preserva el original (no sobrescribir en re-runs)

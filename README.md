@@ -38,7 +38,15 @@ copia, descarga `.md` o lleva el prompt directo a ChatGPT, Claude o Gemini.
 - **A11y · i18n**: `<option>`/placeholder/conteo traducidos (ES·EN·PT), `aria-live`, skip-link, foco al cerrar modal, estado "sin resultados".
 - **Capa de invocación parametrizada** (78 prompts: `/0–/9` + 42 verbos + `/a–/z`): cada uno con **2–4 parámetros con defaults** escritos en el texto (parámetros, NO inputs; cero fricción — funcionan tal cual). **4 versiones mejoradas y diferenciadas** por comando: `natural` (prosa lista para pegar) · `parámetros` (config explícita, fácil de editar) · `SPEC` (andamiaje S·P·E·C) · `dupla` (system/user).
   - UI simple del comando: explicación + línea «Ajustables: …» (read-only, con defaults y alternativas) + selección de versión + **textarea editable** (ajustas los valores en texto antes de exportar) + exportar (copiar/.md/ChatGPT/Claude/Gemini). El resto del catálogo queda en lectura.
-  - Generador reproducible: `tools/robustecer-comandos.py` (backup en `biblioteca-data.json.bak`).
+  - Cada comando incluye **criterio de aceptación** y **límite/caso borde** (trazabilidad: qué debe cumplir la salida y cómo manejar ambigüedad / falta de datos), tejidos por versión (natural/parámetros: Criterio+Evita; SPEC: en `[E]`/`[C]`; dupla: guardrail en `system`). Las 4 versiones son standalone e incluyen el protocolo MetodologIA (Interpreta > Planifica > Ejecuta).
+  - Generador reproducible: `tools/robustecer-comandos.py` (tabla `CE` de criterios/límites; backup en `biblioteca-data.json.bak`).
+
+### v1.5 (2026-06-06) — adopción del contenido enterprise (v3000)
+
+- Los 78 comandos pasan a usar el **contenido rico canónico** de `prompts_universales_v3000` (síntesis de v11+cop+v1492): SPEC enterprise de ~16k (ROL · SUPUESTOS · LÍMITES · PROTOCOLO + etiquetas de procedencia · METACOGNICIÓN DSV · EJECUCIÓN · CASOS BORDE · CRITERIOS DE ACEPTACIÓN · TRADE-OFFS · DoD + 12 **cláusulas transversales** con defaults de cero fricción: Bucle de Excelencia, Inferencia Amplificada, Insights Proactivos, Privacidad/PII, No-alucinación…).
+- **4 versiones** por extracción verbatim (cero reescritura): natural (condensado) · parámetros (INPUTS + cláusulas) · **SPEC = content íntegro** · dupla (system/user).
+- **Bondades** por comando en el modal (read-only): cómo usarlo · por qué importa · errores comunes · ejercicio 3 min · ejemplo trabajado.
+- Modelo `tri:{es,en,pt}` (ES listo; EN/PT en curso). Generador: `tools/synthesize-from-v3000.py`. Snapshot `biblioteca-data.json.pre-xl`.
 
 ## Local
 
