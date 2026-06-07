@@ -143,6 +143,7 @@ kbd{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--rule);borde
       <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem">
         <a class="iconbtn" style="background:var(--gold);color:var(--navy2);border-color:var(--gold);font-weight:700" href="#catalogo"><span class="l-es">Ir al catálogo ↓</span><span class="l-en">Go to catalog ↓</span><span class="l-pt">Ir ao catálogo ↓</span></a>
         <a class="iconbtn" style="background:var(--navy2)" href="masterclass.html"><span class="l-es">Empezar por la Masterclass</span><span class="l-en">Start with the Masterclass</span><span class="l-pt">Começar pela Masterclass</span></a>
+        <a class="iconbtn" href="#descargas"><i data-lucide="download"></i><span class="l-es">Descargar JSON ↓</span><span class="l-en">Download JSON ↓</span><span class="l-pt">Baixar JSON ↓</span></a>
       </div>
       <div class="stats">
         <div class="cell"><div class="num">2026</div><div class="lbl"><span class="l-es">prompts en 4 formatos</span><span class="l-en">prompts in 4 formats</span><span class="l-pt">prompts em 4 formatos</span></div></div>
@@ -227,6 +228,36 @@ kbd{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--rule);borde
     <div class="grid" id="grid"></div>
     <div id="sentinel"></div>
     <button class="btn loadmore" id="loadmore" type="button" hidden><span class="l-es">Cargar más</span><span class="l-en">Load more</span><span class="l-pt">Carregar mais</span></button>
+  </section>
+
+  <!-- ===== §06 DESCARGAS · JSON ===== -->
+  <section class="wrap" id="descargas">
+    <style>
+      .dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.1rem}
+      .dl-col{border:1px solid var(--rule);border-radius:var(--r3,14px);padding:1rem 1.1rem;background:var(--card)}
+      .dl-col h3{margin:.1rem 0 .3rem;font-family:var(--f-head);font-size:1.05rem}
+      .dl-sub{margin:.8rem 0 .35rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);font-weight:700}
+      .dl-row{display:flex;flex-wrap:wrap;gap:.4rem}
+      .dl-row a{display:inline-flex;align-items:center;gap:.35rem;padding:.32rem .6rem;border-radius:999px;border:1px solid var(--rule);
+        background:var(--paper-soft);color:var(--ink2);text-decoration:none;font-size:.78rem;font-weight:600;transition:all .15s}
+      .dl-row a:hover{border-color:var(--gold);color:var(--gold-deep);transform:translateY(-1px)}
+      .dl-row a.all{background:var(--navy2);color:#fff;border-color:var(--navy2);width:100%}
+      [data-theme=dark] .dl-row a.all{background:var(--gold);color:var(--navy2)}
+      .dl-meta{margin-top:1rem;font-size:.82rem;color:var(--mute)}
+      .dl-meta a{color:var(--gold-deep);font-weight:600}
+    </style>
+    <h2 style="max-width:none"><span class="num">§06</span><span class="l-es">Descargas · JSON</span><span class="l-en">Downloads · JSON</span><span class="l-pt">Downloads · JSON</span></h2>
+    <p class="lead">
+      <span class="l-es">2031 prompts en 4 formatos, trilingüe. <b>Datos</b> = arrays con metadatos; <b>Prompster</b> = diccionarios listos para importar (claves <code>ln-</code> natural · <code>pr-</code> parámetros · <code>spec-</code> · <code>dp-</code> dupla). El concatenado reúne los 4 formatos (8124 entradas).</span>
+      <span class="l-en">2031 prompts in 4 formats, trilingual. <b>Data</b> = arrays with metadata; <b>Prompster</b> = import-ready dictionaries (keys <code>ln-</code> natural · <code>pr-</code> params · <code>spec-</code> · <code>dp-</code> pair). The concatenated bundle merges all 4 formats (8124 entries).</span>
+      <span class="l-pt">2031 prompts em 4 formatos, trilíngue. <b>Dados</b> = arrays com metadados; <b>Prompster</b> = dicionários prontos para importar (chaves <code>ln-</code> natural · <code>pr-</code> parâmetros · <code>spec-</code> · <code>dp-</code> dupla). O concatenado reúne os 4 formatos (8124 entradas).</span>
+    </p>
+    <div class="dl-grid" id="dl-grid"></div>
+    <p class="dl-meta">
+      <span class="l-es">También por GitHub: </span><span class="l-en">Also on GitHub: </span><span class="l-pt">Também no GitHub: </span>
+      <a href="https://github.com/JaviMontano/prompt-amplificado/tree/main/exports" target="_blank" rel="noopener">exports/</a> ·
+      <a href="exports/manifest.json" download>manifest.json</a> · <span style="opacity:.7">CC BY-NC-SA 4.0</span>
+    </p>
   </section>
 </main>
 
@@ -508,6 +539,30 @@ fetch('biblioteca-data.json').then(function(r){return r.json();}).then(function(
   count.textContent='Error al cargar el dataset.';
   grid.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="l-es">No se pudo cargar <code>biblioteca-data.json</code>. Si abres el archivo localmente, sírvelo por HTTP (p. ej. <code>python3 -m http.server</code>).</span><span class="l-en">Could not load <code>biblioteca-data.json</code>. If opening locally, serve it over HTTP (e.g. <code>python3 -m http.server</code>).</span><span class="l-pt">Não foi possível carregar <code>biblioteca-data.json</code>. Se abrir localmente, sirva via HTTP (ex.: <code>python3 -m http.server</code>).</span></div>';
 });
+})();
+</script>
+<script>
+/* §06 Descargas · grid de enlaces a exports/ */
+(function(){
+  var LANGS=[['es','Español'],['en','English'],['pt','Português']];
+  var FMT=[['natural','natural','ln-'],['parametros','parámetros','pr-'],['spec','SPEC','spec-'],['dupla','dupla','dp-']];
+  var g=document.getElementById('dl-grid'); if(!g) return;
+  var html='';
+  LANGS.forEach(function(L){
+    var l=L[0];
+    html+='<div class="dl-col"><h3>'+L[1]+' <span style="opacity:.6;font-weight:400;font-size:.8rem">('+l+')</span></h3>';
+    html+='<div class="dl-sub"><span class="l-es">Datos · 4 formatos</span><span class="l-en">Data · 4 formats</span><span class="l-pt">Dados · 4 formatos</span></div><div class="dl-row">';
+    FMT.forEach(function(F){ html+='<a href="exports/'+l+'/'+F[0]+'.json" download><i data-lucide="braces"></i>'+F[1]+'</a>'; });
+    html+='</div>';
+    html+='<div class="dl-sub">Prompster · 4</div><div class="dl-row">';
+    FMT.forEach(function(F){ html+='<a href="exports/prompster/'+l+'/'+F[0]+'.json" download title="claves '+F[2]+'"><i data-lucide="terminal"></i>'+F[2]+'</a>'; });
+    html+='</div>';
+    html+='<div class="dl-sub"><span class="l-es">Prompster · todo (8124)</span><span class="l-en">Prompster · all (8124)</span><span class="l-pt">Prompster · tudo (8124)</span></div><div class="dl-row">';
+    html+='<a class="all" href="exports/prompster/prompster_'+l+'.json" download><i data-lucide="package"></i>prompster_'+l+'.json</a>';
+    html+='</div></div>';
+  });
+  g.innerHTML=html;
+  if(window.lucide&&lucide.createIcons){try{lucide.createIcons();}catch(e){}}
 })();
 </script>
 </body></html>
