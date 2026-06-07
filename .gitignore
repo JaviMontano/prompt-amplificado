@@ -14,3 +14,9 @@ tools/xl-gl.js
 tools/xl-meta.js
 tools/xl-intro.js
 tools/meta-seed.es.json
+tools/slices/
+tools/parts/
+tools/pt-missing.json
+biblioteca-data.json.pre-tri
+biblioteca-data.json.pre-xl
+biblioteca-data.json.bak
