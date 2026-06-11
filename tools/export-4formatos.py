@@ -24,9 +24,8 @@ def lang_formats(r, lang):
     blk = tri.get(lang)
     if blk and blk.get('formats'):
         return blk['formats']
-    if lang == 'es':
-        return r.get('formats') or None
-    return None
+    # fallback: EN/PT sin traducción nativa aún → usar ES (prompts correctos)
+    return r.get('formats') or None
 
 def lang_title(r, lang):
     tri = r.get('tri') or {}

@@ -29,9 +29,7 @@ def lang_formats(r, lang):
     blk = tri.get(lang)
     if blk and blk.get('formats'):
         return blk['formats']
-    if lang == 'es':
-        return r.get('formats') or None
-    return None
+    return r.get('formats') or None
 
 def value_for(fmts, key):
     if key == 'dupla':
