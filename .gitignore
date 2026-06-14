@@ -20,3 +20,16 @@ tools/pt-missing.json
 biblioteca-data.json.pre-tri
 biblioteca-data.json.pre-xl
 biblioteca-data.json.bak
+authoring/
+tools/authoring/
+biblioteca-data.json.post-tri
+biblioteca-data.json.post-fix67
+biblioteca-data.json.pre-fix67
+biblioteca-data.json.pre-author
+tools/fix67/
+tools/slices/
+tools/parts/
+tools/discovery/
+tools/.discovery/
+tools/redo.json
+tools/legacy67.json

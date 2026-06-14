@@ -8,7 +8,7 @@ import json, os
 HERE = os.path.dirname(__file__)
 SRC  = os.path.join(HERE, '..', 'biblioteca-data.json')
 SLD  = os.path.join(HERE, 'slices')
-SIZE = 5
+SIZE = 10
 
 def item(r):
     f = r.get('formats') or {}
